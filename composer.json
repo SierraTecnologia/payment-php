@@ -1,0 +1,39 @@
+{
+    "name": "SierraTecnologia/payment-php",
+    "type": "library",
+    "keywords": [
+        "SierraTecnologia",
+        "sitec",
+        "api",
+        "sdk",
+        "payment processing",
+        "api"
+    ],
+    "homepage": "https://sierratecnologia.com.br",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sierra Tecnologia",
+            "email": "contato@sierratecnologia.com.br",
+            "homepage": "https://sierratecnologia.com.br",
+            "role": "Organizer"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "~4.0",
+      "php-coveralls/php-coveralls": "1.*",
+      "squizlabs/php_codesniffer": "~2.0",
+      "symfony/process": "~2.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Sitec\\": "src/"
+        }
+    }
+}

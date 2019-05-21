@@ -1,0 +1,55 @@
+<?php
+
+require('../init.php');
+
+\SierraTecnologia\SierraTecnologia::setApiKey(getenv('SITEC_SECRET_KEY'));
+\SierraTecnologia\SierraTecnologia::setClientId(getenv('SITEC_CLIENT_ID'));
+
+
+if (isset($_GET['code'])) {
+    // The user was redirected back from the OAuth form with an authorization code.
+    $code = $_GET['code'];
+
+    try {
+        $resp = \SierraTecnologia\OAuth::token([
+            'grant_type' => 'authorization_code',
+            'code' => $code,
+        ]);
+    } catch (\SierraTecnologia\Error\OAuth\OAuthBase $e) {
+        exit("Error: " . $e->getMessage());
+    }
+
+    $accountId = $resp->sierratecnologia_user_id;
+
+    echo "<p>Success! Account <code>$accountId</code> is connected.</p>\n";
+    echo "<p>Click <a href=\"?deauth=$accountId\">here</a> to disconnect the account.</p>\n";
+
+} elseif (isset($_GET['error'])) {
+    // The user was redirect back from the OAuth form with an error.
+    $error = $_GET['error'];
+    $error_description = $_GET['error_description'];
+
+    echo "<p>Error: code=" . htmlspecialchars($error, ENT_QUOTES) . ", description=" . htmlspecialchars($error_description, ENT_QUOTES) . "</p>\n";
+    echo "<p>Click <a href=\"?\">here</a> to restart the OAuth flow.</p>\n";
+
+} elseif (isset($_GET['deauth'])) {
+    // Deauthorization request
+    $accountId = $_GET['deauth'];
+
+    try {
+        \SierraTecnologia\OAuth::deauthorize([
+            'sierratecnologia_user_id' => $accountId,
+        ]);
+    } catch (\SierraTecnologia\Error\OAuth\OAuthBase $e) {
+        exit("Error: " . $e->getMessage());
+    }
+
+    echo "<p>Success! Account <code>" . htmlspecialchars($accountId, ENT_QUOTES) . "</code> is disconnected.</p>\n";
+    echo "<p>Click <a href=\"?\">here</a> to restart the OAuth flow.</p>\n";
+
+} else {
+    $url = \SierraTecnologia\OAuth::authorizeUrl([
+        'scope' => 'read_only',
+    ]);
+    echo "<a href=\"$url\">Connect with SierraTecnologia</a>\n";
+}
