@@ -71,7 +71,7 @@ class RequestOptionsTest extends TestCase
     {
         $opts = Util\RequestOptions::parse(
             [
-                'sierratecnologia_account' => 'foo',
+                'sitecpayment_account' => 'foo',
                 'idempotency_key' => 'foo',
             ]
         );

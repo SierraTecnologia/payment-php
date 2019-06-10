@@ -38,7 +38,7 @@ if (isset($_GET['code'])) {
 
     try {
         \SierraTecnologia\OAuth::deauthorize([
-            'sierratecnologia_user_id' => $accountId,
+            'sitecpayment_user_id' => $accountId,
         ]);
     } catch (\SierraTecnologia\Error\OAuth\OAuthBase $e) {
         exit("Error: " . $e->getMessage());

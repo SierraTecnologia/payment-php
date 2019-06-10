@@ -30,7 +30,7 @@ class SierraTecnologiaMock
         echo "Starting sierratecnologia-mock on port " . static::$port . "...\n";
 
         static::$process = new Process(join(' ', [
-            'sierratecnologia-mock',
+            'sitecpayment-mock',
             '-http-port',
             static::$port,
             '-spec',

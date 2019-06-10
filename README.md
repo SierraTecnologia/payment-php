@@ -149,12 +149,12 @@ per-request key and/or account:
 ```php
 \SierraTecnologia\Charge::all([], [
     'api_key' => 'sk_test_...',
-    'sierratecnologia_account' => 'acct_...'
+    'sitecpayment_account' => 'acct_...'
 ]);
 
 \SierraTecnologia\Charge::retrieve("ch_18atAXCdGbJFKhCuBAa4532Z", [
     'api_key' => 'sk_test_...',
-    'sierratecnologia_account' => 'acct_...'
+    'sitecpayment_account' => 'acct_...'
 ]);
 ```
 

@@ -160,7 +160,7 @@ class CollectionTest extends TestCase
         $this->fixture->create([
             'foo' => 'bar',
         ], [
-            'sierratecnologia_account' => 'acct_foo',
+            'sitecpayment_account' => 'acct_foo',
             'idempotency_key' => 'qwertyuiop',
         ]);
     }

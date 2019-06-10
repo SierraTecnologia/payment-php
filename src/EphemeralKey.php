@@ -33,8 +33,8 @@ class EphemeralKey extends ApiResource
      */
     public static function create($params = null, $opts = null)
     {
-        if (!$opts['sierratecnologia_version']) {
-            throw new \InvalidArgumentException('sierratecnologia_version must be specified to create an ephemeral key');
+        if (!$opts['sitecpayment_version']) {
+            throw new \InvalidArgumentException('sitecpayment_version must be specified to create an ephemeral key');
         }
         return self::_create($params, $opts);
     }

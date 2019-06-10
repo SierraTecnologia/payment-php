@@ -139,7 +139,7 @@ class Account extends ApiResource
     {
         $params = [
             'client_id' => $clientId,
-            'sierratecnologia_user_id' => $this->id,
+            'sitecpayment_user_id' => $this->id,
         ];
         return OAuth::deauthorize($params, $opts);
     }

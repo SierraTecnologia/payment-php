@@ -531,7 +531,7 @@ class ApiRequestorTest extends TestCase
                 'object' => 'charge',
             ]
         );
-        Charge::create([], ['sierratecnologia_version' => '2222-22-22']);
+        Charge::create([], ['sitecpayment_version' => '2222-22-22']);
     }
 
     public function testHeaderSierraTecnologiaAccountGlobal()
@@ -568,6 +568,6 @@ class ApiRequestorTest extends TestCase
                 'object' => 'charge',
             ]
         );
-        Charge::create([], ['sierratecnologia_account' => 'acct_123']);
+        Charge::create([], ['sitecpayment_account' => 'acct_123']);
     }
 }

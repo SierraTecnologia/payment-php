@@ -297,7 +297,7 @@ class ApiRequestor
             'bindings_version' => SierraTecnologia::VERSION,
             'lang' => 'php',
             'lang_version' => $langVersion,
-            'publisher' => 'sierratecnologia',
+            'publisher' => 'sitecpayment',
             'uname' => $uname,
         ];
         if ($clientInfo) {

@@ -9,7 +9,7 @@ class OAuthTest extends TestCase
         $uriStr = OAuth::authorizeUrl([
             'scope' => 'read_write',
             'state' => 'csrf_token',
-            'sierratecnologia_user' => [
+            'sitecpayment_user' => [
                 'email' => 'test@example.com',
                 'url' => 'https://example.com/profile/test',
                 'country' => 'US',
@@ -25,9 +25,9 @@ class OAuthTest extends TestCase
 
         $this->assertSame('ca_123', $params['client_id']);
         $this->assertSame('read_write', $params['scope']);
-        $this->assertSame('test@example.com', $params['sierratecnologia_user']['email']);
-        $this->assertSame('https://example.com/profile/test', $params['sierratecnologia_user']['url']);
-        $this->assertSame('US', $params['sierratecnologia_user']['country']);
+        $this->assertSame('test@example.com', $params['sitecpayment_user']['email']);
+        $this->assertSame('https://example.com/profile/test', $params['sitecpayment_user']['url']);
+        $this->assertSame('US', $params['sitecpayment_user']['country']);
     }
 
     /**
@@ -57,8 +57,8 @@ class OAuthTest extends TestCase
                 'livemode' => false,
                 'token_type' => 'bearer',
                 'refresh_token' => 'sk_refresh_token',
-                'sierratecnologia_user_id' => 'acct_test',
-                'sierratecnologia_publishable_key' => 'pk_test',
+                'sitecpayment_user_id' => 'acct_test',
+                'sitecpayment_publishable_key' => 'pk_test',
             ],
             200,
             SierraTecnologia::$connectBase
@@ -77,20 +77,20 @@ class OAuthTest extends TestCase
             'POST',
             '/oauth/deauthorize',
             [
-                'sierratecnologia_user_id' => 'acct_test_deauth',
+                'sitecpayment_user_id' => 'acct_test_deauth',
                 'client_id' => 'ca_123',
             ],
             null,
             false,
             [
-                'sierratecnologia_user_id' => 'acct_test_deauth',
+                'sitecpayment_user_id' => 'acct_test_deauth',
             ],
             200,
             SierraTecnologia::$connectBase
         );
 
         $resp = OAuth::deauthorize([
-                'sierratecnologia_user_id' => 'acct_test_deauth',
+                'sitecpayment_user_id' => 'acct_test_deauth',
         ]);
         $this->assertSame('acct_test_deauth', $resp->sierratecnologia_user_id);
     }

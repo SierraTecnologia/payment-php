@@ -105,12 +105,12 @@ class AccountTest extends TestCase
             '/oauth/deauthorize',
             [
                 'client_id' => SierraTecnologia::getClientId(),
-                'sierratecnologia_user_id' => $resource->id,
+                'sitecpayment_user_id' => $resource->id,
             ],
             null,
             false,
             [
-                'sierratecnologia_user_id' => $resource->id,
+                'sitecpayment_user_id' => $resource->id,
             ],
             200,
             SierraTecnologia::$connectBase

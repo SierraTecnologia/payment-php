@@ -87,11 +87,11 @@ class RequestOptions
             if (array_key_exists('idempotency_key', $options)) {
                 $headers['Idempotency-Key'] = $options['idempotency_key'];
             }
-            if (array_key_exists('sierratecnologia_account', $options)) {
-                $headers['SierraTecnologia-Account'] = $options['sierratecnologia_account'];
+            if (array_key_exists('sitecpayment_account', $options)) {
+                $headers['SierraTecnologia-Account'] = $options['sitecpayment_account'];
             }
-            if (array_key_exists('sierratecnologia_version', $options)) {
-                $headers['SierraTecnologia-Version'] = $options['sierratecnologia_version'];
+            if (array_key_exists('sitecpayment_version', $options)) {
+                $headers['SierraTecnologia-Version'] = $options['sitecpayment_version'];
             }
             if (array_key_exists('api_base', $options)) {
                 $base = $options['api_base'];

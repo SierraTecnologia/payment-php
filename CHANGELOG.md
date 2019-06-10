@@ -542,7 +542,7 @@ Pull requests included in this release:
 * Switched to SierraTecnologia namespace instead of SierraTecnologia_ class name prefiexes (thanks @chadicus!)
 * Switched tests to PHPUnit (thanks @chadicus!)
 * Switched style guide to PSR2 (thanks @chadicus!)
-* Added $opts hash to the end of most methods: this permits passing 'idempotency_key', 'sierratecnologia_account', or 'sierratecnologia_version'. The last 2 will persist across multiple object loads.
+* Added $opts hash to the end of most methods: this permits passing 'idempotency_key', 'sitecpayment_account', or 'sitecpayment_version'. The last 2 will persist across multiple object loads.
 * Added support for retrieving Account by ID
 
 ## 1.18.0 - 2015-01-21
