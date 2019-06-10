@@ -33,7 +33,14 @@
     },
     "autoload": {
         "psr-4": {
-            "Sitec\\": "src/"
+            "SierraTecnologia\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "dont-discover": [
+                "laravel/cashier"
+            ]
         }
     }
 }
