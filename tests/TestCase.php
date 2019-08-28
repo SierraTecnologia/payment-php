@@ -71,7 +71,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
      *   exhaustive. If null, headers are not checked.
      * @param bool $hasFile Whether the request parameters contains a file.
      *   Defaults to false.
-     * @param string|null $base base URL (e.g. 'https://api.sierratecnologia.com.br')
+     * @param string|null $base base URL (e.g. 'https://payment.sierratecnologia.com.br')
      */
     protected function expectsRequest(
         $method,
@@ -138,7 +138,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
      *   exhaustive. If null, headers are not checked.
      * @param bool $hasFile Whether the request parameters contains a file.
      *   Defaults to false.
-     * @param string|null $base base URL (e.g. 'https://api.sierratecnologia.com.br')
+     * @param string|null $base base URL (e.g. 'https://payment.sierratecnologia.com.br')
      *
      * @return PHPUnit_Framework_MockObject_Builder_InvocationMocker
      */

@@ -16,7 +16,7 @@ class SierraTecnologia
     public static $clientId;
 
     // @var string The base URL for the SierraTecnologia API.
-    public static $apiBase = 'https://api.sierratecnologia.com.br';
+    public static $apiBase = 'https://payment.sierratecnologia.com.br';
 
     // @var string The base URL for the OAuth API.
     public static $connectBase = 'https://connect.sierratecnologia.com.br';
