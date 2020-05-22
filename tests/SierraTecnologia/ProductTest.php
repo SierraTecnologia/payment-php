@@ -33,10 +33,12 @@ class ProductTest extends TestCase
             'post',
             '/v1/products'
         );
-        $resource = Product::create([
+        $resource = Product::create(
+            [
             'name' => 'name',
             'type' => 'good'
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Product", $resource);
     }
 
@@ -58,9 +60,11 @@ class ProductTest extends TestCase
             'post',
             '/v1/products/' . self::TEST_RESOURCE_ID
         );
-        $resource = Product::update(self::TEST_RESOURCE_ID, [
+        $resource = Product::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Product", $resource);
     }
 

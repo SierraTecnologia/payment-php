@@ -29,15 +29,19 @@ class SierraTecnologiaMock
 
         echo "Starting sierratecnologia-mock on port " . static::$port . "...\n";
 
-        static::$process = new Process(join(' ', [
-            'sitecpayment-mock',
-            '-http-port',
-            static::$port,
-            '-spec',
-            static::getPathSpec(),
-            '-fixtures',
-            static::getPathFixtures(),
-        ]));
+        static::$process = new Process(
+            join(
+                ' ', [
+                'sitecpayment-mock',
+                '-http-port',
+                static::$port,
+                '-spec',
+                static::getPathSpec(),
+                '-fixtures',
+                static::getPathFixtures(),
+                ]
+            )
+        );
         static::$process->start();
         sleep(1);
 

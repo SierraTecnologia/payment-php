@@ -57,9 +57,11 @@ class CustomerTest extends TestCase
             'post',
             '/v1/customers/' . self::TEST_RESOURCE_ID
         );
-        $resource = Customer::update(self::TEST_RESOURCE_ID, [
+        $resource = Customer::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Customer", $resource);
     }
 
@@ -86,10 +88,12 @@ class CustomerTest extends TestCase
                 "customer" => $customer->id
             ]
         );
-        $resource = $customer->addInvoiceItem([
+        $resource = $customer->addInvoiceItem(
+            [
             "amount" => 100,
             "currency" => "usd"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\InvoiceItem", $resource);
     }
 
@@ -231,9 +235,11 @@ class CustomerTest extends TestCase
 
     public function testSerializeSourceString()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'customer',
-        ], null);
+            ], null
+        );
         $obj->source = 'tok_visa';
 
         $expected = [
@@ -244,9 +250,11 @@ class CustomerTest extends TestCase
 
     public function testSerializeSourceMap()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'customer',
-        ], null);
+            ], null
+        );
         $obj->source = [
             'object' => 'card',
             'number' => '4242424242424242',
@@ -271,10 +279,12 @@ class CustomerTest extends TestCase
             'post',
             '/v1/customers/' . self::TEST_RESOURCE_ID . '/tax_ids'
         );
-        $resource = Customer::createTaxId(self::TEST_RESOURCE_ID, [
+        $resource = Customer::createTaxId(
+            self::TEST_RESOURCE_ID, [
             "type" => TaxId::TYPE_EU_VAT,
             "value" => "11111",
-        ]);
+            ]
+        );
     }
 
     public function testCanRetrieveTaxId()

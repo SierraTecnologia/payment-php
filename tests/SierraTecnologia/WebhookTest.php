@@ -51,7 +51,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \SierraTecnologia\Error\SignatureVerification
+     * @expectedException        \SierraTecnologia\Error\SignatureVerification
      * @expectedExceptionMessage Unable to extract timestamp and signatures from header
      */
     public function testMalformedHeader()
@@ -61,7 +61,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \SierraTecnologia\Error\SignatureVerification
+     * @expectedException        \SierraTecnologia\Error\SignatureVerification
      * @expectedExceptionMessage No signatures found with expected scheme
      */
     public function testNoSignaturesWithExpectedScheme()
@@ -71,7 +71,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \SierraTecnologia\Error\SignatureVerification
+     * @expectedException        \SierraTecnologia\Error\SignatureVerification
      * @expectedExceptionMessage No signatures found matching the expected signature for payload
      */
     public function testNoValidSignatureForPayload()
@@ -81,7 +81,7 @@ class WebhookTest extends TestCase
     }
 
     /**
-     * @expectedException \SierraTecnologia\Error\SignatureVerification
+     * @expectedException        \SierraTecnologia\Error\SignatureVerification
      * @expectedExceptionMessage Timestamp outside the tolerance zone
      */
     public function testTimestampOutsideTolerance()

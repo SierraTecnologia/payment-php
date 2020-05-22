@@ -35,7 +35,7 @@ class Card extends \SierraTecnologia\ApiResource
     use \SierraTecnologia\ApiOperations\Update;
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return CardDetails The card details associated with that issuing card.

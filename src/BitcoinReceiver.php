@@ -8,7 +8,7 @@ namespace SierraTecnologia;
  * @package SierraTecnologia
  *
  * @deprecated Bitcoin receivers are deprecated. Please use the sources API instead.
- * @link https://sierratecnologia.com.br/docs/sources/bitcoin
+ * @link       https://sierratecnologia.com.br/docs/sources/bitcoin
  */
 class BitcoinReceiver extends ApiResource
 {

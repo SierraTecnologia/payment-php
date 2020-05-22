@@ -25,9 +25,11 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     {
         static $permanentAttributes = null;
         if ($permanentAttributes === null) {
-            $permanentAttributes = new Util\Set([
+            $permanentAttributes = new Util\Set(
+                [
                 'id',
-            ]);
+                ]
+            );
         }
         return $permanentAttributes;
     }
@@ -92,9 +94,11 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
             //
             // It's possible that not every object has `metadata`, but having this
             // option set when there is no `metadata` field is not harmful.
-            $additiveParams = new Util\Set([
+            $additiveParams = new Util\Set(
+                [
                 'metadata',
-            ]);
+                ]
+            );
         }
         return $additiveParams;
     }
@@ -217,7 +221,7 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     /**
      * This unfortunately needs to be public to be used in Util\Util
      *
-     * @param array $values
+     * @param array                                 $values
      * @param null|string|array|Util\RequestOptions $opts
      *
      * @return static The object constructed from the given values.
@@ -232,9 +236,9 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     /**
      * Refreshes this object using the provided values.
      *
-     * @param array $values
+     * @param array                                 $values
      * @param null|string|array|Util\RequestOptions $opts
-     * @param boolean $partial Defaults to false.
+     * @param boolean                               $partial Defaults to false.
      */
     public function refreshFrom($values, $opts, $partial = false)
     {
@@ -269,9 +273,9 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     /**
      * Mass assigns attributes on the model.
      *
-     * @param array $values
+     * @param array                                 $values
      * @param null|string|array|Util\RequestOptions $opts
-     * @param boolean $dirty Defaults to true.
+     * @param boolean                               $dirty  Defaults to true.
      */
     public function updateAttributes($values, $opts = null, $dirty = true)
     {
@@ -501,7 +505,7 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     /**
      * Sets the last response from the SierraTecnologia API
      *
-     * @param ApiResponse $resp
+     * @param  ApiResponse $resp
      * @return void
      */
     public function setLastResponse($resp)

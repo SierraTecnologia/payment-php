@@ -80,7 +80,7 @@ class ApiRequestorTest extends TestCase
     }
 
     /**
-     * @expectedException \SierraTecnologia\Error\Authentication
+     * @expectedException              \SierraTecnologia\Error\Authentication
      * @expectedExceptionMessageRegExp #No API key provided#
      */
     public function testRaisesAuthenticationErrorWhenNoApiKey()

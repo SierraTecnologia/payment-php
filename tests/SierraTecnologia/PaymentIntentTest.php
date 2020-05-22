@@ -33,11 +33,13 @@ class PaymentIntentTest extends TestCase
             'post',
             '/v1/payment_intents'
         );
-        $resource = PaymentIntent::create([
+        $resource = PaymentIntent::create(
+            [
             "amount" => 100,
             "currency" => "usd",
             'payment_method_types' => ['card'],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\PaymentIntent", $resource);
     }
 

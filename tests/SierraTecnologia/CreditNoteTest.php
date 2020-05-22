@@ -33,11 +33,13 @@ class CreditNoteTest extends TestCase
             'post',
             '/v1/credit_notes'
         );
-        $resource = CreditNote::create([
+        $resource = CreditNote::create(
+            [
             "amount" => 100,
             "invoice" => "in_132",
             "reason" => "duplicate",
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\CreditNote", $resource);
     }
 
@@ -59,9 +61,11 @@ class CreditNoteTest extends TestCase
             'post',
             '/v1/credit_notes/' . self::TEST_RESOURCE_ID
         );
-        $resource = CreditNote::update(self::TEST_RESOURCE_ID, [
+        $resource = CreditNote::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\CreditNote", $resource);
     }
 

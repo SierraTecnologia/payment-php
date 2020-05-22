@@ -33,10 +33,12 @@ class WebhookEndpointTest extends TestCase
             'post',
             '/v1/webhook_endpoints'
         );
-        $resource = WebhookEndpoint::create([
+        $resource = WebhookEndpoint::create(
+            [
             'enabled_events' => ['charge.succeeded'],
             'url' => 'https://sierratecnologia.com.br',
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\WebhookEndpoint", $resource);
     }
 
@@ -58,9 +60,11 @@ class WebhookEndpointTest extends TestCase
             'post',
             '/v1/webhook_endpoints/' . self::TEST_RESOURCE_ID
         );
-        $resource = WebhookEndpoint::update(self::TEST_RESOURCE_ID, [
+        $resource = WebhookEndpoint::update(
+            self::TEST_RESOURCE_ID, [
             'enabled_events' => ['charge.succeeded'],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\WebhookEndpoint", $resource);
     }
 

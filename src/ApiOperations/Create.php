@@ -10,7 +10,7 @@ namespace SierraTecnologia\ApiOperations;
 trait Create
 {
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return static The created resource.

@@ -50,7 +50,7 @@ class SubscriptionScheduleRevision extends ApiResource
     }
 
     /**
-     * @param array|string $_id
+     * @param array|string      $_id
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
@@ -63,7 +63,7 @@ class SubscriptionScheduleRevision extends ApiResource
     }
 
     /**
-     * @param array|string $_id
+     * @param array|string      $_id
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest

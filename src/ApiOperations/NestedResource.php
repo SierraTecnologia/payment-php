@@ -10,9 +10,9 @@ namespace SierraTecnologia\ApiOperations;
 trait NestedResource
 {
     /**
-     * @param string $method
-     * @param string $url
-     * @param array|null $params
+     * @param string            $method
+     * @param string            $url
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \SierraTecnologia\SierraTecnologiaObject
@@ -28,8 +28,8 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
+     * @param string      $id
+     * @param string      $nestedPath
      * @param string|null $nestedId
      *
      * @return string
@@ -44,9 +44,9 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
-     * @param array|null $params
+     * @param string            $id
+     * @param string            $nestedPath
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \SierraTecnologia\SierraTecnologiaObject
@@ -58,10 +58,10 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
-     * @param string|null $nestedId
-     * @param array|null $params
+     * @param string            $id
+     * @param string            $nestedPath
+     * @param string|null       $nestedId
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \SierraTecnologia\SierraTecnologiaObject
@@ -73,10 +73,10 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
-     * @param string|null $nestedId
-     * @param array|null $params
+     * @param string            $id
+     * @param string            $nestedPath
+     * @param string|null       $nestedId
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \SierraTecnologia\SierraTecnologiaObject
@@ -88,10 +88,10 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
-     * @param string|null $nestedId
-     * @param array|null $params
+     * @param string            $id
+     * @param string            $nestedPath
+     * @param string|null       $nestedId
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \SierraTecnologia\SierraTecnologiaObject
@@ -103,9 +103,9 @@ trait NestedResource
     }
 
     /**
-     * @param string $id
-     * @param string $nestedPath
-     * @param array|null $params
+     * @param string            $id
+     * @param string            $nestedPath
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \SierraTecnologia\SierraTecnologiaObject

@@ -79,6 +79,7 @@ class Invoice extends ApiResource
 
     /**
      * Possible string representations of the invoice status.
+     *
      * @link https://sierratecnologia.com.br/docs/api/invoices/object#invoice_object-status
      */
     const STATUS_DRAFT         = 'draft';
@@ -89,6 +90,7 @@ class Invoice extends ApiResource
 
     /**
      * Possible string representations of the billing.
+     *
      * @link https://sierratecnologia.com.br/docs/api/invoices/object#invoice_object-billing
      */
     const BILLING_SEND_INVOICE         = 'send_invoice';
@@ -96,6 +98,7 @@ class Invoice extends ApiResource
 
     /**
      * Possible string representations of the billing reason.
+     *
      * @link https://sierratecnologia.com.br/docs/api/invoices/object#invoice_object-billing_reason
      */
     const BILLING_REASON_SUBSCRIPTION           = 'subscription';
@@ -107,7 +110,7 @@ class Invoice extends ApiResource
     const BILLING_REASON_UPCOMING               = 'upcoming';
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Invoice The finalized invoice.
@@ -121,7 +124,7 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Invoice The uncollectible invoice.
@@ -135,7 +138,7 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Invoice The paid invoice.
@@ -149,7 +152,7 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Invoice The sent invoice.
@@ -163,7 +166,7 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Invoice The upcoming invoice.
@@ -178,7 +181,7 @@ class Invoice extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Invoice The voided invoice.

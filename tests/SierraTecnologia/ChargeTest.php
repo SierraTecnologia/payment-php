@@ -33,11 +33,13 @@ class ChargeTest extends TestCase
             'post',
             '/v1/charges'
         );
-        $resource = Charge::create([
+        $resource = Charge::create(
+            [
             "amount" => 100,
             "currency" => "usd",
             "source" => "tok_123"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Charge", $resource);
     }
 
@@ -59,9 +61,11 @@ class ChargeTest extends TestCase
             'post',
             '/v1/charges/' . self::TEST_RESOURCE_ID
         );
-        $resource = Charge::update(self::TEST_RESOURCE_ID, [
+        $resource = Charge::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Charge", $resource);
     }
 

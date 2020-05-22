@@ -76,9 +76,11 @@ class CardTest extends TestCase
      */
     public function testIsNotDirectlyUpdatable()
     {
-        Card::update(self::TEST_RESOURCE_ID, [
+        Card::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
     }
 
     public function testIsDeletable()

@@ -6,7 +6,8 @@ class OAuthTest extends TestCase
 {
     public function testAuthorizeUrl()
     {
-        $uriStr = OAuth::authorizeUrl([
+        $uriStr = OAuth::authorizeUrl(
+            [
             'scope' => 'read_write',
             'state' => 'csrf_token',
             'sitecpayment_user' => [
@@ -14,7 +15,8 @@ class OAuthTest extends TestCase
                 'url' => 'https://example.com/profile/test',
                 'country' => 'US',
             ],
-        ]);
+            ]
+        );
 
         $uri = parse_url($uriStr);
         parse_str($uri['query'], $params);
@@ -31,7 +33,7 @@ class OAuthTest extends TestCase
     }
 
     /**
-     * @expectedException \SierraTecnologia\Error\Authentication
+     * @expectedException              \SierraTecnologia\Error\Authentication
      * @expectedExceptionMessageRegExp #No client_id provided#
      */
     public function testRaisesAuthenticationErrorWhenNoClientId()
@@ -64,10 +66,12 @@ class OAuthTest extends TestCase
             SierraTecnologia::$connectBase
         );
 
-        $resp = OAuth::token([
+        $resp = OAuth::token(
+            [
             'grant_type' => 'authorization_code',
             'code' => 'this_is_an_authorization_code',
-        ]);
+            ]
+        );
         $this->assertSame('sk_access_token', $resp->access_token);
     }
 
@@ -89,9 +93,11 @@ class OAuthTest extends TestCase
             SierraTecnologia::$connectBase
         );
 
-        $resp = OAuth::deauthorize([
+        $resp = OAuth::deauthorize(
+            [
                 'sitecpayment_user_id' => 'acct_test_deauth',
-        ]);
+            ]
+        );
         $this->assertSame('acct_test_deauth', $resp->sierratecnologia_user_id);
     }
 }

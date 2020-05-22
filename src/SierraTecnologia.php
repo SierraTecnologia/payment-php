@@ -87,7 +87,7 @@ class SierraTecnologia
 
     /**
      * @param Util\LoggerInterface $logger The logger to which the library
-     *   will produce messages.
+     *                                     will produce messages.
      */
     public static function setLogger($logger)
     {
@@ -182,7 +182,7 @@ class SierraTecnologia
 
     /**
      * @param string $accountId The SierraTecnologia account ID to set for connected
-     *   account requests.
+     *                          account requests.
      */
     public static function setAccountId($accountId)
     {
@@ -198,9 +198,9 @@ class SierraTecnologia
     }
 
     /**
-     * @param string $appName The application's name
+     * @param string $appName    The application's name
      * @param string $appVersion The application's version
-     * @param string $appUrl The application's URL
+     * @param string $appUrl     The application's URL
      */
     public static function setAppInfo($appName, $appVersion = null, $appUrl = null, $appPartnerId = null)
     {
@@ -254,9 +254,9 @@ class SierraTecnologia
     /**
      * @param bool $enableTelemetry Enables client telemetry.
      *
-     * Client telemetry enables timing and request metrics to be sent back to SierraTecnologia as an HTTP Header
-     * with the current request. This enables SierraTecnologia to do latency and metrics analysis without adding extra
-     * overhead (such as extra network calls) on the client.
+     *                              Client telemetry enables timing and request metrics to be sent back to SierraTecnologia as an HTTP Header
+     *                              with the current request. This enables SierraTecnologia to do latency and metrics analysis without adding extra
+     *                              overhead (such as extra network calls) on the client.
      */
     public static function setEnableTelemetry($enableTelemetry)
     {

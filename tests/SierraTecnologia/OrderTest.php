@@ -33,9 +33,11 @@ class OrderTest extends TestCase
             'post',
             '/v1/orders'
         );
-        $resource = Order::create([
+        $resource = Order::create(
+            [
             'currency' => 'usd'
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Order", $resource);
     }
 
@@ -57,9 +59,11 @@ class OrderTest extends TestCase
             'post',
             '/v1/orders/' . self::TEST_RESOURCE_ID
         );
-        $resource = Order::update(self::TEST_RESOURCE_ID, [
+        $resource = Order::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Order", $resource);
     }
 

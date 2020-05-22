@@ -55,7 +55,7 @@ class BankAccount extends ApiResource
     }
 
     /**
-     * @param array|string $_id
+     * @param array|string      $_id
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
@@ -69,8 +69,8 @@ class BankAccount extends ApiResource
     }
 
     /**
-     * @param string $_id
-     * @param array|null $_params
+     * @param string            $_id
+     * @param array|null        $_params
      * @param array|string|null $_options
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
@@ -83,8 +83,8 @@ class BankAccount extends ApiResource
         throw new Error\InvalidRequest($msg, null);
     }
 
-   /**
-     * @param array|null $params
+    /**
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return BankAccount The verified bank account.

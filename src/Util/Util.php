@@ -14,7 +14,7 @@ abstract class Util
      * A list is defined as an array for which all the keys are consecutive
      * integers starting at 0. Empty arrays are considered to be lists.
      *
-     * @param array|mixed $array
+     * @param  array|mixed $array
      * @return boolean true if the given object is a list.
      */
     public static function isList($array)
@@ -34,7 +34,7 @@ abstract class Util
     /**
      * Recursively converts the PHP SierraTecnologia object to an array.
      *
-     * @param array $values The PHP SierraTecnologia object to convert.
+     * @param  array $values The PHP SierraTecnologia object to convert.
      * @return array
      */
     public static function convertSierraTecnologiaObjectToArray($values)
@@ -59,8 +59,8 @@ abstract class Util
     /**
      * Converts a response from the SierraTecnologia API to the corresponding PHP object.
      *
-     * @param array $resp The response from the SierraTecnologia API.
-     * @param array $opts
+     * @param  array $resp The response from the SierraTecnologia API.
+     * @param  array $opts
      * @return SierraTecnologiaObject|array
      */
     public static function convertToSierraTecnologiaObject($resp, $opts)
@@ -177,10 +177,12 @@ abstract class Util
             self::$isMbstringAvailable = function_exists('mb_detect_encoding');
 
             if (!self::$isMbstringAvailable) {
-                trigger_error("It looks like the mbstring extension is not enabled. " .
+                trigger_error(
+                    "It looks like the mbstring extension is not enabled. " .
                     "UTF-8 strings will not properly be encoded. Ask your system " .
                     "administrator to enable the mbstring extension, or write to " .
-                    "support@sierratecnologia.com.br if you have any questions.", E_USER_WARNING);
+                    "support@sierratecnologia.com.br if you have any questions.", E_USER_WARNING
+                );
             }
         }
 
@@ -195,8 +197,8 @@ abstract class Util
      * Compares two strings for equality. The time taken is independent of the
      * number of characters that match.
      *
-     * @param string $a one of the strings to compare.
-     * @param string $b the other string to compare.
+     * @param  string $a one of the strings to compare.
+     * @param  string $b the other string to compare.
      * @return bool true if the strings are equal, false otherwise.
      */
     public static function secureCompare($a, $b)
@@ -225,7 +227,7 @@ abstract class Util
      * ApiResource, then it is replaced by the resource's ID.
      * Also clears out null values.
      *
-     * @param mixed $h
+     * @param  mixed $h
      * @return mixed
      */
     public static function objectsToIds($h)
@@ -269,7 +271,7 @@ abstract class Util
     }
 
     /**
-     * @param array $params
+     * @param array       $params
      * @param string|null $parentKey
      *
      * @return array
@@ -294,7 +296,7 @@ abstract class Util
     }
 
     /**
-     * @param array $value
+     * @param array  $value
      * @param string $calculatedKey
      *
      * @return array

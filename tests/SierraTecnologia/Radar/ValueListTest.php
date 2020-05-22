@@ -33,10 +33,12 @@ class ValueListTest extends \SierraTecnologia\TestCase
             'post',
             '/v1/radar/value_lists'
         );
-        $resource = ValueList::create([
+        $resource = ValueList::create(
+            [
             "alias" => "alias",
             "name" => "name",
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Radar\\ValueList", $resource);
     }
 
@@ -58,9 +60,11 @@ class ValueListTest extends \SierraTecnologia\TestCase
             'post',
             '/v1/radar/value_lists/' . self::TEST_RESOURCE_ID
         );
-        $resource = ValueList::update(self::TEST_RESOURCE_ID, [
+        $resource = ValueList::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Radar\\ValueList", $resource);
     }
 

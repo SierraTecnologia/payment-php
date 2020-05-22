@@ -34,7 +34,8 @@ class SubscriptionScheduleTest extends TestCase
             'post',
             '/v1/subscription_schedules'
         );
-        $resource = SubscriptionSchedule::create([
+        $resource = SubscriptionSchedule::create(
+            [
             "phases" => [
                 [
                     "plans" => [
@@ -42,7 +43,8 @@ class SubscriptionScheduleTest extends TestCase
                     ],
                 ],
             ],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\SubscriptionSchedule", $resource);
     }
 
@@ -64,9 +66,11 @@ class SubscriptionScheduleTest extends TestCase
             'post',
             '/v1/subscription_schedules/' . self::TEST_RESOURCE_ID
         );
-        $resource = SubscriptionSchedule::update(self::TEST_RESOURCE_ID, [
+        $resource = SubscriptionSchedule::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\SubscriptionSchedule", $resource);
     }
 

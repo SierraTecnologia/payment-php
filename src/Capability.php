@@ -24,6 +24,7 @@ class Capability extends ApiResource
 
     /**
      * Possible string representations of a capability's status.
+     *
      * @link https://sierratecnologia.com.br/docs/api/capabilities/object#capability_object-status
      */
     const STATUS_ACTIVE      = 'active';
@@ -55,7 +56,7 @@ class Capability extends ApiResource
     }
 
     /**
-     * @param array|string $_id
+     * @param array|string      $_id
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
@@ -68,8 +69,8 @@ class Capability extends ApiResource
     }
 
     /**
-     * @param string $_id
-     * @param array|null $_params
+     * @param string            $_id
+     * @param array|null        $_params
      * @param array|string|null $_options
      *
      * @throws \SierraTecnologia\Error\InvalidRequest

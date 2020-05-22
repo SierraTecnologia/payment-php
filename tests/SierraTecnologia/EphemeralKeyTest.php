@@ -12,9 +12,11 @@ class EphemeralKeyTest extends TestCase
             null,
             ["SierraTecnologia-Version: 2017-05-25"]
         );
-        $resource = EphemeralKey::create([
+        $resource = EphemeralKey::create(
+            [
             "customer" => "cus_123",
-        ], ["sierratecnologia_version" => "2017-05-25"]);
+            ], ["sierratecnologia_version" => "2017-05-25"]
+        );
         $this->assertInstanceOf("SierraTecnologia\\EphemeralKey", $resource);
     }
 
@@ -23,16 +25,20 @@ class EphemeralKeyTest extends TestCase
      */
     public function testIsNotCreatableWithoutAnExplicitApiVersion()
     {
-        $resource = EphemeralKey::create([
+        $resource = EphemeralKey::create(
+            [
             "customer" => "cus_123",
-        ]);
+            ]
+        );
     }
 
     public function testIsDeletable()
     {
-        $key = EphemeralKey::create([
+        $key = EphemeralKey::create(
+            [
             "customer" => "cus_123",
-        ], ["sierratecnologia_version" => "2017-05-25"]);
+            ], ["sierratecnologia_version" => "2017-05-25"]
+        );
         $this->expectsRequest(
             'delete',
             '/v1/ephemeral_keys/' . $key->id

@@ -9,11 +9,13 @@ class CollectionTest extends TestCase
      */
     public function setUpFixture()
     {
-        $this->fixture = Collection::constructFrom([
+        $this->fixture = Collection::constructFrom(
+            [
             'data' => [['id' => 1]],
             'has_more' => true,
             'url' => '/things',
-        ]);
+            ]
+        );
     }
 
     public function testCanList()
@@ -66,9 +68,11 @@ class CollectionTest extends TestCase
             ]
         );
 
-        $this->fixture->create([
+        $this->fixture->create(
+            [
             'foo' => 'bar',
-        ]);
+            ]
+        );
     }
 
     public function testCanIterate()
@@ -157,11 +161,13 @@ class CollectionTest extends TestCase
             ]
         );
 
-        $this->fixture->create([
+        $this->fixture->create(
+            [
             'foo' => 'bar',
-        ], [
+            ], [
             'sitecpayment_account' => 'acct_foo',
             'idempotency_key' => 'qwertyuiop',
-        ]);
+            ]
+        );
     }
 }

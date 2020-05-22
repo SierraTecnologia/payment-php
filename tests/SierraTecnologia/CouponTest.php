@@ -33,12 +33,14 @@ class CouponTest extends TestCase
             'post',
             '/v1/coupons'
         );
-        $resource = Coupon::create([
+        $resource = Coupon::create(
+            [
             "percent_off" => 25,
             "duration" => "repeating",
             "duration_in_months" => 3,
             "id" => self::TEST_RESOURCE_ID,
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Coupon", $resource);
     }
 
@@ -60,9 +62,11 @@ class CouponTest extends TestCase
             'post',
             '/v1/coupons/' . self::TEST_RESOURCE_ID
         );
-        $resource = Coupon::update(self::TEST_RESOURCE_ID, [
+        $resource = Coupon::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Coupon", $resource);
     }
 

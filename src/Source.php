@@ -51,6 +51,7 @@ class Source extends ApiResource
 
     /**
      * Possible string representations of source flows.
+     *
      * @link https://sierratecnologia.com.br/docs/api#source_object-flow
      */
     const FLOW_REDIRECT          = 'redirect';
@@ -60,6 +61,7 @@ class Source extends ApiResource
 
     /**
      * Possible string representations of source statuses.
+     *
      * @link https://sierratecnologia.com.br/docs/api#source_object-status
      */
     const STATUS_CANCELED   = 'canceled';
@@ -70,13 +72,14 @@ class Source extends ApiResource
 
     /**
      * Possible string representations of source usage.
+     *
      * @link https://sierratecnologia.com.br/docs/api#source_object-usage
      */
     const USAGE_REUSABLE   = 'reusable';
     const USAGE_SINGLE_USE = 'single_use';
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Source The detached source.
@@ -110,7 +113,7 @@ class Source extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Source The detached source.
@@ -123,7 +126,7 @@ class Source extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Collection The list of source transactions.
@@ -138,7 +141,7 @@ class Source extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Source The verified source.

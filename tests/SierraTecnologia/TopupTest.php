@@ -33,13 +33,15 @@ class TopupTest extends TestCase
             'post',
             '/v1/topups'
         );
-        $resource = Topup::create([
+        $resource = Topup::create(
+            [
             "amount" => 100,
             "currency" => "usd",
             "source" => "tok_123",
             "description" => "description",
             "statement_descriptor" => "statement descriptor"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Topup", $resource);
     }
 
@@ -61,9 +63,11 @@ class TopupTest extends TestCase
             'post',
             '/v1/topups/' . self::TEST_RESOURCE_ID
         );
-        $resource = Topup::update(self::TEST_RESOURCE_ID, [
+        $resource = Topup::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Topup", $resource);
     }
 

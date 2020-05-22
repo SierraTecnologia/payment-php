@@ -29,17 +29,21 @@ class FileUploadTest extends TestCase
 
     public function testDeserializesFromFile()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'file',
-        ], null);
+            ], null
+        );
         $this->assertInstanceOf("SierraTecnologia\\FileUpload", $obj);
     }
 
     public function testDeserializesFromFileUpload()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'file_upload',
-        ], null);
+            ], null
+        );
         $this->assertInstanceOf("SierraTecnologia\\FileUpload", $obj);
     }
 }

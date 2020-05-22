@@ -36,6 +36,7 @@ class Refund extends ApiResource
 
     /**
      * Possible string representations of the failure reason.
+     *
      * @link https://sierratecnologia.com.br/docs/api/refunds/object#refund_object-failure_reason
      */
     const FAILURE_REASON                     = 'expired_or_canceled_card';
@@ -44,6 +45,7 @@ class Refund extends ApiResource
 
     /**
      * Possible string representations of the refund reason.
+     *
      * @link https://sierratecnologia.com.br/docs/api/refunds/object#refund_object-reason
      */
     const REASON_DUPLICATE             = 'duplicate';
@@ -52,6 +54,7 @@ class Refund extends ApiResource
 
     /**
      * Possible string representations of the refund status.
+     *
      * @link https://sierratecnologia.com.br/docs/api/refunds/object#refund_object-status
      */
     const STATUS_CANCELED  = 'canceled';

@@ -47,9 +47,11 @@ class AuthorizationTest extends \SierraTecnologia\TestCase
             '/v1/issuing/authorizations/' . self::TEST_RESOURCE_ID,
             ["metadata" => ["key" => "value"]]
         );
-        $resource = Authorization::update(self::TEST_RESOURCE_ID, [
+        $resource = Authorization::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Issuing\\Authorization", $resource);
     }
 

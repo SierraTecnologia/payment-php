@@ -40,6 +40,7 @@ class Transfer extends ApiResource
 
     /**
      * Possible string representations of the source type of the transfer.
+     *
      * @link https://sierratecnologia.com.br/docs/api/transfers/object#transfer_object-source_type
      */
     const SOURCE_TYPE_ALIPAY_ACCOUNT = 'alipay_account';
@@ -70,8 +71,8 @@ class Transfer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the transfer on which to create the reversal.
-     * @param array|null $params
+     * @param string|null       $id     The ID of the transfer on which to create the reversal.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return TransferReversal
@@ -82,9 +83,9 @@ class Transfer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the transfer to which the reversal belongs.
-     * @param array|null $reversalId The ID of the reversal to retrieve.
-     * @param array|null $params
+     * @param string|null       $id         The ID of the transfer to which the reversal belongs.
+     * @param array|null        $reversalId The ID of the reversal to retrieve.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return TransferReversal
@@ -95,9 +96,9 @@ class Transfer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the transfer to which the reversal belongs.
-     * @param array|null $reversalId The ID of the reversal to update.
-     * @param array|null $params
+     * @param string|null       $id         The ID of the transfer to which the reversal belongs.
+     * @param array|null        $reversalId The ID of the reversal to update.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return TransferReversal
@@ -108,8 +109,8 @@ class Transfer extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the transfer on which to retrieve the reversals.
-     * @param array|null $params
+     * @param string|null       $id     The ID of the transfer on which to retrieve the reversals.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Collection The list of reversals.

@@ -12,7 +12,8 @@ class SessionTest extends \SierraTecnologia\TestCase
             'post',
             '/v1/checkout/sessions'
         );
-        $resource = Session::create([
+        $resource = Session::create(
+            [
             'cancel_url' => 'https://sierratecnologia.com.br/cancel',
             'client_reference_id' => '1234',
             'line_items' => [
@@ -32,7 +33,8 @@ class SessionTest extends \SierraTecnologia\TestCase
             ],
             'payment_method_types' => ['card'],
             'success_url' => 'https://sierratecnologia.com.br/success'
-        ]);
+            ]
+        );
         $this->assertInstanceOf('SierraTecnologia\\Checkout\\Session', $resource);
     }
 

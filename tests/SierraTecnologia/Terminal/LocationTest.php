@@ -47,9 +47,11 @@ class LocationTest extends \SierraTecnologia\TestCase
             '/v1/terminal/locations/' . self::TEST_RESOURCE_ID,
             ["display_name" => "new-name"]
         );
-        $resource = Location::update(self::TEST_RESOURCE_ID, [
+        $resource = Location::update(
+            self::TEST_RESOURCE_ID, [
             "display_name" => "new-name",
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Terminal\\Location", $resource);
     }
 
@@ -69,7 +71,8 @@ class LocationTest extends \SierraTecnologia\TestCase
                 ]
             ]
         );
-        $resource = Location::create([
+        $resource = Location::create(
+            [
             "display_name" => "name",
             "address" => [
                 "line1" => "line1",
@@ -78,7 +81,8 @@ class LocationTest extends \SierraTecnologia\TestCase
                 "postal_code" => "12345",
                 "city" => "San Francisco"
             ]
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Terminal\\Location", $resource);
     }
 

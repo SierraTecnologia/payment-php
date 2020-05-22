@@ -12,12 +12,12 @@ abstract class Webhook
      * \SierraTecnologia\SignatureVerificationException if the signature verification
      * fails for any reason.
      *
-     * @param string $payload the payload sent by SierraTecnologia.
-     * @param string $sigHeader the contents of the signature header sent by
-     *  SierraTecnologia.
-     * @param string $secret secret used to generate the signature.
-     * @param int $tolerance maximum difference allowed between the header's
-     *  timestamp and the current time
+     * @param  string $payload   the payload sent by SierraTecnologia.
+     * @param  string $sigHeader the contents of the signature header sent by
+     *                           SierraTecnologia.
+     * @param  string $secret    secret used to generate the signature.
+     * @param  int    $tolerance maximum difference allowed between the header's
+     *                           timestamp and the current time
      * @return \SierraTecnologia\Event the Event instance
      * @throws \UnexpectedValueException if the payload is not valid JSON,
      * @throws \SierraTecnologia\Error\SignatureVerification if the verification fails.

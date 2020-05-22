@@ -68,9 +68,11 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . self::TEST_RESOURCE_ID
         );
-        $resource = Account::update(self::TEST_RESOURCE_ID, [
+        $resource = Account::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Account", $resource);
     }
 
@@ -146,9 +148,11 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/capabilities/' . self::TEST_CAPABILITY_ID
         );
-        $resource = Account::updateCapability(self::TEST_RESOURCE_ID, self::TEST_CAPABILITY_ID, [
+        $resource = Account::updateCapability(
+            self::TEST_RESOURCE_ID, self::TEST_CAPABILITY_ID, [
             "requested" => true,
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Capability", $resource);
     }
 
@@ -168,9 +172,11 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts'
         );
-        $resource = Account::createExternalAccount(self::TEST_RESOURCE_ID, [
+        $resource = Account::createExternalAccount(
+            self::TEST_RESOURCE_ID, [
             "external_account" => "btok_123",
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\BankAccount", $resource);
     }
 
@@ -190,9 +196,11 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/external_accounts/' . self::TEST_EXTERNALACCOUNT_ID
         );
-        $resource = Account::updateExternalAccount(self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID, [
+        $resource = Account::updateExternalAccount(
+            self::TEST_RESOURCE_ID, self::TEST_EXTERNALACCOUNT_ID, [
             "name" => "name",
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\BankAccount", $resource);
     }
 
@@ -232,13 +240,15 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons'
         );
-        $resource = Account::createPerson(self::TEST_RESOURCE_ID, [
+        $resource = Account::createPerson(
+            self::TEST_RESOURCE_ID, [
             "dob" => [
                 "day" => 1,
                 "month" => 1,
                 "year" => 1980
             ]
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Person", $resource);
     }
 
@@ -258,9 +268,11 @@ class AccountTest extends TestCase
             'post',
             '/v1/accounts/' . self::TEST_RESOURCE_ID . '/persons/' . self::TEST_PERSON_ID
         );
-        $resource = Account::updatePerson(self::TEST_RESOURCE_ID, self::TEST_PERSON_ID, [
+        $resource = Account::updatePerson(
+            self::TEST_RESOURCE_ID, self::TEST_PERSON_ID, [
             "first_name" => "First name",
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Person", $resource);
     }
 
@@ -286,10 +298,12 @@ class AccountTest extends TestCase
 
     public function testSerializeNewAdditionalOwners()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
             'legal_entity' => SierraTecnologiaObject::constructFrom([]),
-        ], null);
+            ], null
+        );
         $obj->legal_entity->additional_owners = [
             ['first_name' => 'Joe'],
             ['first_name' => 'Jane'],
@@ -308,7 +322,8 @@ class AccountTest extends TestCase
 
     public function testSerializeAddAdditionalOwners()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
             'legal_entity' => [
                 'additional_owners' => [
@@ -316,7 +331,8 @@ class AccountTest extends TestCase
                     SierraTecnologiaObject::constructFrom(['first_name' => 'Jane']),
                 ],
             ],
-        ], null);
+            ], null
+        );
         $obj->legal_entity->additional_owners[2] = ['first_name' => 'Andrew'];
 
         $expected = [
@@ -331,7 +347,8 @@ class AccountTest extends TestCase
 
     public function testSerializePartiallyChangedAdditionalOwners()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
             'legal_entity' => [
                 'additional_owners' => [
@@ -339,7 +356,8 @@ class AccountTest extends TestCase
                     SierraTecnologiaObject::constructFrom(['first_name' => 'Jane']),
                 ],
             ],
-        ], null);
+            ], null
+        );
         $obj->legal_entity->additional_owners[1]->first_name = 'SierraTecnologia';
 
         $expected = [
@@ -354,7 +372,8 @@ class AccountTest extends TestCase
 
     public function testSerializeUnchangedAdditionalOwners()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
             'legal_entity' => [
                 'additional_owners' => [
@@ -362,7 +381,8 @@ class AccountTest extends TestCase
                     SierraTecnologiaObject::constructFrom(['first_name' => 'Jane']),
                 ],
             ],
-        ], null);
+            ], null
+        );
 
         $expected = [
             'legal_entity' => [
@@ -374,7 +394,8 @@ class AccountTest extends TestCase
 
     public function testSerializeUnsetAdditionalOwners()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
             'legal_entity' => [
                 'additional_owners' => [
@@ -382,7 +403,8 @@ class AccountTest extends TestCase
                     SierraTecnologiaObject::constructFrom(['first_name' => 'Jane']),
                 ],
             ],
-        ], null);
+            ], null
+        );
         $obj->legal_entity->additional_owners = null;
 
         // Note that the empty string that we send for this one has a special
@@ -400,7 +422,8 @@ class AccountTest extends TestCase
      */
     public function testSerializeAdditionalOwnersDeletedItem()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
             'legal_entity' => [
                 'additional_owners' => [
@@ -408,7 +431,8 @@ class AccountTest extends TestCase
                     SierraTecnologiaObject::constructFrom(['first_name' => 'Jane']),
                 ],
             ],
-        ], null);
+            ], null
+        );
         unset($obj->legal_entity->additional_owners[0]);
 
         $obj->serializeParameters();
@@ -416,9 +440,11 @@ class AccountTest extends TestCase
 
     public function testSerializeExternalAccountString()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
-        ], null);
+            ], null
+        );
         $obj->external_account = 'btok_123';
 
         $expected = [
@@ -429,9 +455,11 @@ class AccountTest extends TestCase
 
     public function testSerializeExternalAccountHash()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
-        ], null);
+            ], null
+        );
         $obj->external_account = [
             'object' => 'bank_account',
             'routing_number' => '110000000',
@@ -454,9 +482,11 @@ class AccountTest extends TestCase
 
     public function testSerializeBankAccountString()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
-        ], null);
+            ], null
+        );
         $obj->bank_account = 'btok_123';
 
         $expected = [
@@ -467,9 +497,11 @@ class AccountTest extends TestCase
 
     public function testSerializeBankAccountHash()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
-        ], null);
+            ], null
+        );
         $obj->bank_account = [
             'object' => 'bank_account',
             'routing_number' => '110000000',
@@ -492,9 +524,11 @@ class AccountTest extends TestCase
 
     public function testSerializeNewIndividual()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
-        ], null);
+            ], null
+        );
         $obj->individual = ['first_name' => 'Jane'];
 
         $expected = ['individual' => ['first_name' => 'Jane']];
@@ -503,13 +537,17 @@ class AccountTest extends TestCase
 
     public function testSerializePartiallyChangedIndividual()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
-            'individual' => Util\Util::convertToSierraTecnologiaObject([
+            'individual' => Util\Util::convertToSierraTecnologiaObject(
+                [
                 'object' => 'person',
                 'first_name' => 'Jenny',
-            ], null),
-        ], null);
+                ], null
+            ),
+            ], null
+        );
         $obj->individual = ['first_name' => 'Jane'];
 
         $expected = ['individual' => ['first_name' => 'Jane']];
@@ -518,13 +556,17 @@ class AccountTest extends TestCase
 
     public function testSerializeUnchangedIndividual()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
-            'individual' => Util\Util::convertToSierraTecnologiaObject([
+            'individual' => Util\Util::convertToSierraTecnologiaObject(
+                [
                 'object' => 'person',
                 'first_name' => 'Jenny',
-            ], null),
-        ], null);
+                ], null
+            ),
+            ], null
+        );
 
         $expected = ['individual' => []];
         $this->assertSame($expected, $obj->serializeParameters());
@@ -532,13 +574,17 @@ class AccountTest extends TestCase
 
     public function testSerializeUnsetIndividual()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'account',
-            'individual' => Util\Util::convertToSierraTecnologiaObject([
+            'individual' => Util\Util::convertToSierraTecnologiaObject(
+                [
                 'object' => 'person',
                 'first_name' => 'Jenny',
-            ], null),
-        ], null);
+                ], null
+            ),
+            ], null
+        );
         $obj->individual = null;
 
         $expected = ['individual' => ''];

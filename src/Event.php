@@ -25,6 +25,7 @@ class Event extends ApiResource
 
     /**
      * Possible string representations of event types.
+     *
      * @link https://sierratecnologia.com.br/docs/api#event_types
      */
     const ACCOUNT_UPDATED                           = 'account.updated';

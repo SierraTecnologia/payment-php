@@ -40,6 +40,7 @@ class Product extends ApiResource
 
     /**
      * Possible string representations of the type of product.
+     *
      * @link https://sierratecnologia.com.br/docs/api/service_products/object#service_product_object-type
      */
     const TYPE_GOOD    = 'good';

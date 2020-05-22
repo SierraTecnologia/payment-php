@@ -33,7 +33,8 @@ class SKUTest extends TestCase
             'post',
             '/v1/skus'
         );
-        $resource = SKU::create([
+        $resource = SKU::create(
+            [
             'currency'  => 'usd',
             'inventory' => [
                 'type'     => 'finite',
@@ -41,7 +42,8 @@ class SKUTest extends TestCase
             ],
             'price'     => 100,
             'product'   => "prod_123"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\SKU", $resource);
     }
 
@@ -63,9 +65,11 @@ class SKUTest extends TestCase
             'post',
             '/v1/skus/' . self::TEST_RESOURCE_ID
         );
-        $resource = SKU::update(self::TEST_RESOURCE_ID, [
+        $resource = SKU::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\SKU", $resource);
     }
 

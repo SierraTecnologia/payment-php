@@ -33,9 +33,11 @@ class SubscriptionTest extends TestCase
             'post',
             '/v1/subscriptions'
         );
-        $resource = Subscription::create([
+        $resource = Subscription::create(
+            [
             "customer" => "cus_123"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Subscription", $resource);
     }
 
@@ -57,9 +59,11 @@ class SubscriptionTest extends TestCase
             'post',
             '/v1/subscriptions/' . self::TEST_RESOURCE_ID
         );
-        $resource = Subscription::update(self::TEST_RESOURCE_ID, [
+        $resource = Subscription::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Subscription", $resource);
     }
 
@@ -88,13 +92,17 @@ class SubscriptionTest extends TestCase
 
     public function testSerializeParametersItems()
     {
-        $obj = Util\Util::convertToSierraTecnologiaObject([
+        $obj = Util\Util::convertToSierraTecnologiaObject(
+            [
             'object' => 'subscription',
-            'items' => Util\Util::convertToSierraTecnologiaObject([
+            'items' => Util\Util::convertToSierraTecnologiaObject(
+                [
                 'object' => 'list',
                 'data' => [],
-            ], null),
-        ], null);
+                ], null
+            ),
+            ], null
+        );
         $obj->items = [
             ['id' => 'si_foo', 'deleted' => true],
             ['plan' => 'plan_bar'],

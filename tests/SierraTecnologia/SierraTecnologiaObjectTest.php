@@ -193,39 +193,49 @@ EOS;
 
     public function testSerializeParametersOnMoreComplexObject()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
-            'foo' => SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
+            'foo' => SierraTecnologiaObject::constructFrom(
+                [
                 'bar' => null,
                 'baz' => null,
-            ]),
-        ]);
+                ]
+            ),
+            ]
+        );
         $obj->foo->bar = 'newbar';
         $this->assertSame(['foo' => ['bar' => 'newbar']], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnArray()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'foo' => null,
-        ]);
+            ]
+        );
         $obj->foo = ['new-value'];
         $this->assertSame(['foo' => ['new-value']], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnArrayThatShortens()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'foo' => ['0-index', '1-index', '2-index'],
-        ]);
+            ]
+        );
         $obj->foo = ['new-value'];
         $this->assertSame(['foo' => ['new-value']], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnArrayThatLengthens()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'foo' => ['0-index', '1-index', '2-index'],
-        ]);
+            ]
+        );
         $obj->foo = array_fill(0, 4, 'new-value');
         $this->assertSame(['foo' => array_fill(0, 4, 'new-value')], $obj->serializeParameters());
     }
@@ -243,17 +253,21 @@ EOS;
 
     public function testSerializeParametersDoesNotIncludeUnchangedValues()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'foo' => null,
-        ]);
+            ]
+        );
         $this->assertSame([], $obj->serializeParameters());
     }
 
     public function testSerializeParametersOnUnchangedArray()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'foo' => ['0-index', '1-index', '2-index'],
-        ]);
+            ]
+        );
         $obj->foo = ['0-index', '1-index', '2-index'];
         $this->assertSame([], $obj->serializeParameters());
     }
@@ -269,9 +283,11 @@ EOS;
 
     public function testSerializeParametersOnReplacedSierraTecnologiaObject()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'source' => SierraTecnologiaObject::constructFrom(['bar' => 'foo']),
-        ]);
+            ]
+        );
         $obj->source = SierraTecnologiaObject::constructFrom(['baz' => 'foo']);
 
         $serialized = $obj->serializeParameters();
@@ -280,9 +296,11 @@ EOS;
 
     public function testSerializeParametersOnReplacedSierraTecnologiaObjectWhichIsMetadata()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'metadata' => SierraTecnologiaObject::constructFrom(['bar' => 'foo']),
-        ]);
+            ]
+        );
         $obj->metadata = SierraTecnologiaObject::constructFrom(['baz' => 'foo']);
 
         $serialized = $obj->serializeParameters();
@@ -359,12 +377,16 @@ EOS;
 
     public function testSerializeParametersForce()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'id' => 'id',
-            'metadata' => SierraTecnologiaObject::constructFrom([
+            'metadata' => SierraTecnologiaObject::constructFrom(
+                [
                 'bar' => 'foo',
-            ]),
-        ]);
+                ]
+            ),
+            ]
+        );
 
         $serialized = $obj->serializeParameters(true);
         $this->assertSame(['id' => 'id', 'metadata' => ['bar' => 'foo']], $serialized);
@@ -372,12 +394,16 @@ EOS;
 
     public function testDirty()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'id' => 'id',
-            'metadata' => SierraTecnologiaObject::constructFrom([
+            'metadata' => SierraTecnologiaObject::constructFrom(
+                [
                 'bar' => 'foo',
-            ]),
-        ]);
+                ]
+            ),
+            ]
+        );
 
         // note that `$force` and `dirty()` are for different things, but are
         // functionally equivalent
@@ -476,18 +502,22 @@ EOS;
 
     public function testDeserializeEmptyMetadata()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'metadata' => [],
-        ]);
+            ]
+        );
 
         $this->assertInstanceOf("SierraTecnologia\\SierraTecnologiaObject", $obj->metadata);
     }
 
     public function testDeserializeMetadataWithKeyNamedMetadata()
     {
-        $obj = SierraTecnologiaObject::constructFrom([
+        $obj = SierraTecnologiaObject::constructFrom(
+            [
             'metadata' => ['metadata' => 'value'],
-        ]);
+            ]
+        );
 
         $this->assertInstanceOf("SierraTecnologia\\SierraTecnologiaObject", $obj->metadata);
         $this->assertEquals("value", $obj->metadata->metadata);

@@ -60,6 +60,7 @@ class Charge extends ApiResource
     /**
      * Possible string representations of decline codes.
      * These strings are applicable to the decline_code property of the \SierraTecnologia\Error\Card exception.
+     *
      * @link https://sierratecnologia.com.br/docs/declines/codes
      */
     const DECLINED_APPROVE_WITH_ID                   = 'approve_with_id';
@@ -107,6 +108,7 @@ class Charge extends ApiResource
 
     /**
      * Possible string representations of the status of the charge.
+     *
      * @link https://sierratecnologia.com.br/docs/api/charges/object#charge_object-status
      */
     const STATUS_FAILED    = 'failed';
@@ -114,7 +116,7 @@ class Charge extends ApiResource
     const STATUS_SUCCEEDED = 'succeeded';
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Charge The refunded charge.
@@ -128,7 +130,7 @@ class Charge extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Charge The captured charge.
@@ -142,7 +144,7 @@ class Charge extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @deprecated Use the `save` method on the Dispute object

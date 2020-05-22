@@ -22,11 +22,13 @@ class ThreeDSecureTest extends TestCase
             'post',
             '/v1/3d_secure'
         );
-        $resource = ThreeDSecure::create([
+        $resource = ThreeDSecure::create(
+            [
             "amount" => 100,
             "currency" => "usd",
             "return_url" => "url"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\ThreeDSecure", $resource);
     }
 }

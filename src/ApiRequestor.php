@@ -46,9 +46,10 @@ class ApiRequestor
 
     /**
      * Creates a telemetry json blob for use in 'X-SierraTecnologia-Client-Telemetry' headers
+     *
      * @static
      *
-     * @param RequestTelemetry $requestTelemetry
+     * @param  RequestTelemetry $requestTelemetry
      * @return string
      */
     private static function _telemetryJson($requestTelemetry)
@@ -129,10 +130,10 @@ class ApiRequestor
     }
 
     /**
-     * @param string $rbody A JSON string.
-     * @param int $rcode
-     * @param array $rheaders
-     * @param array $resp
+     * @param string $rbody    A JSON string.
+     * @param int    $rcode
+     * @param array  $rheaders
+     * @param array  $resp
      *
      * @throws Error\InvalidRequest if the error is caused by the user.
      * @throws Error\Authentication if the error is caused by a lack of
@@ -195,29 +196,29 @@ class ApiRequestor
         $type = isset($errorData['type']) ? $errorData['type'] : null;
 
         switch ($rcode) {
-            case 400:
-                // 'rate_limit' code is deprecated, but left here for backwards compatibility
-                // for API versions earlier than 2015-09-08
-                if ($code == 'rate_limit') {
-                    return new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
-                }
-                if ($type == 'idempotency_error') {
-                    return new Error\Idempotency($msg, $rcode, $rbody, $resp, $rheaders);
-                }
-
-                // intentional fall-through
-            case 404:
-                return new Error\InvalidRequest($msg, $param, $rcode, $rbody, $resp, $rheaders);
-            case 401:
-                return new Error\Authentication($msg, $rcode, $rbody, $resp, $rheaders);
-            case 402:
-                return new Error\Card($msg, $param, $code, $rcode, $rbody, $resp, $rheaders);
-            case 403:
-                return new Error\Permission($msg, $rcode, $rbody, $resp, $rheaders);
-            case 429:
+        case 400:
+            // 'rate_limit' code is deprecated, but left here for backwards compatibility
+            // for API versions earlier than 2015-09-08
+            if ($code == 'rate_limit') {
                 return new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
-            default:
-                return new Error\Api($msg, $rcode, $rbody, $resp, $rheaders);
+            }
+            if ($type == 'idempotency_error') {
+                return new Error\Idempotency($msg, $rcode, $rbody, $resp, $rheaders);
+            }
+
+            // intentional fall-through
+        case 404:
+            return new Error\InvalidRequest($msg, $param, $rcode, $rbody, $resp, $rheaders);
+        case 401:
+            return new Error\Authentication($msg, $rcode, $rbody, $resp, $rheaders);
+        case 402:
+            return new Error\Card($msg, $param, $code, $rcode, $rbody, $resp, $rheaders);
+        case 403:
+            return new Error\Permission($msg, $rcode, $rbody, $resp, $rheaders);
+        case 429:
+            return new Error\RateLimit($msg, $param, $rcode, $rbody, $resp, $rheaders);
+        default:
+            return new Error\Api($msg, $rcode, $rbody, $resp, $rheaders);
         }
     }
 
@@ -237,18 +238,18 @@ class ApiRequestor
         $description = isset($resp['error_description']) ? $resp['error_description'] : $errorCode;
 
         switch ($errorCode) {
-            case 'invalid_client':
-                return new Error\OAuth\InvalidClient($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
-            case 'invalid_grant':
-                return new Error\OAuth\InvalidGrant($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
-            case 'invalid_request':
-                return new Error\OAuth\InvalidRequest($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
-            case 'invalid_scope':
-                return new Error\OAuth\InvalidScope($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
-            case 'unsupported_grant_type':
-                return new Error\OAuth\UnsupportedGrantType($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
-            case 'unsupported_response_type':
-                return new Error\OAuth\UnsupportedResponseType($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
+        case 'invalid_client':
+            return new Error\OAuth\InvalidClient($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
+        case 'invalid_grant':
+            return new Error\OAuth\InvalidGrant($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
+        case 'invalid_request':
+            return new Error\OAuth\InvalidRequest($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
+        case 'invalid_scope':
+            return new Error\OAuth\InvalidScope($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
+        case 'unsupported_grant_type':
+            return new Error\OAuth\UnsupportedGrantType($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
+        case 'unsupported_response_type':
+            return new Error\OAuth\UnsupportedResponseType($errorCode, $description, $rcode, $rbody, $resp, $rheaders);
         }
 
         return null;

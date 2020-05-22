@@ -45,9 +45,11 @@ class DisputeTest extends TestCase
             'post',
             '/v1/disputes/' . self::TEST_RESOURCE_ID
         );
-        $resource = Dispute::update(self::TEST_RESOURCE_ID, [
+        $resource = Dispute::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Dispute", $resource);
     }
 

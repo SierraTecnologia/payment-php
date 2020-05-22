@@ -1,6 +1,6 @@
 <?php
 
-require('../init.php');
+require '../init.php';
 
 \SierraTecnologia\SierraTecnologia::setApiKey(getenv('SITEC_SECRET_KEY'));
 \SierraTecnologia\SierraTecnologia::setClientId(getenv('SITEC_CLIENT_ID'));
@@ -11,10 +11,12 @@ if (isset($_GET['code'])) {
     $code = $_GET['code'];
 
     try {
-        $resp = \SierraTecnologia\OAuth::token([
+        $resp = \SierraTecnologia\OAuth::token(
+            [
             'grant_type' => 'authorization_code',
             'code' => $code,
-        ]);
+            ]
+        );
     } catch (\SierraTecnologia\Error\OAuth\OAuthBase $e) {
         exit("Error: " . $e->getMessage());
     }
@@ -37,9 +39,11 @@ if (isset($_GET['code'])) {
     $accountId = $_GET['deauth'];
 
     try {
-        \SierraTecnologia\OAuth::deauthorize([
+        \SierraTecnologia\OAuth::deauthorize(
+            [
             'sitecpayment_user_id' => $accountId,
-        ]);
+            ]
+        );
     } catch (\SierraTecnologia\Error\OAuth\OAuthBase $e) {
         exit("Error: " . $e->getMessage());
     }
@@ -48,8 +52,10 @@ if (isset($_GET['code'])) {
     echo "<p>Click <a href=\"?\">here</a> to restart the OAuth flow.</p>\n";
 
 } else {
-    $url = \SierraTecnologia\OAuth::authorizeUrl([
+    $url = \SierraTecnologia\OAuth::authorizeUrl(
+        [
         'scope' => 'read_only',
-    ]);
+        ]
+    );
     echo "<a href=\"$url\">Connect with SierraTecnologia</a>\n";
 }

@@ -33,6 +33,7 @@ class Review extends ApiResource
      * Possible string representations of the current, the opening or the closure reason of the review.
      * Not all of these enumeration apply to all of the ´reason´ fields. Please consult the Review object to
      * determine where these are apply.
+     *
      * @link https://sierratecnologia.com.br/docs/api/radar/reviews/object
      */
     const REASON_APPROVED          = 'approved';

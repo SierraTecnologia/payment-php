@@ -43,6 +43,7 @@ class Person extends ApiResource
 
     /**
      * Possible string representations of a person's gender.
+     *
      * @link https://sierratecnologia.com.br/docs/api/persons/object#person_object-gender
      */
     const GENDER_MALE = 'male';
@@ -50,6 +51,7 @@ class Person extends ApiResource
 
     /**
      * Possible string representations of a person's verification status.
+     *
      * @link https://sierratecnologia.com.br/docs/api/persons/object#person_object-verification-status
      */
     const VERIFICATION_STATUS_PENDING    = 'pending';
@@ -80,7 +82,7 @@ class Person extends ApiResource
     }
 
     /**
-     * @param array|string $_id
+     * @param array|string      $_id
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
@@ -93,8 +95,8 @@ class Person extends ApiResource
     }
 
     /**
-     * @param string $_id
-     * @param array|null $_params
+     * @param string            $_id
+     * @param array|null        $_params
      * @param array|string|null $_options
      *
      * @throws \SierraTecnologia\Error\InvalidRequest

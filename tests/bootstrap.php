@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__ . '/SierraTecnologiaMock.php');
+require_once __DIR__ . '/SierraTecnologiaMock.php';
 
 define("MOCK_MINIMUM_VERSION", "0.56.0");
 

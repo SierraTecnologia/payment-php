@@ -12,9 +12,11 @@ class ValueListItemTest extends \SierraTecnologia\TestCase
             'get',
             '/v1/radar/value_list_items'
         );
-        $resources = ValueListItem::all([
+        $resources = ValueListItem::all(
+            [
             "value_list" => "rsl_123",
-        ]);
+            ]
+        );
         $this->assertTrue(is_array($resources->data));
         $this->assertInstanceOf("SierraTecnologia\\Radar\\ValueListItem", $resources->data[0]);
     }
@@ -35,10 +37,12 @@ class ValueListItemTest extends \SierraTecnologia\TestCase
             'post',
             '/v1/radar/value_list_items'
         );
-        $resource = ValueListItem::create([
+        $resource = ValueListItem::create(
+            [
             "value_list" => "rsl_123",
             "value" => "value",
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Radar\\ValueListItem", $resource);
     }
 

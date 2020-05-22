@@ -12,10 +12,12 @@ class PaymentMethodTest extends TestCase
             'get',
             '/v1/payment_methods'
         );
-        $resources = PaymentMethod::all([
+        $resources = PaymentMethod::all(
+            [
             'customer' => 'cus_123',
             'type' => 'card',
-        ]);
+            ]
+        );
         $this->assertTrue(is_array($resources->data));
         $this->assertInstanceOf("SierraTecnologia\\PaymentMethod", $resources->data[0]);
     }
@@ -36,9 +38,11 @@ class PaymentMethodTest extends TestCase
             'post',
             '/v1/payment_methods'
         );
-        $resource = PaymentMethod::create([
+        $resource = PaymentMethod::create(
+            [
             'type' => 'card',
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\PaymentMethod", $resource);
     }
 
@@ -60,9 +64,11 @@ class PaymentMethodTest extends TestCase
             'post',
             '/v1/payment_methods/' . self::TEST_RESOURCE_ID
         );
-        $resource = PaymentMethod::update(self::TEST_RESOURCE_ID, [
+        $resource = PaymentMethod::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\PaymentMethod", $resource);
     }
 
@@ -73,9 +79,11 @@ class PaymentMethodTest extends TestCase
             'post',
             '/v1/payment_methods/' . $resource->id . '/attach'
         );
-        $resource = $resource->attach([
+        $resource = $resource->attach(
+            [
             'customer' => 'cus_123',
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\PaymentMethod", $resource);
         $this->assertSame($resource, $resource);
     }

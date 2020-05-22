@@ -33,9 +33,11 @@ class FileLinkTest extends TestCase
             'post',
             '/v1/file_links'
         );
-        $resource = FileLink::create([
+        $resource = FileLink::create(
+            [
             "file" => "file_123"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\FileLink", $resource);
     }
 
@@ -57,9 +59,11 @@ class FileLinkTest extends TestCase
             'post',
             '/v1/file_links/' . self::TEST_RESOURCE_ID
         );
-        $resource = FileLink::update(self::TEST_RESOURCE_ID, [
+        $resource = FileLink::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\FileLink", $resource);
     }
 }

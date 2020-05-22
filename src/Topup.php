@@ -36,6 +36,7 @@ class Topup extends ApiResource
 
     /**
      * Possible string representations of the status of the top-up.
+     *
      * @link https://sierratecnologia.com.br/docs/api/topups/object#topup_object-status
      */
     const STATUS_CANCELED  = 'canceled';
@@ -45,7 +46,7 @@ class Topup extends ApiResource
     const STATUS_SUCCEEDED = 'succeeded';
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Topup The canceled topup.

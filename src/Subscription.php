@@ -68,9 +68,11 @@ class Subscription extends ApiResource
     {
         static $savedNestedResources = null;
         if ($savedNestedResources === null) {
-            $savedNestedResources = new Util\Set([
+            $savedNestedResources = new Util\Set(
+                [
                 'source',
-            ]);
+                ]
+            );
         }
         return $savedNestedResources;
     }

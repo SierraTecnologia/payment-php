@@ -26,9 +26,9 @@ trait Request
     }
 
     /**
-     * @param string $method HTTP method ('get', 'post', etc.)
-     * @param string $url URL for the request
-     * @param array $params list of parameters for the request
+     * @param string            $method  HTTP method ('get', 'post', etc.)
+     * @param string            $url     URL for the request
+     * @param array             $params  list of parameters for the request
      * @param array|string|null $options
      *
      * @return array tuple containing (the JSON response, $options)
@@ -42,9 +42,9 @@ trait Request
     }
 
     /**
-     * @param string $method HTTP method ('get', 'post', etc.)
-     * @param string $url URL for the request
-     * @param array $params list of parameters for the request
+     * @param string            $method  HTTP method ('get', 'post', etc.)
+     * @param string            $url     URL for the request
+     * @param array             $params  list of parameters for the request
      * @param array|string|null $options
      *
      * @return array tuple containing (the JSON response, $options)

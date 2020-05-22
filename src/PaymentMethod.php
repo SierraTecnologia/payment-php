@@ -31,7 +31,7 @@ class PaymentMethod extends ApiResource
     use ApiOperations\Update;
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return PaymentMethod The attached payment method.
@@ -45,7 +45,7 @@ class PaymentMethod extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return PaymentMethod The detached payment method.

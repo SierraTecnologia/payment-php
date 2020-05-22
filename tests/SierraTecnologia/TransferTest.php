@@ -34,11 +34,13 @@ class TransferTest extends TestCase
             'post',
             '/v1/transfers'
         );
-        $resource = Transfer::create([
+        $resource = Transfer::create(
+            [
             "amount" => 100,
             "currency" => "usd",
             "destination" => "acct_123"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Transfer", $resource);
     }
 
@@ -60,9 +62,11 @@ class TransferTest extends TestCase
             'post',
             '/v1/transfers/' . self::TEST_RESOURCE_ID
         );
-        $resource = Transfer::update(self::TEST_RESOURCE_ID, [
+        $resource = Transfer::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Transfer", $resource);
     }
 

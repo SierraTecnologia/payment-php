@@ -300,33 +300,33 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @param string $url
-     * @param int $errno
-     * @param string $message
-     * @param int $numRetries
+     * @param  string $url
+     * @param  int    $errno
+     * @param  string $message
+     * @param  int    $numRetries
      * @throws Error\ApiConnection
      */
     private function handleCurlError($url, $errno, $message, $numRetries)
     {
         switch ($errno) {
-            case CURLE_COULDNT_CONNECT:
-            case CURLE_COULDNT_RESOLVE_HOST:
-            case CURLE_OPERATION_TIMEOUTED:
-                $msg = "Could not connect to SierraTecnologia ($url).  Please check your "
-                 . "internet connection and try again.  If this problem persists, "
-                 . "you should check SierraTecnologia's service status at "
-                 . "https://twitter.com/sierratecnologiastatus, or";
-                break;
-            case CURLE_SSL_CACERT:
-            case CURLE_SSL_PEER_CERTIFICATE:
-                $msg = "Could not verify SierraTecnologia's SSL certificate.  Please make sure "
-                 . "that your network is not intercepting certificates.  "
-                 . "(Try going to $url in your browser.)  "
-                 . "If this problem persists,";
-                break;
-            default:
-                $msg = "Unexpected error communicating with SierraTecnologia.  "
-                 . "If this problem persists,";
+        case CURLE_COULDNT_CONNECT:
+        case CURLE_COULDNT_RESOLVE_HOST:
+        case CURLE_OPERATION_TIMEOUTED:
+            $msg = "Could not connect to SierraTecnologia ($url).  Please check your "
+             . "internet connection and try again.  If this problem persists, "
+             . "you should check SierraTecnologia's service status at "
+             . "https://twitter.com/sierratecnologiastatus, or";
+            break;
+        case CURLE_SSL_CACERT:
+        case CURLE_SSL_PEER_CERTIFICATE:
+            $msg = "Could not verify SierraTecnologia's SSL certificate.  Please make sure "
+             . "that your network is not intercepting certificates.  "
+             . "(Try going to $url in your browser.)  "
+             . "If this problem persists,";
+            break;
+        default:
+            $msg = "Unexpected error communicating with SierraTecnologia.  "
+             . "If this problem persists,";
         }
         $msg .= " let us know at support@sierratecnologia.com.br.";
 
@@ -343,9 +343,10 @@ class CurlClient implements ClientInterface
      * Checks if an error is a problem that we should retry on. This includes both
      * socket errors that may represent an intermittent problem and some special
      * HTTP statuses.
-     * @param int $errno
-     * @param int $rcode
-     * @param int $numRetries
+     *
+     * @param  int $errno
+     * @param  int $rcode
+     * @param  int $numRetries
      * @return bool
      */
     private function shouldRetry($errno, $rcode, $numRetries)
@@ -443,8 +444,8 @@ class CurlClient implements ClientInterface
     /**
      * Checks if a list of headers contains a specific header name.
      *
-     * @param string[] $headers
-     * @param string $name
+     * @param  string[] $headers
+     * @param  string   $name
      * @return boolean
      */
     private function hasHeader($headers, $name)

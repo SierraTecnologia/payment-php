@@ -33,9 +33,11 @@ class RefundTest extends TestCase
             'post',
             '/v1/refunds'
         );
-        $resource = Refund::create([
+        $resource = Refund::create(
+            [
             "charge" => "ch_123"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Refund", $resource);
     }
 
@@ -57,9 +59,11 @@ class RefundTest extends TestCase
             'post',
             '/v1/refunds/' . self::TEST_RESOURCE_ID
         );
-        $resource = Refund::update(self::TEST_RESOURCE_ID, [
+        $resource = Refund::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Refund", $resource);
     }
 }

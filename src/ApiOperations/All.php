@@ -10,7 +10,7 @@ namespace SierraTecnologia\ApiOperations;
 trait All
 {
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return \SierraTecnologia\Collection of ApiResources

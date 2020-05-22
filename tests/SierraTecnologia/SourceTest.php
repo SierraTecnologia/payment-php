@@ -22,9 +22,11 @@ class SourceTest extends TestCase
             'post',
             '/v1/sources'
         );
-        $resource = Source::create([
+        $resource = Source::create(
+            [
             "type" => "card"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Source", $resource);
     }
 
@@ -46,9 +48,11 @@ class SourceTest extends TestCase
             'post',
             '/v1/sources/' . self::TEST_RESOURCE_ID
         );
-        $resource = Source::update(self::TEST_RESOURCE_ID, [
+        $resource = Source::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Source", $resource);
     }
 

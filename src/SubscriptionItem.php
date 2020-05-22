@@ -29,7 +29,7 @@ class SubscriptionItem extends ApiResource
     use ApiOperations\Update;
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Collection The list of source transactions.

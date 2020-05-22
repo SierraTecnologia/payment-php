@@ -33,10 +33,12 @@ class PayoutTest extends TestCase
             'post',
             '/v1/payouts'
         );
-        $resource = Payout::create([
+        $resource = Payout::create(
+            [
             "amount" => 100,
             "currency" => "usd"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Payout", $resource);
     }
 
@@ -58,9 +60,11 @@ class PayoutTest extends TestCase
             'post',
             '/v1/payouts/' . self::TEST_RESOURCE_ID
         );
-        $resource = Payout::update(self::TEST_RESOURCE_ID, [
+        $resource = Payout::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Payout", $resource);
     }
 

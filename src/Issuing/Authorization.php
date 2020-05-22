@@ -39,7 +39,7 @@ class Authorization extends \SierraTecnologia\ApiResource
     use \SierraTecnologia\ApiOperations\Update;
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Authorization The approved authorization.
@@ -53,7 +53,7 @@ class Authorization extends \SierraTecnologia\ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Authorization The declined authorization.

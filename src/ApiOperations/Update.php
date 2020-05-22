@@ -11,8 +11,8 @@ namespace SierraTecnologia\ApiOperations;
 trait Update
 {
     /**
-     * @param string $id The ID of the resource to update.
-     * @param array|null $params
+     * @param string            $id     The ID of the resource to update.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return static The updated resource.

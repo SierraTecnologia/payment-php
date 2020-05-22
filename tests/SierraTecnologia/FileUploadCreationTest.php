@@ -37,11 +37,13 @@ class FileUploadCreationTest extends TestCase
             SierraTecnologia::$apiUploadBase
         );
         $fp = fopen(dirname(__FILE__) . '/../data/test.png', 'r');
-        $resource = FileUpload::create([
+        $resource = FileUpload::create(
+            [
             "purpose" => "dispute_evidence",
             "file" => $fp,
             "file_link_data" => ["create" => true]
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\FileUpload", $resource);
     }
 
@@ -61,11 +63,13 @@ class FileUploadCreationTest extends TestCase
             SierraTecnologia::$apiUploadBase
         );
         $curlFile = new \CurlFile(dirname(__FILE__) . '/../data/test.png');
-        $resource = FileUpload::create([
+        $resource = FileUpload::create(
+            [
             "purpose" => "dispute_evidence",
             "file" => $curlFile,
             "file_link_data" => ["create" => true]
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\FileUpload", $resource);
     }
 }

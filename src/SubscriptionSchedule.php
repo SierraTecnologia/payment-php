@@ -42,7 +42,7 @@ class SubscriptionSchedule extends ApiResource
     const PATH_REVISIONS = '/revisions';
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return SubscriptionSchedule The canceled subscription schedule.
@@ -56,7 +56,7 @@ class SubscriptionSchedule extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return SubscriptionSchedule The released subscription schedule.
@@ -70,7 +70,7 @@ class SubscriptionSchedule extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Collection The list of subscription schedule revisions.
@@ -85,9 +85,9 @@ class SubscriptionSchedule extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the subscription schedule to which the person belongs.
-     * @param array|null $personId The ID of the person to retrieve.
-     * @param array|null $params
+     * @param array|null        $id       The ID of the subscription schedule to which the person belongs.
+     * @param array|null        $personId The ID of the person to retrieve.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Revision
@@ -98,8 +98,8 @@ class SubscriptionSchedule extends ApiResource
     }
 
     /**
-     * @param array|null $id The ID of the subscription schedule on which to retrieve the persons.
-     * @param array|null $params
+     * @param array|null        $id     The ID of the subscription schedule on which to retrieve the persons.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Collection The list of revisions.

@@ -40,6 +40,7 @@ class Payout extends ApiResource
 
     /**
      * Types of payout failure codes.
+     *
      * @link https://sierratecnologia.com.br/docs/api#payout_failures
      */
     const FAILURE_ACCOUNT_CLOSED                = 'account_closed';
@@ -58,6 +59,7 @@ class Payout extends ApiResource
 
     /**
      * Possible string representations of the payout methods.
+     *
      * @link https://sierratecnologia.com.br/docs/api/payouts/object#payout_object-method
      */
     const METHOD_STANDARD = 'standard';
@@ -65,6 +67,7 @@ class Payout extends ApiResource
 
     /**
      * Possible string representations of the status of the payout.
+     *
      * @link https://sierratecnologia.com.br/docs/api/payouts/object#payout_object-status
      */
     const STATUS_CANCELED   = 'canceled';
@@ -75,6 +78,7 @@ class Payout extends ApiResource
 
     /**
      * Possible string representations of the type of payout.
+     *
      * @link https://sierratecnologia.com.br/docs/api/payouts/object#payout_object-type
      */
     const TYPE_BANK_ACCOUNT = 'bank_account';

@@ -33,11 +33,13 @@ class TaxRateTest extends TestCase
             'post',
             '/v1/tax_rates'
         );
-        $resource = TaxRate::create([
+        $resource = TaxRate::create(
+            [
             "display_name" => "name",
             "inclusive" => false,
             "percentage" => 10.15,
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\TaxRate", $resource);
     }
 
@@ -59,9 +61,11 @@ class TaxRateTest extends TestCase
             'post',
             '/v1/tax_rates/' . self::TEST_RESOURCE_ID
         );
-        $resource = TaxRate::update(self::TEST_RESOURCE_ID, [
+        $resource = TaxRate::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\TaxRate", $resource);
     }
 }

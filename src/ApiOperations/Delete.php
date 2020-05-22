@@ -10,7 +10,7 @@ namespace SierraTecnologia\ApiOperations;
 trait Delete
 {
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return static The deleted resource.

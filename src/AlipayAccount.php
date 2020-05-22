@@ -8,7 +8,7 @@ namespace SierraTecnologia;
  * @package SierraTecnologia
  *
  * @deprecated Alipay accounts are deprecated. Please use the sources API instead.
- * @link https://sierratecnologia.com.br/docs/sources/alipay
+ * @link       https://sierratecnologia.com.br/docs/sources/alipay
  */
 class AlipayAccount extends ApiResource
 {
@@ -38,13 +38,13 @@ class AlipayAccount extends ApiResource
     }
 
     /**
-     * @param array|string $_id
+     * @param array|string      $_id
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
      *
      * @deprecated Alipay accounts are deprecated. Please use the sources API instead.
-     * @link https://sierratecnologia.com.br/docs/sources/alipay
+     * @link       https://sierratecnologia.com.br/docs/sources/alipay
      */
     public static function retrieve($_id, $_opts = null)
     {
@@ -54,14 +54,14 @@ class AlipayAccount extends ApiResource
     }
 
     /**
-     * @param string $_id
-     * @param array|null $_params
+     * @param string            $_id
+     * @param array|null        $_params
      * @param array|string|null $_options
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
      *
      * @deprecated Alipay accounts are deprecated. Please use the sources API instead.
-     * @link https://sierratecnologia.com.br/docs/sources/alipay
+     * @link       https://sierratecnologia.com.br/docs/sources/alipay
      */
     public static function update($_id, $_params = null, $_options = null)
     {

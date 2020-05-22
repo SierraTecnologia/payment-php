@@ -15,9 +15,11 @@ class SubscriptionItemTest extends TestCase
                 "subscription" => "sub_123"
             ]
         );
-        $resources = SubscriptionItem::all([
+        $resources = SubscriptionItem::all(
+            [
             "subscription" => "sub_123"
-        ]);
+            ]
+        );
         $this->assertTrue(is_array($resources->data));
         $this->assertInstanceOf("SierraTecnologia\\SubscriptionItem", $resources->data[0]);
     }
@@ -38,10 +40,12 @@ class SubscriptionItemTest extends TestCase
             'post',
             '/v1/subscription_items'
         );
-        $resource = SubscriptionItem::create([
+        $resource = SubscriptionItem::create(
+            [
             "plan" => "plan",
             "subscription" => "sub_123"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\SubscriptionItem", $resource);
     }
 
@@ -63,9 +67,11 @@ class SubscriptionItemTest extends TestCase
             'post',
             '/v1/subscription_items/' . self::TEST_RESOURCE_ID
         );
-        $resource = SubscriptionItem::update(self::TEST_RESOURCE_ID, [
+        $resource = SubscriptionItem::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\SubscriptionItem", $resource);
     }
 

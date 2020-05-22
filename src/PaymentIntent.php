@@ -51,7 +51,7 @@ class PaymentIntent extends ApiResource
     use ApiOperations\Update;
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return PaymentIntent The canceled payment intent.
@@ -65,7 +65,7 @@ class PaymentIntent extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return PaymentIntent The captured payment intent.
@@ -79,7 +79,7 @@ class PaymentIntent extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return PaymentIntent The confirmed payment intent.

@@ -46,6 +46,7 @@ class Card extends ApiResource
 
     /**
      * Possible string representations of the CVC check status.
+     *
      * @link https://sierratecnologia.com.br/docs/api/cards/object#card_object-cvc_check
      */
     const CVC_CHECK_FAIL        = 'fail';
@@ -55,6 +56,7 @@ class Card extends ApiResource
 
     /**
      * Possible string representations of the funding of the card.
+     *
      * @link https://sierratecnologia.com.br/docs/api/cards/object#card_object-funding
      */
     const FUNDING_CREDIT  = 'credit';
@@ -64,6 +66,7 @@ class Card extends ApiResource
 
     /**
      * Possible string representations of the tokenization method when using Apple Pay or Google Pay.
+     *
      * @link https://sierratecnologia.com.br/docs/api/cards/object#card_object-tokenization_method
      */
     const TOKENIZATION_METHOD_APPLE_PAY  = 'apple_pay';
@@ -98,7 +101,7 @@ class Card extends ApiResource
     }
 
     /**
-     * @param array|string $_id
+     * @param array|string      $_id
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
@@ -113,8 +116,8 @@ class Card extends ApiResource
     }
 
     /**
-     * @param string $_id
-     * @param array|null $_params
+     * @param string            $_id
+     * @param array|null        $_params
      * @param array|string|null $_options
      *
      * @throws \SierraTecnologia\Error\InvalidRequest

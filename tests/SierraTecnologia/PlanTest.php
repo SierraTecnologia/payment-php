@@ -33,13 +33,15 @@ class PlanTest extends TestCase
             'post',
             '/v1/plans'
         );
-        $resource = Plan::create([
+        $resource = Plan::create(
+            [
             'amount' => 100,
             'interval' => 'month',
             'currency' => 'usd',
             'nickname' => self::TEST_RESOURCE_ID,
             'id' => self::TEST_RESOURCE_ID
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Plan", $resource);
     }
 
@@ -61,9 +63,11 @@ class PlanTest extends TestCase
             'post',
             '/v1/plans/' . self::TEST_RESOURCE_ID
         );
-        $resource = Plan::update(self::TEST_RESOURCE_ID, [
+        $resource = Plan::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Plan", $resource);
     }
 

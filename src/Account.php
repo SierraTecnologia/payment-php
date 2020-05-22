@@ -44,6 +44,7 @@ class Account extends ApiResource
 
     /**
      * Possible string representations of an account's business type.
+     *
      * @link https://sierratecnologia.com.br/docs/api/accounts/object#account_object-business_type
      */
     const BUSINESS_TYPE_COMPANY    = 'company';
@@ -51,6 +52,7 @@ class Account extends ApiResource
 
     /**
      * Possible string representations of an account's capabilities.
+     *
      * @link https://sierratecnologia.com.br/docs/api/accounts/object#account_object-capabilities
      */
     const CAPABILITY_CARD_PAYMENTS     = 'card_payments';
@@ -59,6 +61,7 @@ class Account extends ApiResource
 
     /**
      * Possible string representations of an account's capability status.
+     *
      * @link https://sierratecnologia.com.br/docs/api/accounts/object#account_object-capabilities
      */
     const CAPABILITY_STATUS_ACTIVE   = 'active';
@@ -67,6 +70,7 @@ class Account extends ApiResource
 
     /**
      * Possible string representations of an account's type.
+     *
      * @link https://sierratecnologia.com.br/docs/api/accounts/object#account_object-type
      */
     const TYPE_CUSTOM   = 'custom';
@@ -77,10 +81,12 @@ class Account extends ApiResource
     {
         static $savedNestedResources = null;
         if ($savedNestedResources === null) {
-            $savedNestedResources = new Util\Set([
+            $savedNestedResources = new Util\Set(
+                [
                 'external_account',
                 'bank_account',
-            ]);
+                ]
+            );
         }
         return $savedNestedResources;
     }
@@ -100,8 +106,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|string|null $id The ID of the account to retrieve, or an
-     *     options array containing an `id` key.
+     * @param array|string|null $id   The ID of the account to retrieve, or an
+     *                                options array containing an `id` key.
      * @param array|string|null $opts
      *
      * @return Account
@@ -116,7 +122,7 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Account The rejected account.
@@ -130,7 +136,7 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $clientId
+     * @param array|null        $clientId
      * @param array|string|null $opts
      *
      * @return SierraTecnologiaObject Object containing the response from the API.
@@ -152,9 +158,9 @@ class Account extends ApiResource
 
 
     /**
-     * @param string|null $id The ID of the account to which the capability belongs.
-     * @param string|null $capabilityId The ID of the capability to retrieve.
-     * @param array|null $params
+     * @param string|null       $id           The ID of the account to which the capability belongs.
+     * @param string|null       $capabilityId The ID of the capability to retrieve.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Capability
@@ -165,9 +171,9 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account to which the capability belongs.
-     * @param string|null $capabilityId The ID of the capability to update.
-     * @param array|null $params
+     * @param string|null       $id           The ID of the account to which the capability belongs.
+     * @param string|null       $capabilityId The ID of the capability to update.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Capability
@@ -178,8 +184,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account on which to retrieve the capabilities.
-     * @param array|null $params
+     * @param string|null       $id     The ID of the account on which to retrieve the capabilities.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Collection The list of capabilities.
@@ -190,8 +196,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account on which to create the external account.
-     * @param array|null $params
+     * @param string|null       $id     The ID of the account on which to create the external account.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return BankAccount|Card
@@ -202,9 +208,9 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account to which the external account belongs.
-     * @param array|null $externalAccountId The ID of the external account to retrieve.
-     * @param array|null $params
+     * @param string|null       $id                The ID of the account to which the external account belongs.
+     * @param array|null        $externalAccountId The ID of the external account to retrieve.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return BankAccount|Card
@@ -215,9 +221,9 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account to which the external account belongs.
-     * @param array|null $externalAccountId The ID of the external account to update.
-     * @param array|null $params
+     * @param string|null       $id                The ID of the account to which the external account belongs.
+     * @param array|null        $externalAccountId The ID of the external account to update.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return BankAccount|Card
@@ -228,9 +234,9 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account to which the external account belongs.
-     * @param array|null $externalAccountId The ID of the external account to delete.
-     * @param array|null $params
+     * @param string|null       $id                The ID of the account to which the external account belongs.
+     * @param array|null        $externalAccountId The ID of the external account to delete.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return BankAccount|Card
@@ -241,8 +247,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account on which to retrieve the external accounts.
-     * @param array|null $params
+     * @param string|null       $id     The ID of the account on which to retrieve the external accounts.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Collection The list of external accounts (BankAccount or Card).
@@ -253,8 +259,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account on which to create the login link.
-     * @param array|null $params
+     * @param string|null       $id     The ID of the account on which to create the login link.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return LoginLink
@@ -265,7 +271,7 @@ class Account extends ApiResource
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return Collection The list of persons.
@@ -280,8 +286,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account on which to create the person.
-     * @param array|null $params
+     * @param string|null       $id     The ID of the account on which to create the person.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Person
@@ -292,9 +298,9 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account to which the person belongs.
-     * @param string|null $personId The ID of the person to retrieve.
-     * @param array|null $params
+     * @param string|null       $id       The ID of the account to which the person belongs.
+     * @param string|null       $personId The ID of the person to retrieve.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Person
@@ -305,9 +311,9 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account to which the person belongs.
-     * @param string|null $personId The ID of the person to update.
-     * @param array|null $params
+     * @param string|null       $id       The ID of the account to which the person belongs.
+     * @param string|null       $personId The ID of the person to update.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Person
@@ -318,9 +324,9 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account to which the person belongs.
-     * @param string|null $personId The ID of the person to delete.
-     * @param array|null $params
+     * @param string|null       $id       The ID of the account to which the person belongs.
+     * @param string|null       $personId The ID of the person to delete.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Person
@@ -331,8 +337,8 @@ class Account extends ApiResource
     }
 
     /**
-     * @param string|null $id The ID of the account on which to retrieve the persons.
-     * @param array|null $params
+     * @param string|null       $id     The ID of the account on which to retrieve the persons.
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return Collection The list of persons.
@@ -381,9 +387,10 @@ class Account extends ApiResource
             $update = ($v instanceof SierraTecnologiaObject) ? $v->serializeParameters() : $v;
 
             if ($update !== []) {
-                if (!$originalValue ||
-                    !array_key_exists($i, $originalValue) ||
-                    ($update != $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))) {
+                if (!$originalValue 
+                    || !array_key_exists($i, $originalValue) 
+                    || ($update != $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))
+                ) {
                     $updateArr[$i] = $update;
                 }
             }

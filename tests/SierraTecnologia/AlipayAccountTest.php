@@ -58,9 +58,11 @@ class AlipayAccountTest extends TestCase
      */
     public function testIsNotDirectlyUpdatable()
     {
-        AlipayAccount::update(self::TEST_RESOURCE_ID, [
+        AlipayAccount::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
     }
 
     public function testIsDeletable()

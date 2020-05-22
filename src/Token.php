@@ -27,6 +27,7 @@ class Token extends ApiResource
 
     /**
      * Possible string representations of the token type.
+     *
      * @link https://sierratecnologia.com.br/docs/api/tokens/object#token_object-type
      */
     const TYPE_ACCOUNT      = 'account';

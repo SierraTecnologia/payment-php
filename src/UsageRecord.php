@@ -20,7 +20,7 @@ class UsageRecord extends ApiResource
     const OBJECT_NAME = "usage_record";
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $options
      *
      * @return \SierraTecnologia\ApiResource The created resource.

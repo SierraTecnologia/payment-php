@@ -47,9 +47,11 @@ class ReaderTest extends \SierraTecnologia\TestCase
             '/v1/terminal/readers/' . self::TEST_RESOURCE_ID,
             ["label" => "new-name"]
         );
-        $resource = Reader::update(self::TEST_RESOURCE_ID, [
+        $resource = Reader::update(
+            self::TEST_RESOURCE_ID, [
             "label" => "new-name",
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Terminal\\Reader", $resource);
     }
 

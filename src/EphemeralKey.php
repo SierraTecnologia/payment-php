@@ -26,7 +26,7 @@ class EphemeralKey extends ApiResource
     use ApiOperations\Delete;
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|string|null $opts
      *
      * @return EphemeralKey The created key.

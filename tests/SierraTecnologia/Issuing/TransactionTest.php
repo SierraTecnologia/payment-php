@@ -47,9 +47,11 @@ class TransactionTest extends \SierraTecnologia\TestCase
             '/v1/issuing/transactions/' . self::TEST_RESOURCE_ID,
             ["metadata" => ["key" => "value"]]
         );
-        $resource = Transaction::update(self::TEST_RESOURCE_ID, [
+        $resource = Transaction::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Issuing\\Transaction", $resource);
     }
 }

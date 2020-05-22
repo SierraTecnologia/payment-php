@@ -12,12 +12,14 @@ class UsageRecordTest extends TestCase
             'post',
             '/v1/subscription_items/si_123/usage_records'
         );
-        $resource = UsageRecord::create([
+        $resource = UsageRecord::create(
+            [
             'subscription_item' => 'si_123',
             'quantity' => 100,
             'timestamp' => 12341234,
             'action' => 'set'
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\UsageRecord", $resource);
     }
 
@@ -26,10 +28,12 @@ class UsageRecordTest extends TestCase
      */
     public function testThrowsIfSubscriptionItemIsMissing()
     {
-        UsageRecord::create([
+        UsageRecord::create(
+            [
             'quantity' => 100,
             'timestamp' => 12341234,
             'action' => 'set'
-        ]);
+            ]
+        );
     }
 }

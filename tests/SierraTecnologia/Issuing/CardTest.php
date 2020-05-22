@@ -47,9 +47,11 @@ class CardTest extends \SierraTecnologia\TestCase
             '/v1/issuing/cards/' . self::TEST_RESOURCE_ID,
             ["metadata" => ["key" => "value"]]
         );
-        $resource = Card::update(self::TEST_RESOURCE_ID, [
+        $resource = Card::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Issuing\\Card", $resource);
     }
 

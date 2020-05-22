@@ -67,9 +67,11 @@ class BankAccountTest extends TestCase
      */
     public function testIsNotDirectlyUpdatable()
     {
-        BankAccount::update(self::TEST_RESOURCE_ID, [
+        BankAccount::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
     }
 
     public function testIsDeletable()

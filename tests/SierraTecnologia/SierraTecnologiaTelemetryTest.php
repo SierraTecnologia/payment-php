@@ -37,15 +37,17 @@ class SierraTecnologiaTelemetryTest extends TestCase
             ->with(
                 $this->anything(),
                 $this->anything(),
-                $this->callback(function ($headers) use (&$requestheaders) {
-                    foreach ($headers as $index => $header) {
-                        // capture the requested headers and format back to into an assoc array
-                        $components = explode(": ", $header, 2);
-                        $requestheaders[$components[0]] = $components[1];
-                    }
+                $this->callback(
+                    function ($headers) use (&$requestheaders) {
+                        foreach ($headers as $index => $header) {
+                            // capture the requested headers and format back to into an assoc array
+                            $components = explode(": ", $header, 2);
+                            $requestheaders[$components[0]] = $components[1];
+                        }
 
-                    return true;
-                }),
+                        return true;
+                    }
+                ),
                 $this->anything(),
                 $this->anything()
             )->willReturn(array(self::FAKE_VALID_RESPONSE, 200, ["request-id" => "123"]));
@@ -79,15 +81,17 @@ class SierraTecnologiaTelemetryTest extends TestCase
             ->with(
                 $this->anything(),
                 $this->anything(),
-                $this->callback(function ($headers) use (&$requestheaders) {
-                    // capture the requested headers and format back to into an assoc array
-                    foreach ($headers as $index => $header) {
-                        $components = explode(": ", $header, 2);
-                        $requestheaders[$components[0]] = $components[1];
-                    }
+                $this->callback(
+                    function ($headers) use (&$requestheaders) {
+                        // capture the requested headers and format back to into an assoc array
+                        foreach ($headers as $index => $header) {
+                            $components = explode(": ", $header, 2);
+                            $requestheaders[$components[0]] = $components[1];
+                        }
 
-                    return true;
-                }),
+                        return true;
+                    }
+                ),
                 $this->anything(),
                 $this->anything()
             )->willReturn(array(self::FAKE_VALID_RESPONSE, 200, ["request-id" => "123"]));

@@ -33,9 +33,11 @@ class InvoiceTest extends TestCase
             'post',
             '/v1/invoices'
         );
-        $resource = Invoice::create([
+        $resource = Invoice::create(
+            [
             "customer" => "cus_123"
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Invoice", $resource);
     }
 
@@ -57,9 +59,11 @@ class InvoiceTest extends TestCase
             'post',
             '/v1/invoices/' . self::TEST_RESOURCE_ID
         );
-        $resource = Invoice::update(self::TEST_RESOURCE_ID, [
+        $resource = Invoice::update(
+            self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],
-        ]);
+            ]
+        );
         $this->assertInstanceOf("SierraTecnologia\\Invoice", $resource);
     }
 

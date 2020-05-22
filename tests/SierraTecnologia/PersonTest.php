@@ -41,9 +41,11 @@ class PersonTest extends TestCase
      */
     public function testIsNotDirectlyUpdatable()
     {
-        Person::update(self::TEST_RESOURCE_ID, [
+        Person::update(
+            self::TEST_RESOURCE_ID, [
             "first_name" => ["John"],
-        ]);
+            ]
+        );
     }
 
     public function testIsDeletable()
