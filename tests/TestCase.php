@@ -37,7 +37,7 @@ class TestCase extends \PHPUnit_Framework_TestCase
      */
     protected $clientMock;
 
-    protected function setUp()
+    protected function setUp(): void
     {
         // Save original values so that we can restore them after running tests
         $this->origApiBase = SierraTecnologia::$apiBase;

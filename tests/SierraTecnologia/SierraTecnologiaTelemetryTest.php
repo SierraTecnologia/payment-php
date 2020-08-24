@@ -15,7 +15,7 @@ class SierraTecnologiaTelemetryTest extends TestCase
       "url": "/v1/accounts"
     }';
 
-    protected function setUp()
+    protected function setUp(): void
     {
         parent::setUp();
 
