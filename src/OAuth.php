@@ -16,10 +16,10 @@ abstract class OAuth
     {
         $params = $params ?: [];
 
-        $base = ($opts && array_key_exists('connect_base', $opts)) ? $opts['connect_base'] : SierraTecnologia::$connectBase;
+        $base = ($opts && property_exists('connect_base', $opts)) ? $opts['connect_base'] : SierraTecnologia::$connectBase;
 
         $params['client_id'] = self::_getClientId($params);
-        if (!array_key_exists('response_type', $params)) {
+        if (!property_exists('response_type', $params)) {
             $params['response_type'] = 'code';
         }
         $query = Util\Util::encodeParameters($params);
@@ -38,7 +38,7 @@ abstract class OAuth
      */
     public static function token($params = null, $opts = null)
     {
-        $base = ($opts && array_key_exists('connect_base', $opts)) ? $opts['connect_base'] : SierraTecnologia::$connectBase;
+        $base = ($opts && property_exists($opts, 'connect_base')) ? $opts['connect_base'] : SierraTecnologia::$connectBase;
         $requestor = new ApiRequestor(null, $base);
         list($response, $apiKey) = $requestor->request(
             'post',
@@ -60,7 +60,7 @@ abstract class OAuth
     public static function deauthorize($params = null, $opts = null)
     {
         $params = $params ?: [];
-        $base = ($opts && array_key_exists('connect_base', $opts)) ? $opts['connect_base'] : SierraTecnologia::$connectBase;
+        $base = ($opts && property_exists($opts, 'connect_base')) ? $opts['connect_base'] : SierraTecnologia::$connectBase;
         $requestor = new ApiRequestor(null, $base);
         $params['client_id'] = self::_getClientId($params);
         list($response, $apiKey) = $requestor->request(
@@ -74,7 +74,7 @@ abstract class OAuth
 
     private static function _getClientId($params = null)
     {
-        $clientId = ($params && array_key_exists('client_id', $params)) ? $params['client_id'] : null;
+        $clientId = ($params && property_exists($params, 'client_id')) ? $params['client_id'] : null;
         if ($clientId === null) {
             $clientId = SierraTecnologia::getClientId();
         }

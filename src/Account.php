@@ -30,7 +30,6 @@ namespace SierraTecnologia;
  */
 class Account extends ApiResource
 {
-
     const OBJECT_NAME = "account";
 
     use ApiOperations\All;
@@ -387,8 +386,8 @@ class Account extends ApiResource
             $update = ($v instanceof SierraTecnologiaObject) ? $v->serializeParameters() : $v;
 
             if ($update !== []) {
-                if (!$originalValue 
-                    || !array_key_exists($i, $originalValue) 
+                if (!$originalValue
+                    || !property_exists($originalValue, $i)
                     || ($update != $legalEntity->serializeParamsValue($originalValue[$i], null, false, true))
                 ) {
                     $updateArr[$i] = $update;

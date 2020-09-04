@@ -12,11 +12,11 @@ class WebhookTest extends TestCase
 
     private function generateHeader($opts = [])
     {
-        $timestamp = array_key_exists('timestamp', $opts) ? $opts['timestamp'] : time();
-        $payload = array_key_exists('payload', $opts) ? $opts['payload'] : self::EVENT_PAYLOAD;
-        $secret = array_key_exists('secret', $opts) ? $opts['secret'] : self::SECRET;
-        $scheme = array_key_exists('scheme', $opts) ? $opts['scheme'] : WebhookSignature::EXPECTED_SCHEME;
-        $signature = array_key_exists('signature', $opts) ? $opts['signature'] : null;
+        $timestamp = property_exists($opts, 'timestamp') ? $opts['timestamp'] : time();
+        $payload = property_exists($opts, 'payload') ? $opts['payload'] : self::EVENT_PAYLOAD;
+        $secret = property_exists($opts, 'secret') ? $opts['secret'] : self::SECRET;
+        $scheme = property_exists($opts, 'scheme') ? $opts['scheme'] : WebhookSignature::EXPECTED_SCHEME;
+        $signature = property_exists($opts, 'signature') ? $opts['signature'] : null;
         if ($signature === null) {
             $signedPayload = "$timestamp.$payload";
             $signature = hash_hmac("sha256", $signedPayload, $secret);

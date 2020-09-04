@@ -83,19 +83,19 @@ class RequestOptions
             $headers = [];
             $key = null;
             $base = null;
-            if (array_key_exists('api_key', $options)) {
+            if (isset($options['api_key'])) {
                 $key = $options['api_key'];
             }
-            if (array_key_exists('idempotency_key', $options)) {
+            if (isset($options['idempotency_key'])) {
                 $headers['Idempotency-Key'] = $options['idempotency_key'];
             }
-            if (array_key_exists('sitecpayment_account', $options)) {
+            if (isset($options['sitecpayment_account'])) {
                 $headers['SierraTecnologia-Account'] = $options['sitecpayment_account'];
             }
-            if (array_key_exists('sitecpayment_version', $options)) {
+            if (isset($options['sitecpayment_version'])) {
                 $headers['SierraTecnologia-Version'] = $options['sitecpayment_version'];
             }
-            if (array_key_exists('api_base', $options)) {
+            if (isset($options['api_base'])) {
                 $base = $options['api_base'];
             }
             return new RequestOptions($key, $headers, $base);
