@@ -29,7 +29,10 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
         return SierraTecnologia::$apiBase;
     }
 
-    public function setRequestParams($params)
+    /**
+     * @param array|null $params
+     */
+    public function setRequestParams(?array $params)
     {
         $this->_requestParams = $params;
     }
@@ -43,7 +46,11 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
         return Util\Util::convertToSierraTecnologiaObject($response, $opts);
     }
 
-    public function create($params = null, $opts = null)
+    /**
+     * @param array|null $params
+     * @param array|null|string $opts
+     */
+    public function create(?array $params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
 

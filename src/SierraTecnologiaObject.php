@@ -339,7 +339,10 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     }
 
 
-    public function serializeParamsValue($value, $original, $unsaved, $force, $key = null)
+    /**
+     * @param true $unsaved
+     */
+    public function serializeParamsValue($value, $original, bool $unsaved, $force, $key = null)
     {
         // The logic here is that essentially any object embedded in another
         // object that had a `type` is actually an API resource of a different
@@ -442,6 +445,9 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
         }
     }
 
+    /**
+     * @param array|self $value
+     */
     protected function dirtyValue($value)
     {
         if (is_array($value)) {
@@ -457,7 +463,7 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
      * Produces a deep copy of the given object including support for arrays
      * and SierraTecnologiaObjects.
      */
-    protected static function deepCopy($obj)
+    protected static function deepCopy(array $obj)
     {
         if (is_array($obj)) {
             $copy = [];

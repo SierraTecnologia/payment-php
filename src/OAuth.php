@@ -72,7 +72,10 @@ abstract class OAuth
         return Util\Util::convertToSierraTecnologiaObject($response->json, $opts);
     }
 
-    private static function _getClientId($params = null)
+    /**
+     * @param array|null $params
+     */
+    private static function _getClientId(?array $params = null)
     {
         $clientId = ($params && property_exists($params, 'client_id')) ? $params['client_id'] : null;
         if ($clientId === null) {

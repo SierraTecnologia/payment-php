@@ -9,6 +9,9 @@ namespace SierraTecnologia;
  */
 abstract class SingletonApiResource extends ApiResource
 {
+    /**
+     * @param array|null|string $options
+     */
     protected static function _singletonRetrieve($options = null)
     {
         $opts = Util\RequestOptions::parse($options);

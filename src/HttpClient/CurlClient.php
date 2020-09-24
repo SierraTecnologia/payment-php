@@ -375,7 +375,7 @@ class CurlClient implements ClientInterface
         return false;
     }
 
-    private function sleepTime($numRetries)
+    private function sleepTime(int $numRetries)
     {
         // Apply exponential backoff with $initialNetworkRetryDelay on the
         // number of $numRetries so far as inputs. Do not allow the number to exceed

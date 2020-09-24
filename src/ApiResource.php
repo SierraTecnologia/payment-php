@@ -89,7 +89,7 @@ abstract class ApiResource extends SierraTecnologiaObject
     /**
      * @return string The instance endpoint URL for the given class.
      */
-    public static function resourceUrl($id)
+    public static function resourceUrl(string $id)
     {
         if ($id === null) {
             $class = get_called_class();
