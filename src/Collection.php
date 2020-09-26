@@ -47,7 +47,7 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
     }
 
     /**
-     * @param array|null $params
+     * @param array|null        $params
      * @param array|null|string $opts
      */
     public function create(?array $params = null, $opts = null)
