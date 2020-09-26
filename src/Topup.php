@@ -44,18 +44,4 @@ class Topup extends ApiResource
     const STATUS_PENDING   = 'pending';
     const STATUS_REVERSED  = 'reversed';
     const STATUS_SUCCEEDED = 'succeeded';
-
-    /**
-     * @param array|null        $params
-     * @param array|string|null $options
-     *
-     * @return Topup The canceled topup.
-     */
-    public function cancel($params = null, $options = null)
-    {
-        $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
-        $this->refreshFrom($response, $opts);
-        return $this;
-    }
 }

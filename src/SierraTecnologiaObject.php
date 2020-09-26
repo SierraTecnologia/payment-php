@@ -9,12 +9,19 @@ namespace SierraTecnologia;
  */
 class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializable
 {
+    /**
+     * @var Util\RequestOptions
+     */
     protected $_opts;
     protected $_originalValues;
     protected $_values;
-    protected $_unsavedValues;
-    protected $_transientValues;
+    protected Util\Set $_unsavedValues;
+    protected Util\Set $_transientValues;
     protected $_retrieveOptions;
+
+    /**
+     * @var ApiResponse|null
+     */
     protected $_lastResponse;
 
     /**
@@ -203,20 +210,7 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     }
 
     // Countable method
-    public function count()
-    {
-        return count($this->_values);
-    }
 
-    public function keys()
-    {
-        return array_keys($this->_values);
-    }
-
-    public function values()
-    {
-        return array_values($this->_values);
-    }
 
     /**
      * This unfortunately needs to be public to be used in Util\Util
@@ -239,8 +233,10 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
      * @param array                                 $values
      * @param null|string|array|Util\RequestOptions $opts
      * @param boolean                               $partial Defaults to false.
+     *
+     * @return void
      */
-    public function refreshFrom($values, $opts, $partial = false)
+    public function refreshFrom($values, $opts, $partial = false): void
     {
         $this->_opts = Util\RequestOptions::parse($opts);
 
@@ -276,8 +272,10 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
      * @param array                                 $values
      * @param null|string|array|Util\RequestOptions $opts
      * @param boolean                               $dirty  Defaults to true.
+     *
+     * @return void
      */
-    public function updateAttributes($values, $opts = null, $dirty = true)
+    public function updateAttributes($values, $opts = null, $dirty = true): void
     {
         foreach ($values as $k => $v) {
             // Special-case metadata to always be cast as a SierraTecnologiaObject
@@ -406,11 +404,6 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
         }
     }
 
-    public function jsonSerialize()
-    {
-        return $this->__toArray(true);
-    }
-
     public function __toJSON()
     {
         return json_encode($this->__toArray(true), JSON_PRETTY_PRINT);
@@ -436,8 +429,10 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
      * included with an update when `serializeParameters` is called. This
      * method is also recursive, so any SierraTecnologiaObjects contained as values or
      * which are values in a tenant array are also marked as dirty.
+     *
+     * @return void
      */
-    public function dirty()
+    public function dirty(): void
     {
         $this->_unsavedValues = new Util\Set(array_keys($this->_values));
         foreach ($this->_values as $k => $v) {
@@ -447,8 +442,10 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
 
     /**
      * @param array|self $value
+     *
+     * @return void
      */
-    protected function dirtyValue($value)
+    protected function dirtyValue($value): void
     {
         if (is_array($value)) {
             foreach ($value as $v) {
@@ -484,8 +481,12 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     /**
      * Returns a hash of empty values for all the values that are in the given
      * SierraTecnologiaObject.
+     *
+     * @return string[]
+     *
+     * @psalm-return array<array-key, string>
      */
-    public static function emptyValues($obj)
+    public static function emptyValues($obj): array
     {
         if (is_array($obj)) {
             $values = $obj;
@@ -501,14 +502,6 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     }
 
     /**
-     * @return object The last response from the SierraTecnologia API
-     */
-    public function getLastResponse()
-    {
-        return $this->_lastResponse;
-    }
-
-    /**
      * Sets the last response from the SierraTecnologia API
      *
      * @param  ApiResponse $resp
@@ -517,17 +510,5 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     public function setLastResponse($resp)
     {
         $this->_lastResponse = $resp;
-    }
-
-    /**
-     * Indicates whether or not the resource has been deleted on the server.
-     * Note that some, but not all, resources can indicate whether they have
-     * been deleted.
-     *
-     * @return bool Whether the resource is deleted.
-     */
-    public function isDeleted()
-    {
-        return isset($this->_values['deleted']) ? $this->_values['deleted'] : false;
     }
 }

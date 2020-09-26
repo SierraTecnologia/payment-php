@@ -6,8 +6,8 @@ use SierraTecnologia\SierraTecnologiaObject;
 
 abstract class Util
 {
-    private static $isMbstringAvailable = null;
-    private static $isHashEqualsAvailable = null;
+    private static ?bool $isMbstringAvailable = null;
+    private static ?bool $isHashEqualsAvailable = null;
 
     /**
      * Whether the provided array (or other) is a list rather than a dictionary.
@@ -336,7 +336,12 @@ abstract class Util
         return $s;
     }
 
-    public static function normalizeId($id)
+    /**
+     * @return (array|mixed)[]
+     *
+     * @psalm-return array{0: mixed, 1: array}
+     */
+    public static function normalizeId($id): array
     {
         if (is_array($id)) {
             $params = $id;

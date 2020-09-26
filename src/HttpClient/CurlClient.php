@@ -28,7 +28,7 @@ if (!defined('CURL_HTTP_VERSION_2TLS')) {
 
 class CurlClient implements ClientInterface
 {
-    private static $instance;
+    private static ?self $instance;
 
     public static function instance()
     {
@@ -38,14 +38,31 @@ class CurlClient implements ClientInterface
         return self::$instance;
     }
 
+    /**
+     * @var array|callable|null
+     */
     protected $defaultOptions;
 
-    protected $userAgentInfo;
+    /**
+     * @var (mixed|string)[]
+     *
+     * @psalm-var array{httplib: string, ssllib: mixed}
+     */
+    protected array $userAgentInfo;
 
+    /**
+     * @var bool|null
+     */
     protected $enablePersistentConnections = null;
 
+    /**
+     * @var bool|null
+     */
     protected $enableHttp2 = null;
 
+    /**
+     * @var false|null|resource
+     */
     protected $curlHandle = null;
 
     /**
@@ -79,23 +96,13 @@ class CurlClient implements ClientInterface
         $this->closeCurlHandle();
     }
 
-    public function initUserAgentInfo()
+    public function initUserAgentInfo(): void
     {
         $curlVersion = curl_version();
         $this->userAgentInfo = [
             'httplib' =>  'curl ' . $curlVersion['version'],
             'ssllib' => $curlVersion['ssl_version'],
         ];
-    }
-
-    public function getDefaultOptions()
-    {
-        return $this->defaultOptions;
-    }
-
-    public function getUserAgentInfo()
-    {
-        return $this->userAgentInfo;
     }
 
     /**
@@ -107,14 +114,6 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @param boolean $enable
-     */
-    public function setEnablePersistentConnections($enable)
-    {
-        $this->enablePersistentConnections = $enable;
-    }
-
-    /**
      * @return boolean
      */
     public function getEnableHttp2()
@@ -122,46 +121,21 @@ class CurlClient implements ClientInterface
         return $this->enableHttp2;
     }
 
-    /**
-     * @param boolean $enable
-     */
-    public function setEnableHttp2($enable)
-    {
-        $this->enableHttp2 = $enable;
-    }
-
     // USER DEFINED TIMEOUTS
 
     const DEFAULT_TIMEOUT = 80;
     const DEFAULT_CONNECT_TIMEOUT = 30;
 
-    private $timeout = self::DEFAULT_TIMEOUT;
-    private $connectTimeout = self::DEFAULT_CONNECT_TIMEOUT;
-
-    public function setTimeout($seconds)
-    {
-        $this->timeout = (int) max($seconds, 0);
-        return $this;
-    }
-
-    public function setConnectTimeout($seconds)
-    {
-        $this->connectTimeout = (int) max($seconds, 0);
-        return $this;
-    }
-
-    public function getTimeout()
-    {
-        return $this->timeout;
-    }
-
-    public function getConnectTimeout()
-    {
-        return $this->connectTimeout;
-    }
+    private int $timeout = self::DEFAULT_TIMEOUT;
+    private int $connectTimeout = self::DEFAULT_CONNECT_TIMEOUT;
 
     // END OF USER DEFINED TIMEOUTS
 
+    /**
+     * @return array
+     *
+     * @psalm-return array{0: mixed, 1: mixed, 2: mixed}
+     */
     public function request($method, $absUrl, $headers, $params, $hasFile)
     {
         $method = strtolower($method);
@@ -212,7 +186,7 @@ class CurlClient implements ClientInterface
 
         // Create a callback to capture HTTP headers for the response
         $rheaders = new Util\CaseInsensitiveArray();
-        $headerCallback = function ($curl, $header_line) use (&$rheaders) {
+        $headerCallback = function ($curl, $header_line) use (&$rheaders): int {
             // Ignore the HTTP request line (HTTP/1.1 200 OK)
             if (strpos($header_line, ":") === false) {
                 return strlen($header_line);
@@ -260,11 +234,16 @@ class CurlClient implements ClientInterface
 
     /**
      * @param array $opts cURL options
+     *
+     * @return (bool|int|mixed|string)[]
+     *
+     * @psalm-return array{0: bool|string, 1: int|mixed}
      */
-    private function executeRequestWithRetries($opts, $absUrl)
+    private function executeRequestWithRetries($opts, $absUrl): array
     {
         $numRetries = 0;
 
+        $message = null;
         while (true) {
             $rcode = 0;
             $errno = 0;
@@ -300,13 +279,16 @@ class CurlClient implements ClientInterface
     }
 
     /**
-     * @param  string $url
-     * @param  int    $errno
-     * @param  string $message
-     * @param  int    $numRetries
+     * @param string $url
+     * @param int    $errno
+     * @param string $message
+     * @param int    $numRetries
+     *
      * @throws Error\ApiConnection
+     *
+     * @return void
      */
-    private function handleCurlError($url, $errno, $message, $numRetries)
+    private function handleCurlError($url, $errno, $message, $numRetries): void
     {
         switch ($errno) {
         case CURLE_COULDNT_CONNECT:
@@ -397,8 +379,10 @@ class CurlClient implements ClientInterface
 
     /**
      * Initializes the curl handle. If already initialized, the handle is closed first.
+     *
+     * @return void
      */
-    private function initCurlHandle()
+    private function initCurlHandle(): void
     {
         $this->closeCurlHandle();
         $this->curlHandle = curl_init();
@@ -406,8 +390,10 @@ class CurlClient implements ClientInterface
 
     /**
      * Closes the curl handle if initialized. Do nothing if already closed.
+     *
+     * @return void
      */
-    private function closeCurlHandle()
+    private function closeCurlHandle(): void
     {
         if (!is_null($this->curlHandle)) {
             curl_close($this->curlHandle);
@@ -418,8 +404,10 @@ class CurlClient implements ClientInterface
     /**
      * Resets the curl handle. If the handle is not already initialized, or if persistent
      * connections are disabled, the handle is reinitialized instead.
+     *
+     * @return void
      */
-    private function resetCurlHandle()
+    private function resetCurlHandle(): void
     {
         if (!is_null($this->curlHandle) && $this->getEnablePersistentConnections()) {
             curl_reset($this->curlHandle);

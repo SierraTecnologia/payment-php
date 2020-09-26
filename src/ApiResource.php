@@ -49,9 +49,9 @@ abstract class ApiResource extends SierraTecnologiaObject
     }
 
     /**
-     * @return ApiResource The refreshed resource.
+     * @return self The refreshed resource.
      */
-    public function refresh()
+    public function refresh(): self
     {
         $requestor = new ApiRequestor($this->_opts->apiKey, static::baseUrl());
         $url = $this->instanceUrl();

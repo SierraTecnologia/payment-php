@@ -53,9 +53,9 @@ class TransferReversal extends ApiResource
     /**
      * @param array|string|null $opts
      *
-     * @return TransferReversal The saved reversal.
+     * @return self The saved reversal.
      */
-    public function save($opts = null)
+    public function save($opts = null): self
     {
         return $this->_save($opts);
     }

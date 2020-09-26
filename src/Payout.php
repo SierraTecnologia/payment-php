@@ -83,15 +83,4 @@ class Payout extends ApiResource
      */
     const TYPE_BANK_ACCOUNT = 'bank_account';
     const TYPE_CARD         = 'card';
-
-    /**
-     * @return Payout The canceled payout.
-     */
-    public function cancel()
-    {
-        $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url);
-        $this->refreshFrom($response, $opts);
-        return $this;
-    }
 }

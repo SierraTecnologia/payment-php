@@ -99,35 +99,4 @@ class Card extends ApiResource
         $extn = urlencode(Util\Util::utf8($this['id']));
         return "$base/$parentExtn/$path/$extn";
     }
-
-    /**
-     * @param array|string      $_id
-     * @param array|string|null $_opts
-     *
-     * @throws \SierraTecnologia\Error\InvalidRequest
-     */
-    public static function retrieve($_id, $_opts = null)
-    {
-        $msg = "Cards cannot be accessed without a customer, recipient or account ID. " .
-               "Retrieve a card using \$customer->sources->retrieve('card_id'), " .
-               "\$recipient->cards->retrieve('card_id'), or " .
-               "\$account->external_accounts->retrieve('card_id') instead.";
-        throw new Error\InvalidRequest($msg, null);
-    }
-
-    /**
-     * @param string            $_id
-     * @param array|null        $_params
-     * @param array|string|null $_options
-     *
-     * @throws \SierraTecnologia\Error\InvalidRequest
-     */
-    public static function update($_id, $_params = null, $_options = null)
-    {
-        $msg = "Cards cannot be accessed without a customer, recipient or account ID. " .
-               "Call save() on \$customer->sources->retrieve('card_id'), " .
-               "\$recipient->cards->retrieve('card_id'), or " .
-               "\$account->external_accounts->retrieve('card_id') instead.";
-        throw new Error\InvalidRequest($msg, null);
-    }
 }

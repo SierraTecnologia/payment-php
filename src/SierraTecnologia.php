@@ -10,30 +10,48 @@ namespace SierraTecnologia;
 class SierraTecnologia
 {
     // @var string The SierraTecnologia API key to be used for requests.
+    /**
+     * @var null|string
+     */
     public static $apiKey;
 
     // @var string The SierraTecnologia client_id to be used for Connect requests.
+    /**
+     * @var null|string
+     */
     public static $clientId;
 
     // @var string The base URL for the SierraTecnologia API.
-    public static $apiBase = 'https://payment.sierratecnologia.com.br';
+    public static string $apiBase = 'https://payment.sierratecnologia.com.br';
 
     // @var string The base URL for the OAuth API.
-    public static $connectBase = 'https://connect.sierratecnologia.com.br';
+    public static string $connectBase = 'https://connect.sierratecnologia.com.br';
 
     // @var string The base URL for the SierraTecnologia API uploads endpoint.
-    public static $apiUploadBase = 'https://files.sierratecnologia.com.br';
+    public static string $apiUploadBase = 'https://files.sierratecnologia.com.br';
 
     // @var string|null The version of the SierraTecnologia API to use for requests.
+    /**
+     * @var null|string
+     */
     public static $apiVersion = null;
 
     // @var string|null The account ID for connected accounts requests.
+    /**
+     * @var null|string
+     */
     public static $accountId = null;
 
     // @var string Path to the CA bundle used to verify SSL certificates
+    /**
+     * @var null|string
+     */
     public static $caBundlePath = null;
 
     // @var boolean Defaults to true.
+    /**
+     * @var bool
+     */
     public static $verifySslCerts = true;
 
     // @var array The application's information (name, version, URL)
@@ -41,29 +59,30 @@ class SierraTecnologia
 
     // @var Util\LoggerInterface|null The logger to which the library will
     //   produce messages.
+    /**
+     * @var Util\LoggerInterface|null
+     */
     public static $logger = null;
 
     // @var int Maximum number of request retries
+    /**
+     * @var int
+     */
     public static $maxNetworkRetries = 0;
 
     // @var boolean Whether client telemetry is enabled. Defaults to false.
+    /**
+     * @var bool
+     */
     public static $enableTelemetry = false;
 
     // @var float Maximum delay between retries, in seconds
-    private static $maxNetworkRetryDelay = 2.0;
+    private static float $maxNetworkRetryDelay = 2.0;
 
     // @var float Initial delay between retries, in seconds
-    private static $initialNetworkRetryDelay = 0.5;
+    private static float $initialNetworkRetryDelay = 0.5;
 
     const VERSION = '6.35.0';
-
-    /**
-     * @return string The API key used for requests.
-     */
-    public static function getApiKey()
-    {
-        return self::$apiKey;
-    }
 
     /**
      * @return string The client_id used for Connect requests.
@@ -86,52 +105,6 @@ class SierraTecnologia
     }
 
     /**
-     * @param Util\LoggerInterface $logger The logger to which the library
-     *                                     will produce messages.
-     */
-    public static function setLogger($logger)
-    {
-        self::$logger = $logger;
-    }
-
-    /**
-     * Sets the API key to be used for requests.
-     *
-     * @param string $apiKey
-     */
-    public static function setApiKey($apiKey)
-    {
-        self::$apiKey = $apiKey;
-    }
-
-    /**
-     * Sets the client_id to be used for Connect requests.
-     *
-     * @param string $clientId
-     */
-    public static function setClientId($clientId)
-    {
-        self::$clientId = $clientId;
-    }
-
-    /**
-     * @return string The API version used for requests. null if we're using the
-     *    latest version.
-     */
-    public static function getApiVersion()
-    {
-        return self::$apiVersion;
-    }
-
-    /**
-     * @param string $apiVersion The API version to use for requests.
-     */
-    public static function setApiVersion($apiVersion)
-    {
-        self::$apiVersion = $apiVersion;
-    }
-
-    /**
      * @return string
      */
     private static function getDefaultCABundlePath()
@@ -148,45 +121,11 @@ class SierraTecnologia
     }
 
     /**
-     * @param string $caBundlePath
-     */
-    public static function setCABundlePath($caBundlePath)
-    {
-        self::$caBundlePath = $caBundlePath;
-    }
-
-    /**
      * @return boolean
      */
     public static function getVerifySslCerts()
     {
         return self::$verifySslCerts;
-    }
-
-    /**
-     * @param boolean $verify
-     */
-    public static function setVerifySslCerts($verify)
-    {
-        self::$verifySslCerts = $verify;
-    }
-
-    /**
-     * @return string | null The SierraTecnologia account ID for connected account
-     *   requests.
-     */
-    public static function getAccountId()
-    {
-        return self::$accountId;
-    }
-
-    /**
-     * @param string $accountId The SierraTecnologia account ID to set for connected
-     *                          account requests.
-     */
-    public static function setAccountId($accountId)
-    {
-        self::$accountId = $accountId;
     }
 
     /**
@@ -198,33 +137,11 @@ class SierraTecnologia
     }
 
     /**
-     * @param string $appName    The application's name
-     * @param string $appVersion The application's version
-     * @param string $appUrl     The application's URL
-     */
-    public static function setAppInfo($appName, $appVersion = null, $appUrl = null, $appPartnerId = null)
-    {
-        self::$appInfo = self::$appInfo ?: [];
-        self::$appInfo['name'] = $appName;
-        self::$appInfo['partner_id'] = $appPartnerId;
-        self::$appInfo['url'] = $appUrl;
-        self::$appInfo['version'] = $appVersion;
-    }
-
-    /**
      * @return int Maximum number of request retries
      */
     public static function getMaxNetworkRetries()
     {
         return self::$maxNetworkRetries;
-    }
-
-    /**
-     * @param int $maxNetworkRetries Maximum number of request retries
-     */
-    public static function setMaxNetworkRetries($maxNetworkRetries)
-    {
-        self::$maxNetworkRetries = $maxNetworkRetries;
     }
 
     /**
@@ -241,25 +158,5 @@ class SierraTecnologia
     public static function getInitialNetworkRetryDelay()
     {
         return self::$initialNetworkRetryDelay;
-    }
-
-    /**
-     * @return bool Whether client telemetry is enabled
-     */
-    public static function getEnableTelemetry()
-    {
-        return self::$enableTelemetry;
-    }
-
-    /**
-     * @param bool $enableTelemetry Enables client telemetry.
-     *
-     *                              Client telemetry enables timing and request metrics to be sent back to SierraTecnologia as an HTTP Header
-     *                              with the current request. This enables SierraTecnologia to do latency and metrics analysis without adding extra
-     *                              overhead (such as extra network calls) on the client.
-     */
-    public static function setEnableTelemetry($enableTelemetry)
-    {
-        self::$enableTelemetry = $enableTelemetry;
     }
 }

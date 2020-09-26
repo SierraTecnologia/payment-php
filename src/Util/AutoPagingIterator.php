@@ -6,7 +6,7 @@ class AutoPagingIterator implements \Iterator
 {
     private $lastId = null;
     private $page = null;
-    private $pageOffset = 0;
+    private int $pageOffset = 0;
     private $params = [];
 
     public function __construct($collection, $params)
@@ -33,6 +33,9 @@ class AutoPagingIterator implements \Iterator
         return key($this->page->data) + $this->pageOffset;
     }
 
+    /**
+     * @return false|null
+     */
     public function next()
     {
         $item = next($this->page->data);

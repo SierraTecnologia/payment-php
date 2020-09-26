@@ -80,31 +80,4 @@ class Person extends ApiResource
         $extn = urlencode($id);
         return "$base/$accountExtn/persons/$extn";
     }
-
-    /**
-     * @param array|string      $_id
-     * @param array|string|null $_opts
-     *
-     * @throws \SierraTecnologia\Error\InvalidRequest
-     */
-    public static function retrieve($_id, $_opts = null)
-    {
-        $msg = "Persons cannot be accessed without an account ID. " .
-               "Retrieve a Person using \$account->retrievePerson('person_id') instead.";
-        throw new Error\InvalidRequest($msg, null);
-    }
-
-    /**
-     * @param string            $_id
-     * @param array|null        $_params
-     * @param array|string|null $_options
-     *
-     * @throws \SierraTecnologia\Error\InvalidRequest
-     */
-    public static function update($_id, $_params = null, $_options = null)
-    {
-        $msg = "Persons cannot be accessed without an account ID. " .
-               "Retrieve a Person using \$account->retrievePerson('person_id') instead.";
-        throw new Error\InvalidRequest($msg, null);
-    }
 }

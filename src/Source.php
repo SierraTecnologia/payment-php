@@ -82,9 +82,9 @@ class Source extends ApiResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return Source The detached source.
+     * @return self The detached source.
      */
-    public function detach($params = null, $options = null)
+    public function detach($params = null, $options = null): self
     {
         self::_validateParams($params);
 
@@ -110,47 +110,5 @@ class Source extends ApiResource
                . "to a customer object.";
             throw new Error\Api($message);
         }
-    }
-
-    /**
-     * @param array|null        $params
-     * @param array|string|null $options
-     *
-     * @return Source The detached source.
-     *
-     * @deprecated Use the `detach` method instead.
-     */
-    public function delete($params = null, $options = null)
-    {
-        $this->detach($params, $options);
-    }
-
-    /**
-     * @param array|null        $params
-     * @param array|string|null $options
-     *
-     * @return Collection The list of source transactions.
-     */
-    public function sourceTransactions($params = null, $options = null)
-    {
-        $url = $this->instanceUrl() . '/source_transactions';
-        list($response, $opts) = $this->_request('get', $url, $params, $options);
-        $obj = Util\Util::convertToSierraTecnologiaObject($response, $opts);
-        $obj->setLastResponse($response);
-        return $obj;
-    }
-
-    /**
-     * @param array|null        $params
-     * @param array|string|null $options
-     *
-     * @return Source The verified source.
-     */
-    public function verify($params = null, $options = null)
-    {
-        $url = $this->instanceUrl() . '/verify';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
-        $this->refreshFrom($response, $opts);
-        return $this;
     }
 }

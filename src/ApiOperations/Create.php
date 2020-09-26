@@ -13,7 +13,7 @@ trait Create
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return static The created resource.
+     * @return \SierraTecnologia\SierraTecnologiaObject|array The created resource.
      */
     public static function create($params = null, $options = null)
     {

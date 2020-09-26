@@ -59,18 +59,4 @@ class CreditNote extends ApiResource
      */
     const TYPE_POST_PAYMENT = 'post_payment';
     const TYPE_PRE_PAYMENT  = 'pre_payment';
-
-    /**
-     * @param array|null        $params
-     * @param array|string|null $opts
-     *
-     * @return CreditNote The voided credit note.
-     */
-    public function voidCreditNote($params = null, $opts = null)
-    {
-        $url = $this->instanceUrl() . '/void';
-        list($response, $opts) = $this->_request('post', $url, $params, $opts);
-        $this->refreshFrom($response, $opts);
-        return $this;
-    }
 }

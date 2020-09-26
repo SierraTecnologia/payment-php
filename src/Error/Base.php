@@ -29,36 +29,6 @@ abstract class Base extends Exception
         }
     }
 
-    public function getSierraTecnologiaCode()
-    {
-        return $this->sierratecnologiaCode;
-    }
-
-    public function getHttpStatus()
-    {
-        return $this->httpStatus;
-    }
-
-    public function getHttpBody()
-    {
-        return $this->httpBody;
-    }
-
-    public function getJsonBody()
-    {
-        return $this->jsonBody;
-    }
-
-    public function getHttpHeaders()
-    {
-        return $this->httpHeaders;
-    }
-
-    public function getRequestId()
-    {
-        return $this->requestId;
-    }
-
     public function __toString()
     {
         $id = $this->requestId ? " from API request '{$this->requestId}'": "";

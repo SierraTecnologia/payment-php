@@ -49,46 +49,4 @@ class PaymentIntent extends ApiResource
     use ApiOperations\Create;
     use ApiOperations\Retrieve;
     use ApiOperations\Update;
-
-    /**
-     * @param array|null        $params
-     * @param array|string|null $options
-     *
-     * @return PaymentIntent The canceled payment intent.
-     */
-    public function cancel($params = null, $options = null)
-    {
-        $url = $this->instanceUrl() . '/cancel';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
-        $this->refreshFrom($response, $opts);
-        return $this;
-    }
-
-    /**
-     * @param array|null        $params
-     * @param array|string|null $options
-     *
-     * @return PaymentIntent The captured payment intent.
-     */
-    public function capture($params = null, $options = null)
-    {
-        $url = $this->instanceUrl() . '/capture';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
-        $this->refreshFrom($response, $opts);
-        return $this;
-    }
-
-    /**
-     * @param array|null        $params
-     * @param array|string|null $options
-     *
-     * @return PaymentIntent The confirmed payment intent.
-     */
-    public function confirm($params = null, $options = null)
-    {
-        $url = $this->instanceUrl() . '/confirm';
-        list($response, $opts) = $this->_request('post', $url, $params, $options);
-        $this->refreshFrom($response, $opts);
-        return $this;
-    }
 }

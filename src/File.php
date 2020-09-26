@@ -33,6 +33,9 @@ class File extends ApiResource
     }
     use ApiOperations\Retrieve;
 
+    /**
+     * @return string
+     */
     public static function classUrl()
     {
         return '/v1/files';
@@ -42,9 +45,9 @@ class File extends ApiResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return \SierraTecnologia\File The created resource.
+     * @return self The created resource.
      */
-    public static function create($params = null, $options = null)
+    public static function create($params = null, $options = null): self
     {
         $opts = \SierraTecnologia\Util\RequestOptions::parse($options);
         if (is_null($opts->apiBase)) {

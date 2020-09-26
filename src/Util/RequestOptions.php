@@ -48,8 +48,10 @@ class RequestOptions
 
     /**
      * Discards all headers that we don't want to persist across requests.
+     *
+     * @return void
      */
-    public function discardNonPersistentHeaders()
+    public function discardNonPersistentHeaders(): void
     {
         foreach ($this->headers as $k => $v) {
             if (!in_array($k, self::$HEADERS_TO_PERSIST)) {

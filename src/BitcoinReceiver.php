@@ -19,8 +19,7 @@ class BitcoinReceiver extends ApiResource
     use ApiOperations\Retrieve;
 
     /**
-     * @return string The class URL for this resource. It needs to be special
-     *    cased because it doesn't fit into the standard resource pattern.
+     * @return string The class URL for this resource. It needs to be special cased because it doesn't fit into the standard resource pattern.
      */
     public static function classUrl()
     {

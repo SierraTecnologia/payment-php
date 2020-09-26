@@ -15,9 +15,4 @@ class InvalidRequest extends Base
         parent::__construct($message, $httpStatus, $httpBody, $jsonBody, $httpHeaders);
         $this->sierratecnologiaParam = $sierratecnologiaParam;
     }
-
-    public function getSierraTecnologiaParam()
-    {
-        return $this->sierratecnologiaParam;
-    }
 }

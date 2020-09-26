@@ -26,6 +26,9 @@ class ScheduledQueryRun extends \SierraTecnologia\ApiResource
     use \SierraTecnologia\ApiOperations\All;
     use \SierraTecnologia\ApiOperations\Retrieve;
 
+    /**
+     * @return string
+     */
     public static function classUrl()
     {
         return "/v1/sigma/scheduled_query_runs";

@@ -15,9 +15,4 @@ class OAuthBase extends \SierraTecnologia\Error\Base
         parent::__construct($description, $httpStatus, $httpBody, $jsonBody, $httpHeaders);
         $this->errorCode = $code;
     }
-
-    public function getErrorCode()
-    {
-        return $this->errorCode;
-    }
 }

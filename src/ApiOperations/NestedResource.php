@@ -15,7 +15,7 @@ trait NestedResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return \SierraTecnologia\SierraTecnologiaObject
+     * @return \SierraTecnologia\SierraTecnologiaObject|array
      */
     protected static function _nestedResourceOperation($method, $url, $params = null, $options = null)
     {

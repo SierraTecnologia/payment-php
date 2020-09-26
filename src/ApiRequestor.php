@@ -101,8 +101,8 @@ class ApiRequestor
      * @param array|null $params
      * @param array|null $headers
      *
-     * @return array An array whose first element is an API response and second
-     *    element is the API key used to make the request.
+     * @return (ApiResponse|mixed)[] An array whose first element is an API response and second element is the API key used to make the request.
+     *
      * @throws Error\Api
      * @throws Error\Authentication
      * @throws Error\Card
@@ -117,8 +117,10 @@ class ApiRequestor
      * @throws Error\RateLimit
      * @throws Error\Idempotency
      * @throws Error\ApiConnection
+     *
+     * @psalm-return array{0: ApiResponse, 1: mixed}
      */
-    public function request($method, $url, $params = null, $headers = null)
+    public function request($method, $url, $params = null, $headers = null): array
     {
         $params = $params ?: [];
         $headers = $headers ?: [];
@@ -155,8 +157,10 @@ class ApiRequestor
      * @throws Error\RateLimit if the error is caused by too many requests
      *    hitting the API.
      * @throws Error\Api otherwise.
+     *
+     * @return void
      */
-    public function handleErrorResponse($rbody, $rcode, $rheaders, $resp)
+    public function handleErrorResponse($rbody, $rcode, $rheaders, $resp): void
     {
         if (!is_array($resp) || !isset($resp['error'])) {
             $msg = "Invalid response object from API: $rbody "
@@ -284,9 +288,11 @@ class ApiRequestor
      * @param string $apiKey
      * @param null   $clientInfo
      *
-     * @return array
+     * @return (false|string)[]
+     *
+     * @psalm-return array{X-SierraTecnologia-Client-User-Agent: false|string, User-Agent: string, Authorization: string}
      */
-    private static function _defaultHeaders($apiKey, $clientInfo = null)
+    private static function _defaultHeaders($apiKey, $clientInfo = null): array
     {
         $uaString = 'SierraTecnologia/v1 PhpBindings/' . SierraTecnologia::VERSION;
 
@@ -323,12 +329,15 @@ class ApiRequestor
      * @param array  $params
      * @param array  $headers
      *
-     * @return array
+     * @return (mixed|string)[]
+     *
      * @throws Error\Api
      * @throws Error\ApiConnection
      * @throws Error\Authentication
+     *
+     * @psalm-return array{0: mixed, 1: mixed, 2: mixed, 3: mixed|string}
      */
-    private function _requestRaw($method, $url, $params, $headers)
+    private function _requestRaw($method, $url, $params, $headers): array
     {
         $myApiKey = $this->_apiKey;
         if (!$myApiKey) {
@@ -474,26 +483,6 @@ class ApiRequestor
             $this->handleErrorResponse($rbody, $rcode, $rheaders, $resp);
         }
         return $resp;
-    }
-
-    /**
-     * @static
-     *
-     * @param HttpClient\ClientInterface $client
-     */
-    public static function setHttpClient($client)
-    {
-        self::$_httpClient = $client;
-    }
-
-    /**
-     * @static
-     *
-     * Resets any stateful telemetry data
-     */
-    public static function resetTelemetry()
-    {
-        self::$requestTelemetry = null;
     }
 
     /**

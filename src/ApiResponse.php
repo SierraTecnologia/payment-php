@@ -9,9 +9,24 @@ namespace SierraTecnologia;
  */
 class ApiResponse
 {
+    /**
+     * @var array|null
+     */
     public $headers;
+
+    /**
+     * @var string
+     */
     public $body;
+
+    /**
+     * @var array|null
+     */
     public $json;
+
+    /**
+     * @var int
+     */
     public $code;
 
     /**

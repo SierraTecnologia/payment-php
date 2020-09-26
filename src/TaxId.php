@@ -66,17 +66,4 @@ class TaxId extends ApiResource
         $extn = urlencode($id);
         return "$base/$customerExtn/tax_ids/$extn";
     }
-
-    /**
-     * @param array|string      $_id
-     * @param array|string|null $_opts
-     *
-     * @throws \SierraTecnologia\Error\InvalidRequest
-     */
-    public static function retrieve($_id, $_opts = null)
-    {
-        $msg = "Tax Ids cannot be accessed without a customer ID. " .
-               "Retrieve a Tax Id using Customer::retrieveTaxId('tax_id') instead.";
-        throw new Error\InvalidRequest($msg, null);
-    }
 }

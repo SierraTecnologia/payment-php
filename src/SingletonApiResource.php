@@ -11,8 +11,10 @@ abstract class SingletonApiResource extends ApiResource
 {
     /**
      * @param array|null|string $options
+     *
+     * @return self
      */
-    protected static function _singletonRetrieve($options = null)
+    protected static function _singletonRetrieve($options = null): self
     {
         $opts = Util\RequestOptions::parse($options);
         $instance = new static(null, $opts);

@@ -12,9 +12,4 @@ class SignatureVerification extends Base
         parent::__construct($message, null, $httpBody, null, null);
         $this->sigHeader = $sigHeader;
     }
-
-    public function getSigHeader()
-    {
-        return $this->sigHeader;
-    }
 }

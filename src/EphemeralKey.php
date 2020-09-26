@@ -29,9 +29,9 @@ class EphemeralKey extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return EphemeralKey The created key.
+     * @return self The created key.
      */
-    public static function create($params = null, $opts = null)
+    public static function create($params = null, $opts = null): self
     {
         if (!$opts['sitecpayment_version']) {
             throw new \InvalidArgumentException('sitecpayment_version must be specified to create an ephemeral key');

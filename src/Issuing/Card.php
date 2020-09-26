@@ -33,19 +33,4 @@ class Card extends \SierraTecnologia\ApiResource
     use \SierraTecnologia\ApiOperations\Create;
     use \SierraTecnologia\ApiOperations\Retrieve;
     use \SierraTecnologia\ApiOperations\Update;
-
-    /**
-     * @param array|null        $params
-     * @param array|string|null $options
-     *
-     * @return CardDetails The card details associated with that issuing card.
-     */
-    public function details($params = null, $options = null)
-    {
-        $url = $this->instanceUrl() . '/details';
-        list($response, $opts) = $this->_request('get', $url, $params, $options);
-        $obj = \SierraTecnologia\Util\Util::convertToSierraTecnologiaObject($response, $opts);
-        $obj->setLastResponse($response);
-        return $obj;
-    }
 }

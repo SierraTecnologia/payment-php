@@ -31,12 +31,17 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
 
     /**
      * @param array|null $params
+     *
+     * @return void
      */
-    public function setRequestParams(?array $params)
+    public function setRequestParams(?array $params): void
     {
         $this->_requestParams = $params;
     }
 
+    /**
+     * @return SierraTecnologiaObject|array
+     */
     public function all($params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
@@ -49,6 +54,8 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
     /**
      * @param array|null        $params
      * @param array|null|string $opts
+     *
+     * @return SierraTecnologiaObject|array
      */
     public function create(?array $params = null, $opts = null)
     {
@@ -59,25 +66,8 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
         return Util\Util::convertToSierraTecnologiaObject($response, $opts);
     }
 
-    public function retrieve($id, $params = null, $opts = null)
-    {
-        list($url, $params) = $this->extractPathAndUpdateParams($params);
-
-        $id = Util\Util::utf8($id);
-        $extn = urlencode($id);
-        list($response, $opts) = $this->_request(
-            'get',
-            "$url/$extn",
-            $params,
-            $opts
-        );
-        $this->_requestParams = $params;
-        return Util\Util::convertToSierraTecnologiaObject($response, $opts);
-    }
-
     /**
-     * @return \ArrayIterator An iterator that can be used to iterate
-     *    across objects in the current page.
+     * @return \ArrayIterator An iterator that can be used to iterate across objects in the current page.
      */
     public function getIterator()
     {
@@ -85,17 +75,13 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
     }
 
     /**
-     * @return Util\AutoPagingIterator An iterator that can be used to iterate
-     *    across all objects across all pages. As page boundaries are
-     *    encountered, the next page will be fetched automatically for
-     *    continued iteration.
+     * @param array|null $params
+     *
+     * @return (array|mixed|string)[]
+     *
+     * @psalm-return array{0: string, 1: array|mixed}
      */
-    public function autoPagingIterator()
-    {
-        return new Util\AutoPagingIterator($this, $this->_requestParams);
-    }
-
-    private function extractPathAndUpdateParams($params)
+    private function extractPathAndUpdateParams(?array $params): array
     {
         $url = parse_url($this->url);
         if (!isset($url['path'])) {

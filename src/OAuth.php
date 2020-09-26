@@ -4,50 +4,7 @@ namespace SierraTecnologia;
 
 abstract class OAuth
 {
-    /**
-     * Generates a URL to SierraTecnologia's OAuth form.
-     *
-     * @param array|null $params
-     * @param array|null $opts
-     *
-     * @return string The URL to SierraTecnologia's OAuth form.
-     */
-    public static function authorizeUrl($params = null, $opts = null)
-    {
-        $params = $params ?: [];
 
-        $base = ($opts && property_exists('connect_base', $opts)) ? $opts['connect_base'] : SierraTecnologia::$connectBase;
-
-        $params['client_id'] = self::_getClientId($params);
-        if (!property_exists('response_type', $params)) {
-            $params['response_type'] = 'code';
-        }
-        $query = Util\Util::encodeParameters($params);
-
-        return $base . '/oauth/authorize?' . $query;
-    }
-
-    /**
-     * Use an authoriztion code to connect an account to your platform and
-     * fetch the user's credentials.
-     *
-     * @param array|null $params
-     * @param array|null $opts
-     *
-     * @return SierraTecnologiaObject Object containing the response from the API.
-     */
-    public static function token($params = null, $opts = null)
-    {
-        $base = ($opts && property_exists($opts, 'connect_base')) ? $opts['connect_base'] : SierraTecnologia::$connectBase;
-        $requestor = new ApiRequestor(null, $base);
-        list($response, $apiKey) = $requestor->request(
-            'post',
-            '/oauth/token',
-            $params,
-            null
-        );
-        return Util\Util::convertToSierraTecnologiaObject($response->json, $opts);
-    }
 
     /**
      * Disconnects an account from your platform.
@@ -55,7 +12,7 @@ abstract class OAuth
      * @param array|null $params
      * @param array|null $opts
      *
-     * @return SierraTecnologiaObject Object containing the response from the API.
+     * @return SierraTecnologiaObject|array Object containing the response from the API.
      */
     public static function deauthorize($params = null, $opts = null)
     {

@@ -11,16 +11,18 @@ abstract class WebhookSignature
      * SignatureVerification exception if the verification fails for any
      * reason.
      *
-     * @param  string $payload   the payload sent by SierraTecnologia.
-     * @param  string $header    the contents of the signature header sent by
+     * @param string $payload   the payload sent by SierraTecnologia.
+     * @param string $header    the contents of the signature header sent by
      *                           SierraTecnologia.
-     * @param  string $secret    secret used to generate the signature.
-     * @param  int    $tolerance maximum difference allowed between the header's
+     * @param string $secret    secret used to generate the signature.
+     * @param int    $tolerance maximum difference allowed between the header's
      *                           timestamp and the current time
+     *
      * @throws \SierraTecnologia\Error\SignatureVerification if the verification fails.
-     * @return bool
+     *
+     * @return true
      */
-    public static function verifyHeader($payload, $header, $secret, $tolerance = null)
+    public static function verifyHeader($payload, $header, $secret, $tolerance = null): bool
     {
         // Extract timestamp and signatures from header
         $timestamp = self::getTimestamp($header);
@@ -98,11 +100,14 @@ abstract class WebhookSignature
     /**
      * Extracts the signatures matching a given scheme in a signature header.
      *
-     * @param  string $header the signature header
-     * @param  string $scheme the signature scheme to look for.
-     * @return array the list of signatures matching the provided scheme.
+     * @param string $header the signature header
+     * @param string $scheme the signature scheme to look for.
+     *
+     * @return string[] the list of signatures matching the provided scheme.
+     *
+     * @psalm-return list<string>
      */
-    private static function getSignatures($header, $scheme)
+    private static function getSignatures($header, $scheme): array
     {
         $signatures = [];
         $items = explode(",", $header);

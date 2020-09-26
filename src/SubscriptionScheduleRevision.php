@@ -54,21 +54,10 @@ class SubscriptionScheduleRevision extends ApiResource
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
-     */
-    public static function retrieve($_id, $_opts = null)
-    {
-        $msg = "Subscription Schedule Revisions cannot be accessed without a Subscription Schedule ID. " .
-               "Retrieve one using \$schedule->retrieveRevision('revision_id') instead.";
-        throw new Error\InvalidRequest($msg, null);
-    }
-
-    /**
-     * @param array|string      $_id
-     * @param array|string|null $_opts
      *
-     * @throws \SierraTecnologia\Error\InvalidRequest
+     * @return void
      */
-    public static function all($params = null, $opts = null)
+    public static function all($params = null, $opts = null): void
     {
         $msg = "Subscription Schedule Revisions cannot be listed without a Subscription Schedule ID. " .
                "List those using \$schedule->allRevisions('revision_id') instead.";

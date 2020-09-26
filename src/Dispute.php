@@ -64,17 +64,4 @@ class Dispute extends ApiResource
     const STATUS_WARNING_NEEDS_RESPONSE = 'warning_needs_response';
     const STATUS_WARNING_UNDER_REVIEW   = 'warning_under_review';
     const STATUS_WON                    = 'won';
-
-    /**
-     * @param array|string|null $options
-     *
-     * @return Dispute The closed dispute.
-     */
-    public function close($options = null)
-    {
-        $url = $this->instanceUrl() . '/close';
-        list($response, $opts) = $this->_request('post', $url, null, $options);
-        $this->refreshFrom($response, $opts);
-        return $this;
-    }
 }

@@ -36,37 +36,4 @@ class AlipayAccount extends ApiResource
         $extn = urlencode(Util\Util::utf8($this['id']));
         return "$base/$parentExtn/$path/$extn";
     }
-
-    /**
-     * @param array|string      $_id
-     * @param array|string|null $_opts
-     *
-     * @throws \SierraTecnologia\Error\InvalidRequest
-     *
-     * @deprecated Alipay accounts are deprecated. Please use the sources API instead.
-     * @link       https://sierratecnologia.com.br/docs/sources/alipay
-     */
-    public static function retrieve($_id, $_opts = null)
-    {
-        $msg = "Alipay accounts cannot be accessed without a customer ID. " .
-               "Retrieve an Alipay account using \$customer->sources->retrieve('alipay_account_id') instead.";
-        throw new Error\InvalidRequest($msg, null);
-    }
-
-    /**
-     * @param string            $_id
-     * @param array|null        $_params
-     * @param array|string|null $_options
-     *
-     * @throws \SierraTecnologia\Error\InvalidRequest
-     *
-     * @deprecated Alipay accounts are deprecated. Please use the sources API instead.
-     * @link       https://sierratecnologia.com.br/docs/sources/alipay
-     */
-    public static function update($_id, $_params = null, $_options = null)
-    {
-        $msg = "Alipay accounts cannot be accessed without a customer ID. " .
-               "Call save() on \$customer->sources->retrieve('alipay_account_id') instead.";
-        throw new Error\InvalidRequest($msg, null);
-    }
 }

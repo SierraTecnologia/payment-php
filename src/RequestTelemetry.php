@@ -11,7 +11,14 @@ namespace SierraTecnologia;
  */
 class RequestTelemetry
 {
+    /**
+     * @var string
+     */
     public $requestId;
+
+    /**
+     * @var int
+     */
     public $requestDuration;
 
     /**
