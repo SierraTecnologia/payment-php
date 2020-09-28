@@ -84,6 +84,16 @@ class SierraTecnologia
 
     const VERSION = '6.35.0';
 
+    public static function setApiKey($apiKey)
+    {
+        return self::$apiKey = $apiKey;
+    }
+
+    public static function getApiKey()
+    {
+        return self::$apiKey;
+    }
+
     /**
      * @return string The client_id used for Connect requests.
      */
