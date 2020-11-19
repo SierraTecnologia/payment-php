@@ -463,7 +463,7 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
      * Produces a deep copy of the given object including support for arrays
      * and SierraTecnologiaObjects.
      */
-    protected static function deepCopy(array $obj)
+    protected static function deepCopy($obj)
     {
         if (is_array($obj)) {
             $copy = [];
@@ -471,14 +471,16 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
                 $copy[$k] = self::deepCopy($v);
             }
             return $copy;
-        } elseif ($obj instanceof SierraTecnologiaObject) {
+        }
+        
+        if ($obj instanceof SierraTecnologiaObject) {
             return $obj::constructFrom(
                 self::deepCopy($obj->_values),
                 clone $obj->_opts
             );
-        } else {
-            return $obj;
-        }
+        } 
+        
+        return $obj;
     }
 
     /**
