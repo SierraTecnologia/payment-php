@@ -54,6 +54,7 @@ trait Request
         $opts = \SierraTecnologia\Util\RequestOptions::parse($options);
         $baseUrl = isset($opts->apiBase) ? $opts->apiBase : static::baseUrl();
         $requestor = new \SierraTecnologia\ApiRequestor($opts->apiKey, $baseUrl);
+
         list($response, $opts->apiKey) = $requestor->request($method, $url, $params, $opts->headers);
         $opts->discardNonPersistentHeaders();
         return [$response, $opts];

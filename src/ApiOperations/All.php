@@ -21,6 +21,7 @@ trait All
         $url = static::classUrl();
 
         list($response, $opts) = static::_staticRequest('get', $url, $params, $opts);
+
         $obj = \SierraTecnologia\Util\Util::convertToSierraTecnologiaObject($response->json, $opts);
         if (!is_a($obj, 'SierraTecnologia\\Collection')) {
             $class = get_class($obj);
