@@ -19,10 +19,10 @@ class SierraTecnologia
     public static $apiBase = 'https://payment.sierratecnologia.com.br';
 
     // @var string The base URL for the OAuth API.
-    public static $connectBase = 'https://connect.sierratecnologia.com.br';
+    public static $connectBase = 'https://payment.sierratecnologia.com.br'; //'https://connect.sierratecnologia.com.br';
 
     // @var string The base URL for the SierraTecnologia API uploads endpoint.
-    public static $apiUploadBase = 'https://files.sierratecnologia.com.br';
+    public static $apiUploadBase = 'https://payment.sierratecnologia.com.br'; //'https://files.sierratecnologia.com.br';
 
     // @var string|null The version of the SierraTecnologia API to use for requests.
     public static $apiVersion = null;
