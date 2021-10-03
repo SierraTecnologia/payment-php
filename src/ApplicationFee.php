@@ -51,7 +51,7 @@ class ApplicationFee extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApplicationFeeRefund
+     * @return SierraTecnologiaObject|array
      */
     public static function createRefund($id, $params = null, $opts = null)
     {
@@ -64,7 +64,7 @@ class ApplicationFee extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApplicationFeeRefund
+     * @return SierraTecnologiaObject|array
      */
     public static function retrieveRefund($id, $refundId, $params = null, $opts = null)
     {
@@ -77,7 +77,7 @@ class ApplicationFee extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApplicationFeeRefund
+     * @return SierraTecnologiaObject|array
      */
     public static function updateRefund($id, $refundId, $params = null, $opts = null)
     {
@@ -89,7 +89,7 @@ class ApplicationFee extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Collection The list of refunds.
+     * @return SierraTecnologiaObject|array The list of refunds.
      */
     public static function allRefunds($id, $params = null, $opts = null)
     {

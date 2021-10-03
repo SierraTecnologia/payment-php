@@ -208,11 +208,19 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
         return count($this->_values);
     }
 
+    /**
+     * @return (int|string)[]
+     *
+     * @psalm-return list<array-key>
+     */
     public function keys()
     {
         return array_keys($this->_values);
     }
 
+    /**
+     * @return array
+     */
     public function values()
     {
         return array_values($this->_values);
@@ -239,6 +247,8 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
      * @param array                                 $values
      * @param null|string|array|Util\RequestOptions $opts
      * @param boolean                               $partial Defaults to false.
+     *
+     * @return void
      */
     public function refreshFrom($values, $opts, $partial = false)
     {
@@ -276,6 +286,8 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
      * @param array                                 $values
      * @param null|string|array|Util\RequestOptions $opts
      * @param boolean                               $dirty  Defaults to true.
+     *
+     * @return void
      */
     public function updateAttributes($values, $opts = null, $dirty = true)
     {
@@ -436,6 +448,8 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
      * included with an update when `serializeParameters` is called. This
      * method is also recursive, so any SierraTecnologiaObjects contained as values or
      * which are values in a tenant array are also marked as dirty.
+     *
+     * @return void
      */
     public function dirty()
     {
@@ -447,6 +461,8 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
 
     /**
      * @param array|self $value
+     *
+     * @return void
      */
     protected function dirtyValue($value)
     {
@@ -462,6 +478,10 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     /**
      * Produces a deep copy of the given object including support for arrays
      * and SierraTecnologiaObjects.
+     *
+     * @param array $obj
+     *
+     * @return array|static
      */
     protected static function deepCopy($obj)
     {
@@ -486,6 +506,10 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     /**
      * Returns a hash of empty values for all the values that are in the given
      * SierraTecnologiaObject.
+     *
+     * @return string[]
+     *
+     * @psalm-return array<''>
      */
     public static function emptyValues($obj)
     {

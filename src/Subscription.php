@@ -88,7 +88,7 @@ class Subscription extends ApiResource
     }
 
     /**
-     * @return Subscription The updated subscription.
+     * @return void
      */
     public function deleteDiscount()
     {

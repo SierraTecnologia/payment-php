@@ -169,7 +169,7 @@ class Invoice extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Invoice The upcoming invoice.
+     * @return SierraTecnologiaObject|array The upcoming invoice.
      */
     public static function upcoming($params = null, $opts = null)
     {

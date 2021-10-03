@@ -15,7 +15,7 @@ trait Update
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return static The updated resource.
+     * @return \SierraTecnologia\SierraTecnologiaObject|array The updated resource.
      */
     public static function update($id, $params = null, $opts = null)
     {

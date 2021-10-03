@@ -155,6 +155,8 @@ class ApiRequestor
      * @throws Error\RateLimit if the error is caused by too many requests
      *    hitting the API.
      * @throws Error\Api otherwise.
+     *
+     * @return never
      */
     public function handleErrorResponse($rbody, $rcode, $rheaders, $resp)
     {
@@ -480,6 +482,8 @@ class ApiRequestor
      * @static
      *
      * @param HttpClient\ClientInterface $client
+     *
+     * @return void
      */
     public static function setHttpClient($client)
     {
@@ -487,9 +491,11 @@ class ApiRequestor
     }
 
     /**
-     * @static
-     *
+     * @static 
+
      * Resets any stateful telemetry data
+     *
+     * @return void
      */
     public static function resetTelemetry()
     {

@@ -88,6 +88,8 @@ class SierraTecnologia
     /**
      * @param Util\LoggerInterface $logger The logger to which the library
      *                                     will produce messages.
+     *
+     * @return void
      */
     public static function setLogger($logger)
     {
@@ -98,6 +100,8 @@ class SierraTecnologia
      * Sets the API key to be used for requests.
      *
      * @param string $apiKey
+     *
+     * @return void
      */
     public static function setApiKey($apiKey)
     {
@@ -108,6 +112,8 @@ class SierraTecnologia
      * Sets the client_id to be used for Connect requests.
      *
      * @param string $clientId
+     *
+     * @return void
      */
     public static function setClientId($clientId)
     {
@@ -125,6 +131,8 @@ class SierraTecnologia
 
     /**
      * @param string $apiVersion The API version to use for requests.
+     *
+     * @return void
      */
     public static function setApiVersion($apiVersion)
     {
@@ -149,6 +157,8 @@ class SierraTecnologia
 
     /**
      * @param string $caBundlePath
+     *
+     * @return void
      */
     public static function setCABundlePath($caBundlePath)
     {
@@ -165,6 +175,8 @@ class SierraTecnologia
 
     /**
      * @param boolean $verify
+     *
+     * @return void
      */
     public static function setVerifySslCerts($verify)
     {
@@ -183,6 +195,8 @@ class SierraTecnologia
     /**
      * @param string $accountId The SierraTecnologia account ID to set for connected
      *                          account requests.
+     *
+     * @return void
      */
     public static function setAccountId($accountId)
     {
@@ -201,6 +215,8 @@ class SierraTecnologia
      * @param string $appName    The application's name
      * @param string $appVersion The application's version
      * @param string $appUrl     The application's URL
+     *
+     * @return void
      */
     public static function setAppInfo($appName, $appVersion = null, $appUrl = null, $appPartnerId = null)
     {
@@ -221,6 +237,8 @@ class SierraTecnologia
 
     /**
      * @param int $maxNetworkRetries Maximum number of request retries
+     *
+     * @return void
      */
     public static function setMaxNetworkRetries($maxNetworkRetries)
     {
@@ -253,10 +271,12 @@ class SierraTecnologia
 
     /**
      * @param bool $enableTelemetry Enables client telemetry.
-     *
+
      *                              Client telemetry enables timing and request metrics to be sent back to SierraTecnologia as an HTTP Header
      *                              with the current request. This enables SierraTecnologia to do latency and metrics analysis without adding extra
      *                              overhead (such as extra network calls) on the client.
+     *
+     * @return void
      */
     public static function setEnableTelemetry($enableTelemetry)
     {

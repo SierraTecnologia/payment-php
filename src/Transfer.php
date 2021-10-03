@@ -49,7 +49,7 @@ class Transfer extends ApiResource
     const SOURCE_TYPE_FINANCING      = 'financing';
 
     /**
-     * @return TransferReversal The created transfer reversal.
+     * @return static The created transfer reversal.
      */
     public function reverse($params = null, $opts = null)
     {
@@ -75,7 +75,7 @@ class Transfer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return TransferReversal
+     * @return SierraTecnologiaObject|array
      */
     public static function createReversal($id, $params = null, $opts = null)
     {
@@ -88,7 +88,7 @@ class Transfer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return TransferReversal
+     * @return SierraTecnologiaObject|array
      */
     public static function retrieveReversal($id, $reversalId, $params = null, $opts = null)
     {
@@ -101,7 +101,7 @@ class Transfer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return TransferReversal
+     * @return SierraTecnologiaObject|array
      */
     public static function updateReversal($id, $reversalId, $params = null, $opts = null)
     {
@@ -113,7 +113,7 @@ class Transfer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Collection The list of reversals.
+     * @return SierraTecnologiaObject|array The list of reversals.
      */
     public static function allReversals($id, $params = null, $opts = null)
     {

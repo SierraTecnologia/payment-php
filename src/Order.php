@@ -53,7 +53,7 @@ class Order extends ApiResource
     }
 
     /**
-     * @return OrderReturn The newly created return.
+     * @return SierraTecnologiaObject|array The newly created return.
      */
     public function returnOrder($params = null, $opts = null)
     {

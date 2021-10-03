@@ -48,6 +48,8 @@ class RequestOptions
 
     /**
      * Discards all headers that we don't want to persist across requests.
+     *
+     * @return void
      */
     public function discardNonPersistentHeaders()
     {

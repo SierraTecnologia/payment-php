@@ -138,7 +138,7 @@ class Account extends ApiResource
      * @param array|null        $clientId
      * @param array|string|null $opts
      *
-     * @return SierraTecnologiaObject Object containing the response from the API.
+     * @return SierraTecnologiaObject|array Object containing the response from the API.
      */
     public function deauthorize($clientId = null, $opts = null)
     {
@@ -162,7 +162,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Capability
+     * @return SierraTecnologiaObject|array
      */
     public static function retrieveCapability($id, $capabilityId, $params = null, $opts = null)
     {
@@ -175,7 +175,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Capability
+     * @return SierraTecnologiaObject|array
      */
     public static function updateCapability($id, $capabilityId, $params = null, $opts = null)
     {
@@ -187,7 +187,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Collection The list of capabilities.
+     * @return SierraTecnologiaObject|array The list of capabilities.
      */
     public static function allCapabilities($id, $params = null, $opts = null)
     {
@@ -199,7 +199,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return BankAccount|Card
+     * @return SierraTecnologiaObject|array
      */
     public static function createExternalAccount($id, $params = null, $opts = null)
     {
@@ -212,7 +212,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return BankAccount|Card
+     * @return SierraTecnologiaObject|array
      */
     public static function retrieveExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -225,7 +225,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return BankAccount|Card
+     * @return SierraTecnologiaObject|array
      */
     public static function updateExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -238,7 +238,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return BankAccount|Card
+     * @return SierraTecnologiaObject|array
      */
     public static function deleteExternalAccount($id, $externalAccountId, $params = null, $opts = null)
     {
@@ -250,7 +250,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Collection The list of external accounts (BankAccount or Card).
+     * @return SierraTecnologiaObject|array The list of external accounts (BankAccount or Card).
      */
     public static function allExternalAccounts($id, $params = null, $opts = null)
     {
@@ -262,7 +262,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return LoginLink
+     * @return SierraTecnologiaObject|array
      */
     public static function createLoginLink($id, $params = null, $opts = null)
     {
@@ -273,7 +273,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return Collection The list of persons.
+     * @return SierraTecnologiaObject|array The list of persons.
      */
     public function persons($params = null, $options = null)
     {
@@ -289,7 +289,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Person
+     * @return SierraTecnologiaObject|array
      */
     public static function createPerson($id, $params = null, $opts = null)
     {
@@ -302,7 +302,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Person
+     * @return SierraTecnologiaObject|array
      */
     public static function retrievePerson($id, $personId, $params = null, $opts = null)
     {
@@ -315,7 +315,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Person
+     * @return SierraTecnologiaObject|array
      */
     public static function updatePerson($id, $personId, $params = null, $opts = null)
     {
@@ -328,7 +328,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Person
+     * @return SierraTecnologiaObject|array
      */
     public static function deletePerson($id, $personId, $params = null, $opts = null)
     {
@@ -340,7 +340,7 @@ class Account extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Collection The list of persons.
+     * @return SierraTecnologiaObject|array The list of persons.
      */
     public static function allPersons($id, $params = null, $opts = null)
     {
@@ -368,6 +368,11 @@ class Account extends ApiResource
         return $update;
     }
 
+    /**
+     * @return (array|mixed)[]
+     *
+     * @psalm-return array<array|mixed>
+     */
     private function serializeAdditionalOwners($legalEntity, $additionalOwners)
     {
         if (isset($legalEntity->_originalValues['additional_owners'])) {

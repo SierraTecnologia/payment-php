@@ -31,12 +31,17 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
 
     /**
      * @param array|null $params
+     *
+     * @return void
      */
     public function setRequestParams(?array $params)
     {
         $this->_requestParams = $params;
     }
 
+    /**
+     * @return SierraTecnologiaObject|array
+     */
     public function all($params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
@@ -49,6 +54,8 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
     /**
      * @param array|null $params
      * @param array|null|string $opts
+     *
+     * @return SierraTecnologiaObject|array
      */
     public function create(?array $params = null, $opts = null)
     {
@@ -59,6 +66,9 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
         return Util\Util::convertToSierraTecnologiaObject($response, $opts);
     }
 
+    /**
+     * @return SierraTecnologiaObject|array
+     */
     public function retrieve($id, $params = null, $opts = null)
     {
         list($url, $params) = $this->extractPathAndUpdateParams($params);
@@ -95,6 +105,13 @@ class Collection extends SierraTecnologiaObject implements \IteratorAggregate
         return new Util\AutoPagingIterator($this, $this->_requestParams);
     }
 
+    /**
+     * @param array|null $params
+     *
+     * @return (array|mixed|string)[]
+     *
+     * @psalm-return array{0: string, 1: array|mixed}
+     */
     private function extractPathAndUpdateParams($params)
     {
         $url = parse_url($this->url);

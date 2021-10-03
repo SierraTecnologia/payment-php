@@ -33,6 +33,9 @@ class AutoPagingIterator implements \Iterator
         return key($this->page->data) + $this->pageOffset;
     }
 
+    /**
+     * @return false|null
+     */
     public function next()
     {
         $item = next($this->page->data);

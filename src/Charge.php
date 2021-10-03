@@ -149,7 +149,7 @@ class Charge extends ApiResource
      *
      * @deprecated Use the `save` method on the Dispute object
      *
-     * @return array The updated dispute.
+     * @return string The updated dispute.
      */
     public function updateDispute($params = null, $options = null)
     {

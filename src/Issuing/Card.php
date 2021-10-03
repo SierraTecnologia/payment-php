@@ -38,7 +38,7 @@ class Card extends \SierraTecnologia\ApiResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return CardDetails The card details associated with that issuing card.
+     * @return \SierraTecnologia\SierraTecnologiaObject|array The card details associated with that issuing card.
      */
     public function details($params = null, $options = null)
     {

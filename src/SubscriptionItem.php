@@ -32,7 +32,7 @@ class SubscriptionItem extends ApiResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return Collection The list of source transactions.
+     * @return SierraTecnologiaObject|array The list of source transactions.
      */
     public function usageRecordSummaries($params = null, $options = null)
     {

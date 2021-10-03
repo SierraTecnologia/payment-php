@@ -70,7 +70,7 @@ class Customer extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return InvoiceItem The resulting invoice item.
+     * @return SierraTecnologiaObject|array The resulting invoice item.
      */
     public function addInvoiceItem($params = null)
     {
@@ -83,7 +83,7 @@ class Customer extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return array An array of the customer's Invoices.
+     * @return Collection An array of the customer's Invoices.
      */
     public function invoices($params = null)
     {
@@ -96,7 +96,7 @@ class Customer extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return array An array of the customer's InvoiceItems.
+     * @return Collection An array of the customer's InvoiceItems.
      */
     public function invoiceItems($params = null)
     {
@@ -109,7 +109,7 @@ class Customer extends ApiResource
     /**
      * @param array|null $params
      *
-     * @return array An array of the customer's Charges.
+     * @return Collection An array of the customer's Charges.
      */
     public function charges($params = null)
     {
@@ -146,7 +146,7 @@ class Customer extends ApiResource
     }
 
     /**
-     * @return Customer The updated customer.
+     * @return void
      */
     public function deleteDiscount()
     {
@@ -160,7 +160,7 @@ class Customer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApiResource
+     * @return SierraTecnologiaObject|array
      */
     public static function createSource($id, $params = null, $opts = null)
     {
@@ -173,7 +173,7 @@ class Customer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApiResource
+     * @return SierraTecnologiaObject|array
      */
     public static function retrieveSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -186,7 +186,7 @@ class Customer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApiResource
+     * @return SierraTecnologiaObject|array
      */
     public static function updateSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -199,7 +199,7 @@ class Customer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApiResource
+     * @return SierraTecnologiaObject|array
      */
     public static function deleteSource($id, $sourceId, $params = null, $opts = null)
     {
@@ -211,7 +211,7 @@ class Customer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Collection The list of sources.
+     * @return SierraTecnologiaObject|array The list of sources.
      */
     public static function allSources($id, $params = null, $opts = null)
     {
@@ -223,7 +223,7 @@ class Customer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApiResource
+     * @return SierraTecnologiaObject|array
      */
     public static function createTaxId($id, $params = null, $opts = null)
     {
@@ -236,7 +236,7 @@ class Customer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApiResource
+     * @return SierraTecnologiaObject|array
      */
     public static function retrieveTaxId($id, $taxIdId, $params = null, $opts = null)
     {
@@ -249,7 +249,7 @@ class Customer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return ApiResource
+     * @return SierraTecnologiaObject|array
      */
     public static function deleteTaxId($id, $taxIdId, $params = null, $opts = null)
     {
@@ -261,7 +261,7 @@ class Customer extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Collection The list of tax ids.
+     * @return SierraTecnologiaObject|array The list of tax ids.
      */
     public static function allTaxIds($id, $params = null, $opts = null)
     {

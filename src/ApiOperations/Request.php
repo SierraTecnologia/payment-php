@@ -13,6 +13,8 @@ trait Request
      * @param array|null|mixed $params The list of parameters to validate
      *
      * @throws \SierraTecnologia\Error\Api if $params exists and is not an array
+     *
+     * @return void
      */
     protected static function _validateParams($params = null)
     {

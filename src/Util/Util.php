@@ -336,6 +336,11 @@ abstract class Util
         return $s;
     }
 
+    /**
+     * @return (array|mixed)[]
+     *
+     * @psalm-return array{0: mixed, 1: array}
+     */
     public static function normalizeId($id)
     {
         if (is_array($id)) {

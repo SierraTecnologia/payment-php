@@ -54,6 +54,8 @@ class SubscriptionScheduleRevision extends ApiResource
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
+     *
+     * @return never
      */
     public static function retrieve($_id, $_opts = null)
     {
@@ -67,6 +69,8 @@ class SubscriptionScheduleRevision extends ApiResource
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
+     *
+     * @return never
      */
     public static function all($params = null, $opts = null)
     {

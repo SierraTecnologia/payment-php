@@ -116,7 +116,7 @@ class Source extends ApiResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return Source The detached source.
+     * @return void
      *
      * @deprecated Use the `detach` method instead.
      */
@@ -129,7 +129,7 @@ class Source extends ApiResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return Collection The list of source transactions.
+     * @return SierraTecnologiaObject|array The list of source transactions.
      */
     public function sourceTransactions($params = null, $options = null)
     {

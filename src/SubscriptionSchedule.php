@@ -73,7 +73,7 @@ class SubscriptionSchedule extends ApiResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return Collection The list of subscription schedule revisions.
+     * @return SierraTecnologiaObject|array The list of subscription schedule revisions.
      */
     public function revisions($params = null, $options = null)
     {
@@ -90,7 +90,7 @@ class SubscriptionSchedule extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Revision
+     * @return SierraTecnologiaObject|array
      */
     public static function retrieveRevision($id, $personId, $params = null, $opts = null)
     {
@@ -102,7 +102,7 @@ class SubscriptionSchedule extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return Collection The list of revisions.
+     * @return SierraTecnologiaObject|array The list of revisions.
      */
     public static function allRevisions($id, $params = null, $opts = null)
     {

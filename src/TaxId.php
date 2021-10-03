@@ -72,6 +72,8 @@ class TaxId extends ApiResource
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
+     *
+     * @return never
      */
     public static function retrieve($_id, $_opts = null)
     {

@@ -29,7 +29,7 @@ class EphemeralKey extends ApiResource
      * @param array|null        $params
      * @param array|string|null $opts
      *
-     * @return EphemeralKey The created key.
+     * @return SierraTecnologiaObject|array The created key.
      */
     public static function create($params = null, $opts = null)
     {

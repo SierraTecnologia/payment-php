@@ -34,7 +34,7 @@ abstract class OAuth
      * @param array|null $params
      * @param array|null $opts
      *
-     * @return SierraTecnologiaObject Object containing the response from the API.
+     * @return SierraTecnologiaObject|array Object containing the response from the API.
      */
     public static function token($params = null, $opts = null)
     {
@@ -55,7 +55,7 @@ abstract class OAuth
      * @param array|null $params
      * @param array|null $opts
      *
-     * @return SierraTecnologiaObject Object containing the response from the API.
+     * @return SierraTecnologiaObject|array Object containing the response from the API.
      */
     public static function deauthorize($params = null, $opts = null)
     {

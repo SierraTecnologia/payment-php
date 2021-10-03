@@ -22,7 +22,7 @@ class UsageRecord extends ApiResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return \SierraTecnologia\ApiResource The created resource.
+     * @return SierraTecnologiaObject|array The created resource.
      */
     public static function create($params = null, $options = null)
     {

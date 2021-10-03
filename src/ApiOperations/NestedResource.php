@@ -15,7 +15,7 @@ trait NestedResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return \SierraTecnologia\SierraTecnologiaObject
+     * @return \SierraTecnologia\SierraTecnologiaObject|array
      */
     protected static function _nestedResourceOperation($method, $url, $params = null, $options = null)
     {
@@ -49,7 +49,7 @@ trait NestedResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return \SierraTecnologia\SierraTecnologiaObject
+     * @return \SierraTecnologia\SierraTecnologiaObject|array
      */
     protected static function _createNestedResource($id, $nestedPath, $params = null, $options = null)
     {
@@ -64,7 +64,7 @@ trait NestedResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return \SierraTecnologia\SierraTecnologiaObject
+     * @return \SierraTecnologia\SierraTecnologiaObject|array
      */
     protected static function _retrieveNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -79,7 +79,7 @@ trait NestedResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return \SierraTecnologia\SierraTecnologiaObject
+     * @return \SierraTecnologia\SierraTecnologiaObject|array
      */
     protected static function _updateNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -94,7 +94,7 @@ trait NestedResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return \SierraTecnologia\SierraTecnologiaObject
+     * @return \SierraTecnologia\SierraTecnologiaObject|array
      */
     protected static function _deleteNestedResource($id, $nestedPath, $nestedId, $params = null, $options = null)
     {
@@ -108,7 +108,7 @@ trait NestedResource
      * @param array|null        $params
      * @param array|string|null $options
      *
-     * @return \SierraTecnologia\SierraTecnologiaObject
+     * @return \SierraTecnologia\SierraTecnologiaObject|array
      */
     protected static function _allNestedResources($id, $nestedPath, $params = null, $options = null)
     {

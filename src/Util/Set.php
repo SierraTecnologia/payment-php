@@ -17,21 +17,35 @@ class Set implements IteratorAggregate
         }
     }
 
+    /**
+     * @return bool
+     */
     public function includes($elt)
     {
         return isset($this->_elts[$elt]);
     }
 
+    /**
+     * @return void
+     */
     public function add($elt)
     {
         $this->_elts[$elt] = true;
     }
 
+    /**
+     * @return void
+     */
     public function discard($elt)
     {
         unset($this->_elts[$elt]);
     }
 
+    /**
+     * @return (int|string)[]
+     *
+     * @psalm-return list<array-key>
+     */
     public function toArray()
     {
         return array_keys($this->_elts);

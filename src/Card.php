@@ -105,6 +105,8 @@ class Card extends ApiResource
      * @param array|string|null $_opts
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
+     *
+     * @return never
      */
     public static function retrieve($_id, $_opts = null)
     {
@@ -121,6 +123,8 @@ class Card extends ApiResource
      * @param array|string|null $_options
      *
      * @throws \SierraTecnologia\Error\InvalidRequest
+     *
+     * @return never
      */
     public static function update($_id, $_params = null, $_options = null)
     {
