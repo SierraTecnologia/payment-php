@@ -44,5 +44,10 @@
                 "laravel/cashier"
             ]
         }
+    },
+    "config": {
+        "allow-plugins": {
+            "phpro/grumphp": true
+        }
     }
 }
