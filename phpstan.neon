@@ -1,0 +1,10 @@
+parameters:
+    level: 7
+    paths:
+        - src
+    excludePaths:
+        - vendor
+    ignoreErrors:
+        - '#Call to an undefined method#'
+    checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false

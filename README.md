@@ -6,18 +6,64 @@
 [![License](https://poser.pugx.org/sierratecnologia/sierratecnologia-php/license.svg)](https://packagist.org/packages/sierratecnologia/sierratecnologia-php)
 [![Code Coverage](https://coveralls.io/repos/sierratecnologia/sierratecnologia-php/badge.svg?branch=master)](https://coveralls.io/r/sierratecnologia/sierratecnologia-php?branch=master)
 
+---
+
+## 📘 Introdução
+
+### O que é a biblioteca payment-php
+
+A **payment-php** é uma biblioteca PHP robusta e profissional desenvolvida pela **SierraTecnologia** para integração com sistemas de pagamento. Ela fornece uma camada de abstração completa para processamento de transações financeiras, gestão de clientes, assinaturas, cobranças e muito mais.
+
+Esta biblioteca foi projetada seguindo os mais altos padrões de qualidade de código PHP, com suporte a PSR-12, análise estática com Psalm, testes automatizados e integração contínua.
+
+### Objetivo e Filosofia do Projeto
+
+A filosofia da **payment-php** é fornecer uma interface limpa, intuitiva e type-safe para operações de pagamento, abstraindo a complexidade das APIs de processamento de pagamento e fornecendo:
+
+- **Simplicidade**: API fluente e intuitiva
+- **Segurança**: Validações rigorosas e tratamento de erros robusto
+- **Extensibilidade**: Arquitetura modular que permite customizações
+- **Confiabilidade**: Cobertura de testes abrangente e CI/CD automatizado
+- **Compatibilidade**: Suporte a múltiplas versões do PHP (7.4+, 8.0, 8.1, 8.2+)
+
+### Benefícios de Uso
+
+- ✅ **Integração Rápida**: Implementação simplificada de funcionalidades de pagamento
+- ✅ **Type Safety**: Aproveitamento de type hints e análise estática
+- ✅ **Testável**: Arquitetura que facilita testes unitários e de integração
+- ✅ **Laravel Ready**: Integração nativa com Laravel (Service Providers, Auto-discovery)
+- ✅ **Documentação Completa**: Exemplos práticos e referência de API detalhada
+- ✅ **Suporte Empresarial**: Mantido profissionalmente pela SierraTecnologia
+
+### Integração no Ecossistema SierraTecnologia
+
+A biblioteca **payment-php** é parte fundamental do ecossistema SierraTecnologia, integrando-se perfeitamente com:
+
+- **Módulos de Faturamento**: Gestão de invoices e billing cycles
+- **CRM Corporativo**: Sincronização de dados de clientes e transações
+- **Analytics e Relatórios**: Métricas de receita e performance financeira
+- **Microserviços**: Comunicação via eventos e APIs REST
+
+---
+
+## 🚀 Instalação
+
 You can sign up for a SierraTecnologia account at https://sierratecnologia.com.br.
 
-## Requirements
+### Requisitos Mínimos
 
-PHP 5.4.0 and later.
+- **PHP**: >= 7.4 (recomendado PHP 8.2+)
+- **Extensões PHP Obrigatórias**:
+  - `ext-curl`: Para comunicação HTTP
+  - `ext-json`: Para serialização/deserialização de dados
+  - `ext-mbstring`: Para manipulação de strings multibyte
+- **Composer**: >= 2.0
+- **Laravel** (opcional): >= 7.x | 8.x | 9.x | 10.x | 11.x
 
-## Composer
-
-You can install the bindings via [Composer](http://getcomposer.org/). Run the following command:
+### Instalação via Composer
 
 ```bash
-composer require sierratecnologia/sierratecnologia-php
+composer require sierratecnologia/payment-php
 ```
 
 To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/01-basic-usage.md#autoloading):
@@ -26,7 +72,7 @@ To use the bindings, use Composer's [autoload](https://getcomposer.org/doc/01-ba
 require_once('vendor/autoload.php');
 ```
 
-## Manual Installation
+### Manual Installation
 
 If you do not wish to use Composer, you can download the [latest release](https://github.com/sierratecnologia/sierratecnologia-php/releases). Then, to use the bindings, include the `init.php` file.
 
@@ -34,7 +80,7 @@ If you do not wish to use Composer, you can download the [latest release](https:
 require_once('/path/to/sierratecnologia-php/init.php');
 ```
 
-## Dependencies
+### Dependencies
 
 The bindings require the following extensions in order to work properly:
 
@@ -44,7 +90,7 @@ The bindings require the following extensions in order to work properly:
 
 If you use Composer, these dependencies should be handled automatically. If you install manually, you'll want to make sure that these extensions are available.
 
-## Getting Started
+### Getting Started
 
 Simple usage looks like:
 
@@ -54,189 +100,319 @@ $charge = \SierraTecnologia\Charge::create(['amount' => 2000, 'currency' => 'usd
 echo $charge;
 ```
 
-## Documentation
+---
 
-Please see https://sierratecnologia.com.br/docs/api for up-to-date documentation.
+## 🏗️ Arquitetura e Estrutura Interna
 
-## Legacy Version Support
+### Estrutura de Diretórios
 
-### PHP 5.3
-
-If you are using PHP 5.3, you can download v5.9.2 ([zip](https://github.com/sierratecnologia/sierratecnologia-php/archive/v5.9.2.zip), [tar.gz](https://github.com/sierratecnologia/sierratecnologia-php/archive/v5.9.2.tar.gz)) from our [releases page](https://github.com/sierratecnologia/sierratecnologia-php/releases). This version will continue to work with new versions of the SierraTecnologia API for all common uses.
-
-### PHP 5.2
-
-If you are using PHP 5.2, you can download v1.18.0 ([zip](https://github.com/sierratecnologia/sierratecnologia-php/archive/v1.18.0.zip), [tar.gz](https://github.com/sierratecnologia/sierratecnologia-php/archive/v1.18.0.tar.gz)) from our [releases page](https://github.com/sierratecnologia/sierratecnologia-php/releases). This version will continue to work with new versions of the SierraTecnologia API for all common uses.
-
-This legacy version may be included via `require_once("/path/to/sierratecnologia-php/lib/SierraTecnologia.php");`, and used like:
-
-```php
-SierraTecnologia::setApiKey('d8e8fca2dc0f896fd7cb4cb0031ba249');
-$charge = SierraTecnologia_Charge::create(array('source' => 'tok_XXXXXXXX', 'amount' => 2000, 'currency' => 'usd'));
-echo $charge;
+```
+payment-php/
+├── src/
+│   ├── ApiOperations/          # Traits para operações CRUD
+│   ├── Checkout/               # Módulo de checkout
+│   ├── Error/                  # Exceções customizadas
+│   ├── HttpClient/             # Cliente HTTP
+│   ├── Issuing/                # Emissão de cartões
+│   ├── Radar/                  # Prevenção de fraudes
+│   ├── Reporting/              # Relatórios
+│   ├── Terminal/               # Terminais POS
+│   ├── Util/                   # Utilitários
+│   ├── SierraTecnologia.php    # Classe principal de configuração
+│   ├── ApiRequestor.php        # Gerenciador de requisições HTTP
+│   ├── ApiResource.php         # Classe base de recursos
+│   ├── Charge.php              # Cobranças
+│   ├── Customer.php            # Clientes
+│   └── ...
+├── tests/                      # Testes automatizados
+├── examples/                   # Exemplos de uso
+└── docs/                       # Documentação adicional
 ```
 
-## Custom Request Timeouts
+### Padrões Arquiteturais
 
-*NOTE:* We do not recommend decreasing the timeout for non-read-only calls (e.g. charge creation), since even if you locally timeout, the request on SierraTecnologia's side can still complete. If you are decreasing timeouts on these calls, make sure to use [idempotency tokens](https://sierratecnologia.com.br/docs/api/php#idempotent_requests) to avoid executing the same transaction twice as a result of timeout retry logic.
+A biblioteca utiliza os seguintes padrões de design:
 
-To modify request timeouts (connect or total, in seconds) you'll need to tell the API client to use a CurlClient other than its default. You'll set the timeouts in that CurlClient.
+1. **Active Record Pattern**: Recursos da API são representados como objetos com métodos de persistência
+2. **Trait-based Composition**: Operações CRUD implementadas como traits reutilizáveis
+3. **Factory Pattern**: Criação de objetos específicos baseados em tipo
+4. **Strategy Pattern**: Diferentes estratégias de HTTP client
+5. **Singleton Pattern**: Cliente HTTP compartilhado
 
-```php
-// set up your tweaked Curl client
-$curl = new \SierraTecnologia\HttpClient\CurlClient();
-$curl->setTimeout(10); // default is \SierraTecnologia\HttpClient\CurlClient::DEFAULT_TIMEOUT
-$curl->setConnectTimeout(5); // default is \SierraTecnologia\HttpClient\CurlClient::DEFAULT_CONNECT_TIMEOUT
+### Fluxo de Comunicação
 
-echo $curl->getTimeout(); // 10
-echo $curl->getConnectTimeout(); // 5
-
-// tell SierraTecnologia to use the tweaked client
-\SierraTecnologia\ApiRequestor::setHttpClient($curl);
-
-// use the SierraTecnologia API client as you normally would
+```
+Aplicação → ApiResource → ApiRequestor → HttpClient → API SierraTecnologia
+                ↓              ↓             ↓
+            Validação    Autenticação   Retry Logic
 ```
 
-## Custom cURL Options (e.g. proxies)
+---
 
-Need to set a proxy for your requests? Pass in the requisite `CURLOPT_*` array to the CurlClient constructor, using the same syntax as `curl_stopt_array()`. This will set the default cURL options for each HTTP request made by the SDK, though many more common options (e.g. timeouts; see above on how to set those) will be overridden by the client even if set here.
+## 🔧 Principais Componentes e Responsabilidades
+
+### 1. Classe SierraTecnologia (src/SierraTecnologia.php:1)
+
+Classe principal de configuração global.
+
+**Exemplo de Uso**:
 
 ```php
-// set up your tweaked Curl client
-$curl = new \SierraTecnologia\HttpClient\CurlClient([CURLOPT_PROXY => 'proxy.local:80']);
-// tell SierraTecnologia to use the tweaked client
-\SierraTecnologia\ApiRequestor::setHttpClient($curl);
+use SierraTecnologia\SierraTecnologia;
+
+// Configuração básica
+SierraTecnologia::setApiKey('sk_test_...');
+SierraTecnologia::setApiVersion('2023-10-16');
+
+// Configurações avançadas
+SierraTecnologia::setMaxNetworkRetries(3);
+SierraTecnologia::setEnableTelemetry(true);
+SierraTecnologia::setAppInfo('MeuApp', '1.0.0', 'https://meuapp.com');
 ```
 
-Alternately, a callable can be passed to the CurlClient constructor that returns the above array based on request inputs. See `testDefaultOptions()` in `tests/CurlClientTest.php` for an example of this behavior. Note that the callable is called at the beginning of every API request, before the request is sent.
+### 2. Charge (src/Charge.php:1)
 
-### Configuring a Logger
+Representa uma cobrança/transação.
 
-The library does minimal logging, but it can be configured
-with a [`PSR-3` compatible logger][psr3] so that messages
-end up there instead of `error_log`:
+**Exemplo Prático**:
 
 ```php
-\SierraTecnologia\SierraTecnologia::setLogger($logger);
-```
+use SierraTecnologia\Charge;
 
-### Accessing response data
-
-You can access the data from the last API response on any object via `getLastResponse()`.
-
-```php
-$charge = \SierraTecnologia\Charge::create(['amount' => 2000, 'currency' => 'usd', 'source' => 'tok_visa']);
-echo $charge->getLastResponse()->headers['Request-Id'];
-```
-
-### SSL / TLS compatibility issues
-
-SierraTecnologia's API now requires that [all connections use TLS 1.2](https://sierratecnologia.com.br/blog/upgrading-tls). Some systems (most notably some older CentOS and RHEL versions) are capable of using TLS 1.2 but will use TLS 1.0 or 1.1 by default. In this case, you'd get an `invalid_request_error` with the following error message: "SierraTecnologia no longer supports API requests made with TLS 1.0. Please initiate HTTPS connections with TLS 1.2 or later. You can learn more about this at [https://sierratecnologia.com.br/blog/upgrading-tls](https://sierratecnologia.com.br/blog/upgrading-tls).".
-
-The recommended course of action is to [upgrade your cURL and OpenSSL packages](https://support.sierratecnologia.com.br/questions/how-do-i-upgrade-my-sierratecnologia-integration-from-tls-1-0-to-tls-1-2#php) so that TLS 1.2 is used by default, but if that is not possible, you might be able to solve the issue by setting the `CURLOPT_SSLVERSION` option to either `CURL_SSLVERSION_TLSv1` or `CURL_SSLVERSION_TLSv1_2`:
-
-```php
-$curl = new \SierraTecnologia\HttpClient\CurlClient([CURLOPT_SSLVERSION => CURL_SSLVERSION_TLSv1]);
-\SierraTecnologia\ApiRequestor::setHttpClient($curl);
-```
-
-### Per-request Configuration
-
-For apps that need to use multiple keys during the lifetime of a process, like
-one that uses [SierraTecnologia Connect][connect], it's also possible to set a
-per-request key and/or account:
-
-```php
-\SierraTecnologia\Charge::all([], [
-    'api_key' => 'sk_test_...',
-    'sitecpayment_account' => 'acct_...'
+// Criar uma cobrança
+$charge = Charge::create([
+    'amount' => 2000, // R$ 20,00 em centavos
+    'currency' => 'brl',
+    'source' => 'tok_visa',
+    'description' => 'Cobrança de teste'
 ]);
 
-\SierraTecnologia\Charge::retrieve("ch_18atAXCdGbJFKhCuBAa4532Z", [
-    'api_key' => 'sk_test_...',
-    'sitecpayment_account' => 'acct_...'
+// Capturar cobrança
+$charge->capture();
+
+// Reembolsar
+$charge->refund(['amount' => 1000]); // Reembolso parcial
+```
+
+### 3. Customer (src/Customer.php:1)
+
+Representa um cliente.
+
+**Exemplo Prático**:
+
+```php
+use SierraTecnologia\Customer;
+
+// Criar cliente
+$customer = Customer::create([
+    'email' => 'joao@example.com',
+    'name' => 'João Silva',
+    'phone' => '+5511999999999'
+]);
+
+// Adicionar método de pagamento
+Customer::createSource($customer->id, ['source' => 'tok_visa']);
+
+// Listar faturas do cliente
+$invoices = $customer->invoices(['limit' => 5]);
+```
+
+---
+
+## 💻 Uso Prático
+
+### Fluxo Completo de Checkout
+
+```php
+<?php
+
+use SierraTecnologia\Customer;
+use SierraTecnologia\Charge;
+use SierraTecnologia\Error;
+
+// 1. Criar ou recuperar cliente
+$customer = Customer::create([
+    'email' => 'cliente@example.com',
+    'name' => 'Maria Santos'
+]);
+
+try {
+    // 2. Criar cobrança
+    $charge = Charge::create([
+        'amount' => 5000,
+        'currency' => 'brl',
+        'customer' => $customer->id,
+        'source' => $_POST['stripeToken'],
+        'description' => 'Pedido #1234'
+    ]);
+
+    if ($charge->status === 'succeeded') {
+        echo "Pagamento aprovado! ID: {$charge->id}";
+    }
+
+} catch (Error\Card $e) {
+    echo "Cartão recusado: " . $e->getMessage();
+}
+```
+
+### Sistema de Assinaturas
+
+```php
+use SierraTecnologia\Subscription;
+
+$subscription = Subscription::create([
+    'customer' => $customer->id,
+    'items' => [['plan' => 'plan_premium_monthly']],
+    'trial_period_days' => 7
 ]);
 ```
 
-### Configuring CA Bundles
+---
 
-By default, the library will use its own internal bundle of known CA
-certificates, but it's possible to configure your own:
+## 🔌 Integração com Ecossistema SierraTecnologia
+
+### Padrões de Versionamento
+
+- **Semantic Versioning**: Major.Minor.Patch
+- **API Versioning**: Via header `SierraTecnologia-Version`
+- **Backward Compatibility**: Mantida em minor releases
+
+### Testes Automatizados
+
+```bash
+# Executar suite completa de testes
+./vendor/bin/phpunit
+
+# Testes com cobertura
+./vendor/bin/phpunit --coverage-html coverage/
+```
+
+### CI/CD Pipeline
+
+A biblioteca utiliza GitHub Actions para:
+
+- ✅ Testes em múltiplas versões PHP (7.4, 8.0, 8.1, 8.2)
+- ✅ Análise estática com Psalm
+- ✅ Code style check com PHPCS
+- ✅ Security audit
+
+---
+
+## 🔧 Extensão e Customização
+
+### Estendendo Recursos
 
 ```php
-\SierraTecnologia\SierraTecnologia::setCABundlePath("path/to/ca/bundle");
+<?php
+
+namespace App\Payment;
+
+use SierraTecnologia\Charge as BaseCharge;
+
+class Charge extends BaseCharge
+{
+    public function splitPayment(array $recipients): array
+    {
+        $url = $this->instanceUrl() . '/split';
+        list($response, $opts) = $this->_request('post', $url, ['recipients' => $recipients]);
+        return $response;
+    }
+}
 ```
 
-### Configuring Automatic Retries
+---
 
-The library can be configured to automatically retry requests that fail due to
-an intermittent network problem:
+## 📊 Exemplos Reais de Uso
+
+### E-commerce Multi-tenant
 
 ```php
-\SierraTecnologia\SierraTecnologia::setMaxNetworkRetries(2);
+// Processar pagamento com split
+$charge = \SierraTecnologia\Charge::create([
+    'amount' => 10000,
+    'currency' => 'brl',
+    'source' => $token,
+    'application_fee_amount' => 1000,
+    'transfer_data' => ['destination' => $account->id]
+]);
 ```
 
-[Idempotency keys][idempotency-keys] are added to requests to guarantee that
-retries are safe.
+---
 
-## Development
+## 🤝 Guia de Contribuição
 
-Get [Composer][composer]. For example, on Mac OS:
+### Como Contribuir
+
+1. **Fork** o repositório
+2. **Clone** seu fork
+3. **Crie branch**: `git checkout -b feature/nova-funcionalidade`
+4. **Execute testes**: `./vendor/bin/phpunit`
+5. **Commit**: `git commit -m "feat: adiciona nova funcionalidade"`
+6. **Push**: `git push origin feature/nova-funcionalidade`
+7. **Abra Pull Request**
+
+### Executar Verificações Localmente
 
 ```bash
-brew install composer
+# Testes
+./vendor/bin/phpunit
+
+# Code style
+./vendor/bin/phpcs --standard=PSR12 src/
+
+# Análise estática
+./vendor/bin/psalm
+
+# Auto-fix
+./vendor/bin/php-cs-fixer fix
 ```
 
-Install dependencies:
+### Política de Versionamento
 
-```bash
-composer install
-```
+- **Major (X.0.0)**: Breaking changes
+- **Minor (0.X.0)**: Novas funcionalidades
+- **Patch (0.0.X)**: Bug fixes
 
-The test suite depends on [sierratecnologia-mock], so make sure to fetch and run it from a
-background terminal ([sierratecnologia-mock's README][sierratecnologia-mock] also contains
-instructions for installing via Homebrew and other methods):
+---
 
-```bash
-go get -u github.com/sierratecnologia/sierratecnologia-mock
-sierratecnologia-mock
-```
+## 🛠️ Ferramentas de Qualidade de Código
 
-Install dependencies as mentioned above (which will resolve [PHPUnit](http://packagist.org/packages/phpunit/phpunit)), then you can run the test suite:
+### PHPUnit (Testes)
 
 ```bash
 ./vendor/bin/phpunit
+./vendor/bin/phpunit --coverage-text
 ```
 
-Or to run an individual test file:
+### PHPCS (Code Style)
 
 ```bash
-./vendor/bin/phpunit tests/UtilTest.php
+./vendor/bin/phpcs --standard=PSR12 src/
+./vendor/bin/phpcbf --standard=PSR12 src/
 ```
 
-Update bundled CA certificates from the [Mozilla cURL release][curl]:
+### Psalm (Análise Estática)
 
 ```bash
-./update_certs.php
+./vendor/bin/psalm
+./vendor/bin/psalm --show-info=false
 ```
 
-## Attention plugin developers
+---
 
-Are you writing a plugin that integrates SierraTecnologia and embeds our library? Then please use the `setAppInfo` function to identify your plugin. For example:
+## 📚 Recursos Adicionais
 
-```php
-\SierraTecnologia\SierraTecnologia::setAppInfo("MyAwesomePlugin", "1.2.34", "https://myawesomeplugin.info");
-```
+### Documentação
 
-The method should be called once, before any request is sent to the API. The second and third parameters are optional.
+Para referência completa da API: https://sierratecnologia.com.br/docs/api
 
-### SSL / TLS configuration option
+### Licença e Suporte
 
-See the "SSL / TLS compatibility issues" paragraph above for full context. If you want to ensure that your plugin can be used on all systems, you should add a configuration option to let your users choose between different values for `CURLOPT_SSLVERSION`: none (default), `CURL_SSLVERSION_TLSv1` and `CURL_SSLVERSION_TLSv1_2`.
+- **Licença**: MIT License
+- **Copyright**: © 2024 SierraTecnologia
+- **Email**: contato@sierratecnologia.com.br
+- **Website**: https://sierratecnologia.com.br
 
-[composer]: https://getcomposer.org/
-[connect]: https://sierratecnologia.com.br/connect
-[curl]: http://curl.haxx.se/docs/caextract.html
-[psr3]: http://www.php-fig.org/psr/psr-3/
-[idempotency-keys]: https://sierratecnologia.com.br/docs/api/php#idempotent_requests
-[sierratecnologia-mock]: https://github.com/sierratecnologia/sierratecnologia-mock
+---
+
+**Desenvolvido com ❤️ pela equipe SierraTecnologia**
