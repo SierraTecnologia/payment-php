@@ -6,6 +6,13 @@ use Exception;
 
 abstract class Base extends Exception
 {
+    protected $httpStatus;
+    protected $httpBody;
+    protected $jsonBody;
+    protected $httpHeaders;
+    protected $requestId;
+    protected $sierratecnologiaCode;
+
     public function __construct(
         $message,
         $httpStatus = null,

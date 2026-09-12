@@ -4,6 +4,8 @@ namespace SierraTecnologia\Error;
 
 class SignatureVerification extends Base
 {
+    protected $sigHeader;
+
     public function __construct(
         $message,
         $sigHeader,
