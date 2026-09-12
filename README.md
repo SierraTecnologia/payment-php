@@ -10,7 +10,7 @@ You can sign up for a SierraTecnologia account at https://sierratecnologia.com.b
 
 ## Requirements
 
-PHP 5.4.0 and later.
+PHP 8.3 or later.
 
 ## Composer
 

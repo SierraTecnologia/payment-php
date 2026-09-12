@@ -155,7 +155,7 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
     {
         // function should return a reference, using $nullval to return a reference to null
         $nullval = null;
-        if (!empty($this->_values) && property_exists($this->_values, $k)) {
+        if (!empty($this->_values) && array_key_exists($k, $this->_values)) {
             return $this->_values[$k];
         } elseif (!empty($this->_transientValues) && $this->_transientValues->includes($k)) {
             $class = get_class($this);
@@ -189,7 +189,7 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
 
     public function offsetExists($k)
     {
-        return property_exists($this->_values, $k);
+        return array_key_exists($k, $this->_values);
     }
 
     public function offsetUnset($k)
@@ -199,7 +199,7 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
 
     public function offsetGet($k)
     {
-        return property_exists($this->_values, $k) ? $this->_values[$k] : null;
+        return array_key_exists($k, $this->_values) ? $this->_values[$k] : null;
     }
 
     // Countable method
@@ -325,7 +325,7 @@ class SierraTecnologiaObject implements \ArrayAccess, \Countable, \JsonSerializa
             //   3. Its value is a SierraTecnologiaObject. A SierraTecnologiaObject may contain modified
             //      values within in that its parent SierraTecnologiaObject doesn't know about.
             //
-            $original = property_exists($this->_originalValues, $k) ? $this->_originalValues[$k] : null;
+            $original = array_key_exists($k, $this->_originalValues) ? $this->_originalValues[$k] : null;
             $unsaved = $this->_unsavedValues->includes($k);
             if ($force || $unsaved || $v instanceof SierraTecnologiaObject) {
                 $updateParams[$k] = $this->serializeParamsValue(

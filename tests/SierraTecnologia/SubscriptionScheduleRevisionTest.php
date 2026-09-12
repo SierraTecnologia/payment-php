@@ -16,19 +16,15 @@ class SubscriptionScheduleRevisionTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         SubscriptionScheduleRevision::retrieve(self::TEST_RESOURCE_ID);
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyAll()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         SubscriptionScheduleRevision::all();
     }
 }

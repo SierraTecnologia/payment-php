@@ -79,12 +79,10 @@ class ApiRequestorTest extends TestCase
         $this->assertSame($headers['Authorization'], 'Bearer ' . $apiKey);
     }
 
-    /**
-     * @expectedException              \SierraTecnologia\Error\Authentication
-     * @expectedExceptionMessageRegExp #No API key provided#
-     */
     public function testRaisesAuthenticationErrorWhenNoApiKey()
     {
+        $this->expectException(\SierraTecnologia\Error\Authentication::class);
+        $this->expectExceptionMessageMatches('#No API key provided#');
         SierraTecnologia::setApiKey(null);
         Charge::create();
     }

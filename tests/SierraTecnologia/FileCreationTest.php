@@ -8,18 +8,24 @@ namespace SierraTecnologia;
  */
 class FileCreationTest extends TestCase
 {
-    /**
-     * @before
-     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->setUpUploadBase();
+    }
+
+    protected function tearDown(): void
+    {
+        $this->tearDownUploadBase();
+        parent::tearDown();
+    }
+
     public function setUpUploadBase()
     {
         SierraTecnologia::$apiUploadBase = SierraTecnologia::$apiBase;
         SierraTecnologia::$apiBase = null;
     }
 
-    /**
-     * @after
-     */
     public function tearDownUploadBase()
     {
         SierraTecnologia::$apiBase = SierraTecnologia::$apiUploadBase;

@@ -51,11 +51,9 @@ class CardTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         Card::retrieve(self::TEST_RESOURCE_ID);
     }
 
@@ -71,11 +69,9 @@ class CardTest extends TestCase
         $this->assertSame("SierraTecnologia\\Card", get_class($resource));
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyUpdatable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         Card::update(
             self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],

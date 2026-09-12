@@ -33,11 +33,9 @@ class AlipayAccountTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         AlipayAccount::retrieve(self::TEST_RESOURCE_ID);
     }
 
@@ -53,11 +51,9 @@ class AlipayAccountTest extends TestCase
         $this->assertSame("SierraTecnologia\\AlipayAccount", get_class($resource));
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyUpdatable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         AlipayAccount::update(
             self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],

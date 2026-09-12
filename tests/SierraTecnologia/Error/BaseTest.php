@@ -6,8 +6,7 @@ class BaseTest extends TestCase
 {
     public function createFixture($params = [])
     {
-        return $this->getMockForAbstractClass(
-            'SierraTecnologia\\Error\\Base', [
+        return new class(
             'message',
             200,
             '{"key": "value"}',
@@ -15,9 +14,8 @@ class BaseTest extends TestCase
             [
                 'Some-Header' => 'Some Value',
                 'Request-Id' => 'req_test',
-            ],
             ]
-        );
+        ) extends \SierraTecnologia\Error\Base {};
     }
 
     public function testGetters()
@@ -33,6 +31,6 @@ class BaseTest extends TestCase
     public function testToString()
     {
         $e = $this->createFixture();
-        $this->assertContains("from API request 'req_test'", (string)$e);
+        $this->assertStringContainsString("from API request 'req_test'", (string)$e);
     }
 }

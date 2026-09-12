@@ -2,7 +2,7 @@
 
 namespace SierraTecnologia\Sigma;
 
-class AuthorizationTest extends \SierraTecnologia\TestCase
+class ScheduledQueryRunTest extends \SierraTecnologia\TestCase
 {
     const TEST_RESOURCE_ID = 'sqr_123';
 

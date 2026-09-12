@@ -104,11 +104,9 @@ class SourceTest extends TestCase
         $this->assertInstanceOf("SierraTecnologia\\Source", $resource);
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\Api
-     */
     public function testIsNotDetachableWhenUnattached()
     {
+        $this->expectException(\SierraTecnologia\Error\Api::class);
         $resource = Source::retrieve(self::TEST_RESOURCE_ID);
         $resource->detach();
     }

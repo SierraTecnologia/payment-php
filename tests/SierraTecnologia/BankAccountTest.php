@@ -42,11 +42,9 @@ class BankAccountTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         BankAccount::retrieve(self::TEST_RESOURCE_ID);
     }
 
@@ -62,11 +60,9 @@ class BankAccountTest extends TestCase
         $this->assertSame("SierraTecnologia\\BankAccount", get_class($resource));
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyUpdatable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         BankAccount::update(
             self::TEST_RESOURCE_ID, [
             "metadata" => ["key" => "value"],

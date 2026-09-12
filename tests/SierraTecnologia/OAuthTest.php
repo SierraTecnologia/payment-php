@@ -32,12 +32,10 @@ class OAuthTest extends TestCase
         $this->assertSame('US', $params['sitecpayment_user']['country']);
     }
 
-    /**
-     * @expectedException              \SierraTecnologia\Error\Authentication
-     * @expectedExceptionMessageRegExp #No client_id provided#
-     */
     public function testRaisesAuthenticationErrorWhenNoClientId()
     {
+        $this->expectException(\SierraTecnologia\Error\Authentication::class);
+        $this->expectExceptionMessageMatches('#No client_id provided#');
         SierraTecnologia::setClientId(null);
         OAuth::authorizeUrl();
     }
@@ -87,7 +85,7 @@ class OAuthTest extends TestCase
             null,
             false,
             [
-                'sitecpayment_user_id' => 'acct_test_deauth',
+                'sierratecnologia_user_id' => 'acct_test_deauth',
             ],
             200,
             SierraTecnologia::$connectBase

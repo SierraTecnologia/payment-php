@@ -4,9 +4,12 @@ namespace SierraTecnologia;
 
 class SierraTecnologiaObjectTest extends TestCase
 {
-    /**
-     * @before
-     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->setUpReflectors();
+    }
+
     public function setUpReflectors()
     {
         // Sets up reflectors needed by some tests to access protected or
@@ -87,7 +90,7 @@ class SierraTecnologiaObjectTest extends TestCase
 
         $converted = $s->__toArray();
 
-        $this->assertInternalType('array', $converted);
+        $this->assertIsArray($converted);
         $this->assertArrayHasKey('foo', $converted);
         $this->assertEquals('a', $converted['foo']);
     }
@@ -102,9 +105,9 @@ class SierraTecnologiaObjectTest extends TestCase
 
         $converted = $s->__toArray(true);
 
-        $this->assertInternalType('array', $converted);
+        $this->assertIsArray($converted);
         $this->assertArrayHasKey('child', $converted);
-        $this->assertInternalType('array', $converted['child']);
+        $this->assertIsArray($converted['child']);
         $this->assertArrayHasKey('foo', $converted['child']);
         $this->assertEquals('a', $converted['child']['foo']);
     }
@@ -153,20 +156,16 @@ EOS;
         $this->assertSame($s->metadata, ['baz', 'qux']);
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testSetPermanentAttribute()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $s = new SierraTecnologiaObject();
         $s->id = 'abc_123';
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testSetEmptyStringValue()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $s = new SierraTecnologiaObject();
         $s->foo = '';
     }

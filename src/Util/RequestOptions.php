@@ -91,10 +91,14 @@ class RequestOptions
             if (isset($options['idempotency_key'])) {
                 $headers['Idempotency-Key'] = $options['idempotency_key'];
             }
-            if (isset($options['sitecpayment_account'])) {
+            if (isset($options['sierratecnologia_account'])) {
+                $headers['SierraTecnologia-Account'] = $options['sierratecnologia_account'];
+            } elseif (isset($options['sitecpayment_account'])) {
                 $headers['SierraTecnologia-Account'] = $options['sitecpayment_account'];
             }
-            if (isset($options['sitecpayment_version'])) {
+            if (isset($options['sierratecnologia_version'])) {
+                $headers['SierraTecnologia-Version'] = $options['sierratecnologia_version'];
+            } elseif (isset($options['sitecpayment_version'])) {
                 $headers['SierraTecnologia-Version'] = $options['sitecpayment_version'];
             }
             if (isset($options['api_base'])) {

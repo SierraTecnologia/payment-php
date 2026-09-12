@@ -23,11 +23,9 @@ class UsageRecordTest extends TestCase
         $this->assertInstanceOf("SierraTecnologia\\UsageRecord", $resource);
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testThrowsIfSubscriptionItemIsMissing()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         UsageRecord::create(
             [
             'quantity' => 100,

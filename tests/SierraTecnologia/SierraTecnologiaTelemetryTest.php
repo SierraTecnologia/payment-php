@@ -27,10 +27,7 @@ class SierraTecnologiaTelemetryTest extends TestCase
     {
         $requestheaders = null;
 
-        $stub = $this
-            ->getMockBuilder("HttpClient\ClientInterface")
-            ->setMethods(array('request'))
-            ->getMock();
+        $stub = $this->createMock(\SierraTecnologia\HttpClient\ClientInterface::class);
 
         $stub->expects($this->any())
             ->method("request")
@@ -71,10 +68,7 @@ class SierraTecnologiaTelemetryTest extends TestCase
 
         $requestheaders = null;
 
-        $stub = $this
-            ->getMockBuilder("HttpClient\ClientInterface")
-            ->setMethods(array('request'))
-            ->getMock();
+        $stub = $this->createMock(\SierraTecnologia\HttpClient\ClientInterface::class);
 
         $stub->expects($this->any())
             ->method("request")

@@ -6,9 +6,19 @@ use SierraTecnologia\HttpClient\CurlClient;
 
 class CurlClientTest extends TestCase
 {
-    /**
-     * @before
-     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->saveOriginalNetworkValues();
+        $this->setUpReflectors();
+    }
+
+    protected function tearDown(): void
+    {
+        $this->restoreOriginalNetworkValues();
+        parent::tearDown();
+    }
+
     public function saveOriginalNetworkValues()
     {
         $this->origMaxNetworkRetries = SierraTecnologia::getMaxNetworkRetries();
@@ -16,9 +26,6 @@ class CurlClientTest extends TestCase
         $this->origInitialNetworkRetryDelay = SierraTecnologia::getInitialNetworkRetryDelay();
     }
 
-    /**
-     * @before
-     */
     public function setUpReflectors()
     {
         $sierratecnologiaReflector = new \ReflectionClass('\SierraTecnologia\SierraTecnologia');
@@ -38,9 +45,6 @@ class CurlClientTest extends TestCase
         $this->sleepTimeMethod->setAccessible(true);
     }
 
-    /**
-     * @after
-     */
     public function restoreOriginalNetworkValues()
     {
         SierraTecnologia::setMaxNetworkRetries($this->origMaxNetworkRetries);
@@ -60,7 +64,7 @@ class CurlClientTest extends TestCase
 
     private function createFakeRandomGenerator($returnValue = 1.0)
     {
-        $fakeRandomGenerator = $this->getMock('SierraTecnologia\Util\RandomGenetator', ['randFloat']);
+        $fakeRandomGenerator = $this->createMock(\SierraTecnologia\Util\RandomGenerator::class);
         $fakeRandomGenerator->method('randFloat')->willReturn($returnValue);
         return $fakeRandomGenerator;
     }
@@ -116,7 +120,8 @@ class CurlClientTest extends TestCase
                 return 'thisShouldNotWork';
             }
         );
-        $this->setExpectedException('SierraTecnologia\Error\Api', "Non-array value returned by defaultOptions CurlClient callback");
+        $this->expectException(\SierraTecnologia\Error\Api::class);
+        $this->expectExceptionMessage("Non-array value returned by defaultOptions CurlClient callback");
         $withBadClosure->request('get', 'https://httpbin.org/status/200', [], [], false);
     }
 

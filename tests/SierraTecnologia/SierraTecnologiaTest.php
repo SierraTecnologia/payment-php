@@ -4,9 +4,18 @@ namespace SierraTecnologia;
 
 class SierraTecnologiaTest extends TestCase
 {
-    /**
-     * @before
-     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->saveOriginalValues();
+    }
+
+    protected function tearDown(): void
+    {
+        $this->restoreOriginalValues();
+        parent::tearDown();
+    }
+
     public function saveOriginalValues()
     {
         $this->orig = [
@@ -14,9 +23,6 @@ class SierraTecnologiaTest extends TestCase
         ];
     }
 
-    /**
-     * @after
-     */
     public function restoreOriginalValues()
     {
         SierraTecnologia::$caBundlePath = $this->orig['caBundlePath'];

@@ -4,9 +4,12 @@ namespace SierraTecnologia;
 
 class CollectionTest extends TestCase
 {
-    /**
-     * @before
-     */
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->setUpFixture();
+    }
+
     public function setUpFixture()
     {
         $this->fixture = Collection::constructFrom(

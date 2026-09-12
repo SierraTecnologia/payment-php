@@ -4,7 +4,7 @@
 // `error_log` below.
 namespace SierraTecnologia\Util;
 
-class UtilLoggerTest extends \SierraTecnologia\TestCase
+class DefaultLoggerTest extends \SierraTecnologia\TestCase
 {
     public function testDefaultLogger()
     {

@@ -16,11 +16,9 @@ class CapabilityTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         Capability::retrieve(self::TEST_RESOURCE_ID);
     }
 
@@ -36,11 +34,9 @@ class CapabilityTest extends TestCase
         $this->assertSame("SierraTecnologia\\Capability", get_class($resource));
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyUpdatable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         Capability::update(self::TEST_RESOURCE_ID, ["requested" => true]);
     }
 }

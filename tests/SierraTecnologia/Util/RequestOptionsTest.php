@@ -59,11 +59,9 @@ class RequestOptionsTest extends TestCase
         $this->assertSame(['Idempotency-Key' => 'foo'], $opts->headers);
     }
 
-    /**
-     * @expectedException SierraTecnologia\Error\Api
-     */
     public function testWrongType()
     {
+        $this->expectException(\SierraTecnologia\Error\Api::class);
         $opts = Util\RequestOptions::parse(5);
     }
 

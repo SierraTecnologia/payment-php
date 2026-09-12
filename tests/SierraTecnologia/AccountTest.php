@@ -417,11 +417,9 @@ class AccountTest extends TestCase
         $this->assertSame($expected, $obj->serializeParameters());
     }
 
-    /**
-     * @expectedException \InvalidArgumentException
-     */
     public function testSerializeAdditionalOwnersDeletedItem()
     {
+        $this->expectException(\InvalidArgumentException::class);
         $obj = Util\Util::convertToSierraTecnologiaObject(
             [
             'object' => 'account',

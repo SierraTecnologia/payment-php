@@ -16,11 +16,9 @@ class PersonTest extends TestCase
         );
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyRetrievable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         Person::retrieve(self::TEST_RESOURCE_ID);
     }
 
@@ -36,11 +34,9 @@ class PersonTest extends TestCase
         $this->assertSame("SierraTecnologia\\Person", get_class($resource));
     }
 
-    /**
-     * @expectedException \SierraTecnologia\Error\InvalidRequest
-     */
     public function testIsNotDirectlyUpdatable()
     {
+        $this->expectException(\SierraTecnologia\Error\InvalidRequest::class);
         Person::update(
             self::TEST_RESOURCE_ID, [
             "first_name" => ["John"],
